@@ -1,0 +1,45 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node
+node_modules/
+.npm/
+dist/
+build/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.log
+
+# Audio & uploads cache
+uploads/
+temp/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Audio files & temporary scratch files
+*.wav
+*.mp3
+*.webm
+*.ogg
+*.m4a
+backend/scratch/
+*client_secret*.json
+*details*.txt

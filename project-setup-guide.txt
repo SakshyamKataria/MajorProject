@@ -1,0 +1,286 @@
+# Environment Setup Guide — Meeting \& Lecture Intelligence Platform
+
+Tailored for: Dell G15, RTX 3050 6GB, Windows. Follow in order — steps 5–9 (GPU stack) are the ones most likely to break, so do them in isolation before touching the project code.
+
+\---
+
+## 1\. Git
+
+1. Download from https://git-scm.com/download/win and install with defaults.
+2. Verify: `git --version`
+3. Set your identity:
+
+```
+   git config --global user.name "Your Name"
+   git config --global user.email "your@email.com"
+   ```
+
+4. Set up SSH or a personal access token for GitHub if you haven't already (needed to push to the team repo).
+
+\---
+
+## 2\. VS Code
+
+1. Install from https://code.visualstudio.com/
+2. Extensions to add: **Python**, **Pylance**, **ESLint**, **Prettier**, **Tailwind CSS IntelliSense**, **Docker** (if using Docker), **Thunder Client** (for testing API endpoints without leaving the editor).
+
+\---
+
+## 3\. Python 3.11 (installed alongside your existing 3.14 — do not remove 3.14)
+
+1. Download the Python 3.11 installer from https://www.python.org/downloads/release/python-3119/ (or latest 3.11.x).
+2. During install, check **"Add python.exe to PATH"** — but since you already have 3.14, you'll manage versions explicitly rather than relying on PATH order (step below handles this).
+3. Verify both versions are accessible:
+
+```
+   py -3.11 --version
+   py -3.14 --version
+   ```
+
+   `py` is the Windows launcher — it lets you pick the version per-command instead of fighting PATH order.
+
+4. From now on, always create this project's virtual environment with `py -3.11`, never bare `python`.
+
+\---
+
+## 4\. Node.js LTS
+
+1. Download the **LTS** version (not "Current") from https://nodejs.org/
+2. Verify: `node --version` and `npm --version`
+3. Optional but recommended for speed: `npm install -g pnpm`
+
+\---
+
+## 5\. NVIDIA driver check
+
+1. Open **NVIDIA GeForce Experience** (or NVIDIA app) and check for driver updates — update if not current.
+2. Verify your GPU is visible: open a terminal and run `nvidia-smi`. You should see your RTX 3050 listed along with a CUDA version in the top right — note that version number, it tells you the *maximum* CUDA version your driver supports.
+
+\---
+
+## 6\. CUDA Toolkit
+
+1. faster-whisper (via CTranslate2) currently works best with **CUDA 12.x**. Confirm your driver (from step 5's `nvidia-smi` output) supports CUDA 12 — RTX 3050 laptops with a reasonably current driver will.
+2. Download CUDA Toolkit 12.x from https://developer.nvidia.com/cuda-downloads — select Windows → your version → exe (local).
+3. Install with default options.
+4. Verify: `nvcc --version`
+
+\---
+
+## 7\. cuDNN (the step most people miss)
+
+1. cuDNN requires a free NVIDIA Developer account — sign up at https://developer.nvidia.com/cudnn if you don't have one.
+2. Download the **cuDNN version matching your CUDA 12.x install**.
+3. Windows cuDNN ships as a zip of files you copy into your CUDA install directory (`bin`, `include`, `lib` folders) — follow NVIDIA's installation guide exactly; this isn't a normal installer.
+4. There's no simple one-line verification for cuDNN alone — you'll confirm it works in step 9 when faster-whisper successfully loads on `cuda`.
+
+\---
+
+## 8\. ffmpeg
+
+1. Download a Windows build from https://www.gyan.dev/ffmpeg/builds/ (the "essentials" build is enough).
+2. Extract it somewhere permanent (e.g. `C:\\ffmpeg`), then add `C:\\ffmpeg\\bin` to your system PATH (System Properties → Environment Variables → Path → New).
+3. Verify: open a **new** terminal window and run `ffmpeg -version`.
+
+\---
+
+## 9\. Verify the GPU stack end-to-end (do this before writing any app code)
+
+1. Create a throwaway test folder and venv:
+
+```
+   py -3.11 -m venv test-env
+   test-env\\Scripts\\activate
+   pip install faster-whisper
+   ```
+
+2. Run a quick Python test:
+
+```python
+   from faster\_whisper import WhisperModel
+   model = WhisperModel("small", device="cuda", compute\_type="int8")
+   print("Loaded on GPU successfully")
+   ```
+
+3. If this prints without error, your CUDA/cuDNN setup is correct. If you get a CUDA/cuDNN-related error, it's almost always a version mismatch between CUDA, cuDNN, and the CTranslate2 build faster-whisper installed — check the faster-whisper GitHub README's "GPU" section for the exact compatible version pairing at the time you install, since these shift between releases.
+4. Once confirmed, delete this test-env — you'll set up the real one in step 11.
+
+\---
+
+## 10\. Docker Desktop + WSL2 (optional — for local Postgres during dev)
+
+1. Enable WSL2: open PowerShell as Administrator and run `wsl --install`. Reboot if prompted.
+2. Check BIOS virtualization (Intel VT-x / AMD-V) is enabled if `wsl --install` complains — this is a BIOS setting, not a Windows one, so you may need to reboot into BIOS to check.
+3. Install Docker Desktop from https://www.docker.com/products/docker-desktop/, select the WSL2 backend during setup.
+4. Verify: `docker --version` and `docker run hello-world`.
+
+You can skip this entirely and just use your Supabase project directly for dev if you'd rather not deal with WSL2 — Docker is for convenience, not a hard requirement for this project's architecture.
+
+\---
+
+## 11\. Backend project setup
+
+1. In your project repo:
+
+```
+   py -3.11 -m venv venv
+   venv\\Scripts\\activate
+   ```
+
+2. Install packages:
+
+```
+   pip install fastapi uvicorn\[standard] faster-whisper scikit-learn google-generativeai supabase python-dotenv pydantic
+   ```
+
+3. Create a `.env` file (and add it to `.gitignore` immediately, before it has real keys in it) for your Supabase URL/keys, Gemini API key, and R2 credentials.
+4. Confirm the app boots: a minimal `main.py` with a FastAPI instance and `uvicorn main:app --reload`.
+
+\---
+
+## 12\. Frontend project setup
+
+1. Scaffold:
+
+```
+   npm create vite@latest frontend -- --template react-ts
+   cd frontend
+   npm install
+   ```
+
+2. Add Tailwind: follow the official Vite+Tailwind guide (`npm install -D tailwindcss postcss autoprefixer` etc. — exact steps change occasionally, check https://tailwindcss.com/docs/guides/vite for the current install command).
+3. Add shadcn/ui: `npx shadcn@latest init`, then add components as needed with `npx shadcn@latest add button` etc.
+4. Add Framer Motion: `npm install framer-motion`
+5. Confirm it runs: `npm run dev`
+
+\---
+
+## 13\. Cloud accounts (set up early so no team member is blocked waiting on credentials)
+
+1. **Supabase** — https://supabase.com → new project → save the project URL and both the `anon` and `service\_role` keys → in the SQL editor, run `create extension if not exists vector;` to enable pgvector.
+2. **Google AI Studio** — https://aistudio.google.com → get an API key for Gemini (free tier).
+3. **Cloudflare R2** — https://dash.cloudflare.com → R2 → create a bucket → generate an S3-compatible API token (Access Key ID + Secret Access Key).
+4. **GitHub** — create the team repo, add all 4 members as collaborators, set up a basic branch protection rule on `main` if you want one.
+5. **Vercel** — https://vercel.com → connect your GitHub repo (can wait until the frontend has something worth deploying).
+6. **Render** — https://render.com → connect your GitHub repo, create a **web service** (not a worker — remember, free tier doesn't support those) pointing at your backend (can also wait).
+
+\---
+
+## Suggested order to actually execute this
+
+**Day 1:** Steps 1–4 (Git, VS Code, Python 3.11, Node) — quick, no surprises.
+**Day 1–2:** Steps 5–9 (GPU stack) — do this in isolation, as its own task, before anyone touches app code. This is the one place things commonly go sideways, so budget real time for it and don't schedule it the night before a deadline.
+**Day 2:** Steps 11–12 (backend + frontend scaffolds) — can happen in parallel across team members once GPU setup is confirmed working on at least one machine.
+**Day 2 (parallel):** Step 13 (cloud accounts) — whoever owns backend/database should do this while others are scaffolding, so keys are ready when needed.
+**Optional, anytime:** Step 10 (Docker/WSL2) — only if you decide you want local Postgres instead of hitting Supabase directly during dev.
+
+
+1. Project scaffolding
+
+Using the attached project plan and setup guide, scaffold the FastAPI backend and Vite+React+TypeScript frontend as two separate folders in one repo (/backend, /frontend). Set up the folder structure, a working .env.example (no real keys), requirements.txt, package.json with the dependencies listed in the plan, and a basic health-check endpoint I can hit to confirm the backend runs. Don't implement any features yet.
+
+2. Database schema
+
+Based on the database entities in the plan (Users, Meetings, Participants, Transcripts, Summaries, Decisions, ActionItems, MeetingTags, Embeddings), write the Supabase SQL schema as a migration file, including the pgvector column for embeddings. Include foreign key relationships between meetings and their transcripts/summaries/decisions/action items.
+
+3. File upload → R2
+
+Implement a FastAPI endpoint that accepts an audio/video file upload and stores it in Cloudflare R2 using boto3 (S3-compatible API), reading credentials from .env. Return the stored file's key/URL and create a meetings row with status pending.
+
+4. Whisper transcription (background task)
+
+Implement a FastAPI BackgroundTask that: pulls the uploaded audio from R2, runs it through faster-whisper (large-v3-turbo, int8, cuda) with silence trimming, and writes the resulting transcript (with timestamps) into the transcripts table. Update the meeting's status field as it progresses (processing → transcribed).
+
+5. ML classifier (bootstrap + train)
+
+Write a standalone script that: takes a batch of sample transcripts, calls Gemini to label each sentence into [Action Item, Decision, Deadline, Discussion, Question], saves that as a labeled CSV, then trains a TF-IDF + Logistic Regression classifier on it and saves the model to disk. Also output precision/recall/confusion matrix on a held-out split.
+
+5 New
+
+Write a standalone script that: connects to Supabase and pulls sentences from the transcripts table (cap it at ~2000 sentences, sampled across different meeting_ids so no single meeting dominates), sends them to Gemini in batches (not one call per sentence — batch ~20-30 sentences per call to control API usage and stay within free-tier rate limits) to label each sentence into [Action Item, Decision, Deadline, Discussion, Question], saves the results as a labeled CSV. Then print the label distribution (count per class) so I can check for class imbalance. Then train a TF-IDF + Logistic Regression classifier on that labeled CSV, save the trained model and vectorizer to disk, and output precision/recall/confusion matrix on a held-out split.
+
+6. Classifier inference + Gemini refinement pipeline
+
+Implement a pipeline step that loads the trained classifier, runs it over a transcript's sentences to get per-sentence labels + confidence, filters to high-confidence candidates, batches those into a single Gemini call per meeting to produce the structured JSON (summary, decisions, action items), and writes everything to the DB — including storing each sentence's classifier label/confidence for later display in the UI.
+The trained classifier and vectorizer are saved to disk by the script from the previous step — check its actual save path/filename before writing the loading code, and use the same location/format.
+
+7. Embeddings + semantic search
+
+Add a step that generates embeddings for each meeting's summary/transcript using Gemini's embedding endpoint, stores them in the embeddings column, and implement a /search endpoint that does pgvector similarity search across past meetings.
+
+8. Frontend — upload flow
+
+Build the upload page: drag-and-drop file upload, calls the upload endpoint, shows processing status by polling the meeting's status field.
+
+9. Frontend — transcript + results view
+
+Build the meeting detail page: transcript view with each sentence tagged with its classifier label/confidence badge, plus sections for summary, decisions, and action items pulled from the structured JSON.
+
+10. Frontend — search + meeting list
+
+Build the meeting list/search page using the /search endpoint, with a dashboard-style card list.
+
+11. Polish pass
+
+Review error handling across upload/transcription/classification failures, add loading states, and clean up styling per the shadcn/Tailwind stack.
+
+A few notes on using this:
+
+Attach both your plan.md and setup.md to the very first prompt so the assistant has full context, then it'll carry forward in the same conversation/session for later steps.
+After each step, actually run it and confirm it works before moving to the next — don't queue up all 11 prompts in a row without checking in between.
+Step 5 (classifier) can be done in parallel by whoever owns ML, independent of steps 3–4, since it doesn't depend on your real transcription pipeline being done yet — sample transcripts are enough.
+
+Part A — Manual setup (do this first, before any prompts)
+
+1. Create OAuth credentials in Google Cloud Console
+
+Go to https://console.cloud.google.com
+Since you already created a project via AI Studio for Gemini, you can either reuse that project or create a new one — reusing is fine, they're independent API enablements.
+Left sidebar → APIs & Services → Library → search "Google Calendar API" → Enable
+
+2. Configure the OAuth consent screen
+
+APIs & Services → OAuth consent screen
+User type: External (unless you have a Google Workspace org)
+Fill app name, your email, etc.
+Scopes: add https://www.googleapis.com/auth/calendar.events
+Test users: add your own Google account email (required while the app is in "Testing" mode — unpublished apps only allow whitelisted test users to authorize)
+
+3. Create OAuth 2.0 credentials
+
+APIs & Services → Credentials → Create Credentials → OAuth client ID
+Application type: Web application
+Authorized redirect URIs: add your backend's callback URL, e.g. http://localhost:8000/calendar/callback for local dev
+Save the generated Client ID and Client Secret
+
+4. Add to .env
+
+GOOGLE_CALENDAR_CLIENT_ID=your_client_id
+GOOGLE_CALENDAR_CLIENT_SECRET=your_client_secret
+GOOGLE_CALENDAR_REDIRECT_URI=http://localhost:8000/calendar/callback
+Part B — Prompts for Antigravity (paste one at a time)
+
+Prompt 1 — DB table for tokens
+
+Add a new Supabase migration for a calendar_tokens table: references profiles(id) with ON DELETE CASCADE, stores access_token, refresh_token, token_expiry, and connected_at. Apply RLS so users can only access their own row. Update DECISIONS.md with a short entry on why calendar tokens are stored per-user server-side rather than client-side.
+
+Prompt 2 — OAuth flow
+
+Implement the Google Calendar OAuth flow in FastAPI using the credentials in .env (GOOGLE_CALENDAR_CLIENT_ID, GOOGLE_CALENDAR_CLIENT_SECRET, GOOGLE_CALENDAR_REDIRECT_URI). Build: (1) GET /calendar/authorize — redirects the user to Google's consent screen for the calendar.events scope; (2) GET /calendar/callback — receives the auth code, exchanges it for access + refresh tokens, and stores them in the calendar_tokens table for the current user; (3) GET /calendar/status — returns whether the current user has a connected calendar. Use the google-auth and google-auth-oauthlib Python libraries.
+
+Prompt 3 — token refresh
+
+Implement automatic access-token refresh: before any calendar API call, check if the stored token_expiry has passed, and if so, use the stored refresh_token to get a new access token via Google's token endpoint, updating calendar_tokens with the new token and expiry. Handle the case where the refresh token itself is invalid/revoked (user must reauthorize) by returning a clear error the frontend can act on.
+
+Prompt 4 — create calendar event
+
+Implement POST /meetings/{meeting_id}/action-items/{action_item_id}/add-to-calendar: fetches the action item's task description and deadline, uses the user's stored (and refreshed if needed) calendar token to create a Google Calendar event via the Calendar API, and stores the returned Google event ID on the action item row (add a google_event_id column via migration if needed) so we know it's already been added and can avoid duplicates.
+
+Prompt 5 — frontend
+
+Add a "Connect Google Calendar" button somewhere visible (e.g. settings or the meeting detail page) that triggers /calendar/authorize if not connected, shown via /calendar/status. On each action item in the results view, add an "Add to Calendar" button that calls the add-to-calendar endpoint, shows a success state (checkmark or "Added") once google_event_id exists, and is disabled/hidden appropriately if the calendar isn't connected yet.
+
+Prompt 6 — test it properly
+
+Test the calendar integration end-to-end: (1) connect a Google account and confirm tokens are stored, (2) add an action item to calendar and verify the event actually appears in Google Calendar with the correct title/date, (3) manually expire the stored token_expiry in Supabase to simulate an expired token and confirm refresh logic actually works rather than just being present in code, (4) revoke access from https://myaccount.google.com/permissions and confirm the app handles the now-invalid refresh token gracefully rather than crashing. Add a PROJECT_LOG.md entry with results.
+

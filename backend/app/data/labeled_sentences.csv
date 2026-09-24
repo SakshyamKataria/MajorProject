@@ -1,0 +1,633 @@
+id,meeting_id,sentence_order,text,label
+096ce27f-536c-464e-871a-804666bb266a,a2880944-d36b-431a-9ca8-1b72016a358e,1,The stale smell of old beer lingers.,Discussion
+1933fdba-7676-4560-8556-aaead88c1070,aa917328-9141-4596-a828-f4f8e29a1c63,1,The stale smell of old beer lingers.,Discussion
+5ea0df74-1f88-4896-8489-9ef6e9244d2a,aa917328-9141-4596-a828-f4f8e29a1c63,2,It takes heat to bring out the odor.,Discussion
+a75e6417-8d5f-431b-9bae-3a75b6c4c9c6,aa917328-9141-4596-a828-f4f8e29a1c63,3,A cold dip restores health and zest.,Discussion
+cee1914f-27b7-4427-a927-6fbc418ebd2f,aa917328-9141-4596-a828-f4f8e29a1c63,4,A salt pickle tastes fine with ham.,Discussion
+a57b7384-2f55-4696-aa96-5f2bdbf709bc,aa917328-9141-4596-a828-f4f8e29a1c63,5,Tacos al pastor are my favorite.,Discussion
+ef758cba-c190-4278-9a22-c42197317ca3,aa917328-9141-4596-a828-f4f8e29a1c63,6,A zestful food is the hot cross bun.,Discussion
+b82b4e52-12ab-4356-a4ec-46eee6f7cc47,2ab31bef-f7d9-42f6-8117-be1040d832e5,1,The stale smell of old beer lingers.,Discussion
+d9a9171c-ae79-4fe8-a06e-c5c146239adf,2ab31bef-f7d9-42f6-8117-be1040d832e5,2,It takes heat to bring out the odor.,Discussion
+2e7a83d5-11dd-4c23-b58b-d8e830500da8,2ab31bef-f7d9-42f6-8117-be1040d832e5,3,A cold dip restores health and zest.,Discussion
+c826d1b6-d4f7-42c1-bec1-93a74f1916e4,2ab31bef-f7d9-42f6-8117-be1040d832e5,4,A salt pickle tastes fine with ham.,Discussion
+4aad9808-53ef-45ff-ba46-59e727f3d444,2ab31bef-f7d9-42f6-8117-be1040d832e5,5,Tacos al pastor are my favorite.,Discussion
+bbed4bfb-5915-4bd8-9603-aab8a217ff34,2ab31bef-f7d9-42f6-8117-be1040d832e5,6,A zestful food is the hot cross bun.,Discussion
+e3e50b3e-a5a2-4ee8-8d47-cf6c1bac4317,717b4ae4-77b6-443a-b98e-19bc408b7d46,1,thank you very much uh we'll start the council meeting we'll start the council meeting at,Discussion
+21175d07-117a-4c4a-9073-05b280be2081,717b4ae4-77b6-443a-b98e-19bc408b7d46,2,exactly 1 p.m it's the rm of springfield meeting agenda commonly referred to as a committee of a,Discussion
+a85421c6-e2b4-44c9-bc7b-c6b40ce82388,717b4ae4-77b6-443a-b98e-19bc408b7d46,3,whole i'm mayor patrick terrien all of council is present in the descending order i'll present them,Question
+1062297d-674a-4bbe-9cc1-fbba8eb31fe3,717b4ae4-77b6-443a-b98e-19bc408b7d46,4,that's deputy mayor fuel to my right councillor kaczynski councillor miller and councillor warren,Discussion
+0f7e09b2-8b5f-4378-be0e-5f78251b1328,717b4ae4-77b6-443a-b98e-19bc408b7d46,5,so meetings come to order at exactly one o'clock approval of the agenda can i get a mover and a,Discussion
+b0a4dfec-b276-4b1d-97f5-73e0468c04da,717b4ae4-77b6-443a-b98e-19bc408b7d46,6,seconder for that please councillors kaczynski and fuel i'd like to add i sent something out to,Discussion
+0e219e52-eea0-4199-9246-02b9842e4225,717b4ae4-77b6-443a-b98e-19bc408b7d46,7,council katie tabin under 6.4 just more information with regards to her celebration there of the walter,Discussion
+f89ddc86-2c95-48f5-b043-8e83318ef063,717b4ae4-77b6-443a-b98e-19bc408b7d46,8,cup and i can add more under 6.4 any objections with regards to that and i see none,Discussion
+6106751f-d387-4cbf-95b0-e6e626fb34db,717b4ae4-77b6-443a-b98e-19bc408b7d46,9,then any other uh comments uh for the agenda i see none then i'll pose the question to those in,Discussion
+ffa0e971-688a-4e7a-b5c2-9b92b17d6ad7,717b4ae4-77b6-443a-b98e-19bc408b7d46,10,support with a show of hands first as unanimous so carried can we go to approval of the minutes,Discussion
+8c1e0f76-bd92-48a6-aea0-9199a0693508,717b4ae4-77b6-443a-b98e-19bc408b7d46,11,once again can i get a mover and a seconder for that councillors kaczynski and warren,Discussion
+7549b97b-7c1a-4df1-86e4-66de6a74a67d,717b4ae4-77b6-443a-b98e-19bc408b7d46,12,that's council minutes for may the 12th of 2026 just for the information of those listening,Discussion
+8ae17358-8ef8-4700-9d55-7cd811c830c9,717b4ae4-77b6-443a-b98e-19bc408b7d46,13,and in the audience any issues from council at all i see none then if i can get a show of hands first for,Discussion
+74c95d5e-4cbf-4b7d-b5ba-b30d115d1d31,717b4ae4-77b6-443a-b98e-19bc408b7d46,14,the question of those in support as unanimous so carried uh then we go under a new business so,Discussion
+d57f531e-7dd7-4c46-ba53-fab23b3b46a3,717b4ae4-77b6-443a-b98e-19bc408b7d46,15,please visitor signing in procedure 6.1 mover and the seconder for that please warren and the fuel,Discussion
+35ff7224-f017-42fd-b3fe-5162021f4af1,717b4ae4-77b6-443a-b98e-19bc408b7d46,16,so council's presented with our visitor sign in procedure it is slightly amended based on some,Discussion
+95aeb106-2b57-449e-9394-35f300d949ee,717b4ae4-77b6-443a-b98e-19bc408b7d46,17,feedback that we received from residents so you'll notice there's two track change items on there one is,Discussion
+e2e6246f-9bfd-4d4d-8d77-1022716c2bc9,717b4ae4-77b6-443a-b98e-19bc408b7d46,18,defining authorized areas of the municipal office and then a small change to the exemptions where it,Discussion
+897ef148-9fe0-4435-97c5-a569c6639622,717b4ae4-77b6-443a-b98e-19bc408b7d46,19,said may not be required it's now says shall not be required so if council recalls we did have an,Discussion
+df4e8d24-2cec-4d2c-889e-13fcb16572f0,717b4ae4-77b6-443a-b98e-19bc408b7d46,20,internal it security test done and there was some recommendations that came out of it this visitor sign,Discussion
+37dbb182-21e5-4921-a567-50463b744b8c,717b4ae4-77b6-443a-b98e-19bc408b7d46,21,in procedure is one of those recommendations that we're complying with so it's not a policy that needs,Discussion
+854dfdee-cdd5-4314-b018-01f1ef071079,717b4ae4-77b6-443a-b98e-19bc408b7d46,22,council approval it's just a procedure that we're putting in place for staff to follow in all the,Discussion
+8e7b9df2-cc54-4913-b48b-cf77c0eccbd1,717b4ae4-77b6-443a-b98e-19bc408b7d46,23,offices um generally it's kind of to if you have people coming to meet you in your offices they would,Discussion
+6e54f50b-8af9-4bde-be3e-bc6cde5a3e37,717b4ae4-77b6-443a-b98e-19bc408b7d46,24,sign in at the front desk take a visitor badge just so that if they're you know walking to the washroom,Discussion
+516d4f60-9d27-4e8e-b151-1a0828c008c7,717b4ae4-77b6-443a-b98e-19bc408b7d46,25,or something someone knows that they've signed in and they're allowed to be there and kind of those,Discussion
+223f780a-0ac7-4376-9719-d52a1dde1eac,717b4ae4-77b6-443a-b98e-19bc408b7d46,26,those um private spaces in the municipal office um i think the policy or the procedure is pretty,Discussion
+5baed293-b9c8-4932-b2c3-1704379244f7,717b4ae4-77b6-443a-b98e-19bc408b7d46,27,self-explanatory so i guess any questions from council council uh so as i said the security test,Discussion
+6dd4b73c-8337-4203-a5d8-60b5703485bd,717b4ae4-77b6-443a-b98e-19bc408b7d46,28,was done and this was one recommendation that came out that we don't um really stop people at the front,Discussion
+33b30afa-19a0-4623-a8b2-afbe4b849f50,717b4ae4-77b6-443a-b98e-19bc408b7d46,29,desk and have them sign in and we know where they're going they tend to just kind of go where they know,Discussion
+ba5dff34-3d5e-4864-9f62-c55f6aee4e78,717b4ae4-77b6-443a-b98e-19bc408b7d46,30,they're going already which is probably not good practice we also have contractors that work in the,Discussion
+eabfcc97-96bd-41ec-85fd-a218c73b5913,717b4ae4-77b6-443a-b98e-19bc408b7d46,31,basement quite often and if they're not signing in when it's the end of the day they could be working,Discussion
+651d9d85-22f7-463e-b0ad-42d234075be5,717b4ae4-77b6-443a-b98e-19bc408b7d46,32,late and we're not aware of that um so it's good to just check that sign in sheet and make sure,Discussion
+2950520c-63c5-4115-9fe5-df8749403e6a,717b4ae4-77b6-443a-b98e-19bc408b7d46,33,everybody's signed out that is in the building so that we're not setting the alarm on anybody as,Discussion
+0218330c-b556-4118-9d8a-3b8fc7344282,717b4ae4-77b6-443a-b98e-19bc408b7d46,34,well at the end of the day that's happened once or twice so um it really just checks a lot of our,Discussion
+9783f0c6-2dc1-43b9-ac66-3d642dfa1ead,717b4ae4-77b6-443a-b98e-19bc408b7d46,35,points and what we're trying to achieve and i can echo that i share this i know uh obviously edmonton,Discussion
+4e2244ce-1967-4650-8097-297053139987,717b4ae4-77b6-443a-b98e-19bc408b7d46,36,city hall the manitoba legislature obviously parliament hill uh many uh uh you know elected,Discussion
+2c9e5b93-e723-4df1-950c-f7850bbd22ff,717b4ae4-77b6-443a-b98e-19bc408b7d46,37,or public buildings do have this for for a variety of security reasons not to prohibit people but rather,Discussion
+21f63c31-cac6-4676-8e36-90b4d2b0e9af,717b4ae4-77b6-443a-b98e-19bc408b7d46,38,to ensure that they're they're safe and or the items uh on site are secure i mean hospitals to some,Discussion
+078bed01-2ec0-482e-b751-60151b8a34cc,717b4ae4-77b6-443a-b98e-19bc408b7d46,39,degree have that uh not all hospitals but uh certainly we all encounter that through covet so,Discussion
+de14f67a-60b0-4f1b-92b2-19ea94a0c443,717b4ae4-77b6-443a-b98e-19bc408b7d46,40,i just wanted to see if there was any fire code uh issues with that as well um regarding because i know,Discussion
+67adddc8-fd23-4bc5-a5a2-4a4fdc81349b,717b4ae4-77b6-443a-b98e-19bc408b7d46,41,some buildings private buildings have a requirement of knowing who's in the building because of fire,Discussion
+644b8d95-a70e-45a9-85e7-83f3d3cd29e6,717b4ae4-77b6-443a-b98e-19bc408b7d46,42,yeah that actually wasn't a consideration but i might look into it now to see if that's something we,Discussion
+de7ce707-a2f0-423b-8745-842199e64294,717b4ae4-77b6-443a-b98e-19bc408b7d46,43,should have but i know that was not the motivation behind it so um as for a fire code i i'm not uh,Discussion
+6f2ab20f-0c7c-411f-9e70-8f613becf2e7,717b4ae4-77b6-443a-b98e-19bc408b7d46,44,the chief here but i would say there's not a fire code issue at all it's just knowing how many people,Discussion
+2ccfe69c-0af8-4c88-95d8-fcf94d9af518,717b4ae4-77b6-443a-b98e-19bc408b7d46,45,if we got four visitor tags uh then uh we if we know there's four at least four people there that are,Discussion
+13a1325c-7c41-41bd-b1f7-7c5867d28e5f,717b4ae4-77b6-443a-b98e-19bc408b7d46,46,in the building then they should be challenged as well if there's somebody walking around that doesn't,Discussion
+15936028-c758-4176-b5db-336b1bde69ce,717b4ae4-77b6-443a-b98e-19bc408b7d46,47,have a visitor tag um they should be challenged well where's your uh tag um maybe that's something that,Discussion
+320e22a1-93f6-45a9-a2ba-dcfa96acbe24,717b4ae4-77b6-443a-b98e-19bc408b7d46,48,we could put in there uh if staff see somebody walking about uh without a visitor tag behind that,Discussion
+62220b8d-b8ab-41b1-ad6b-62e1ef1ef084,717b4ae4-77b6-443a-b98e-19bc408b7d46,49,authorized area um uh it's they should be challenged uh when i'll not grab by the scruff of the neck and,Discussion
+1ddf052b-6f8b-4445-9541-6c9d51cf9746,717b4ae4-77b6-443a-b98e-19bc408b7d46,50,put them against the wall or anything like that but they should be asked uh you know are you a visitor here,Discussion
+702d03ba-9c08-407c-8b44-af99a20bfdfc,717b4ae4-77b6-443a-b98e-19bc408b7d46,51,did you go to the front desk yeah i know that's happening now um before we implemented this we,Discussion
+155c1854-16b3-4af6-84ff-95683ef2fb3e,717b4ae4-77b6-443a-b98e-19bc408b7d46,52,would just say like oh hi sorry you know can i help you you know because usually they're trying to find,Discussion
+de2990ff-6984-46b1-bd63-f9f366ef3f0e,717b4ae4-77b6-443a-b98e-19bc408b7d46,53,the bathroom or something after they've left a meeting with someone so just having that visitor badge is,Discussion
+1c449d9c-b9f6-4c5d-988b-667161962aea,717b4ae4-77b6-443a-b98e-19bc408b7d46,54,going to be helpful i agree i think this is a great policy um so i i commend the administration for,Discussion
+eaab3f9e-1dbf-49c0-9431-eec37080704a,717b4ae4-77b6-443a-b98e-19bc408b7d46,55,doing that um i got no other issues anybody else that be mayor yeah i just want to make a comment that,Discussion
+ef78dc10-24ec-413e-90eb-581c86a6876c,717b4ae4-77b6-443a-b98e-19bc408b7d46,56,i support this policy i think it's good practice you know you're walking around with a visitor badge,Discussion
+b6d3ef7b-ece0-444a-aebb-1fc52b4dd784,717b4ae4-77b6-443a-b98e-19bc408b7d46,57,at least then you have some identity versus just walking around and again just good practice to have,Discussion
+e06a5978-febb-4ea8-8355-4fa34e647288,717b4ae4-77b6-443a-b98e-19bc408b7d46,58,that thank you if if i can make a recommendation as well as if we get lanyards i got a million lanyards,Discussion
+f3483a4f-7c54-4828-ab68-025c41e73b3e,717b4ae4-77b6-443a-b98e-19bc408b7d46,59,my grandkids are all using them uh there with my name on it and so on like that uh um because we get,Discussion
+8ef00c2e-27e1-422b-a2ca-71f09895bf5e,717b4ae4-77b6-443a-b98e-19bc408b7d46,60,a lot of those at our conferences and so on like that so we should have um um you know i would say,Discussion
+93588ae7-7628-4224-aaee-15ebabd90e0b,717b4ae4-77b6-443a-b98e-19bc408b7d46,61,the lanyards is the best uh i know in our uh in the police uh headquarters uh they're uh um they used,Discussion
+28d376d8-d811-4df4-bd5d-5327f45d305e,717b4ae4-77b6-443a-b98e-19bc408b7d46,62,to just stick them on to the uh to the lapel and then if you're wearing a jacket over it's not terribly,Discussion
+e0e1aa6f-a73f-4c6c-a98f-4ccaddddd9fb,717b4ae4-77b6-443a-b98e-19bc408b7d46,63,visible but having lanyards are easier to take on and take off and people um will uh more than likely,Discussion
+edf0a304-c340-46b6-8b01-268a96e4cb22,717b4ae4-77b6-443a-b98e-19bc408b7d46,64,know that they left the building without uh returning it anything else councillor kaczynski,Discussion
+bc379744-9026-48fa-a56c-8a80dde6e51d,717b4ae4-77b6-443a-b98e-19bc408b7d46,65,thank you i thought we always have a policy that in place that every time you walk up to some kind of,Discussion
+c6bf5b7e-3dbd-4d49-8caf-791149f2b248,717b4ae4-77b6-443a-b98e-19bc408b7d46,66,institution you always go to the front desk and you know talk with the people up front first you just,Discussion
+5443e261-9df8-49ad-be71-c4aedbc78191,717b4ae4-77b6-443a-b98e-19bc408b7d46,67,don't go barge and go through the you know offices or building and no matter where you go hospital,Discussion
+7ecc7f86-575d-44f3-a417-ae8579c57f21,717b4ae4-77b6-443a-b98e-19bc408b7d46,68,police station mpi you always go and each time i walk in here there was somebody up front,Discussion
+b25f3326-f849-4a62-b5ca-f758e586b39d,717b4ae4-77b6-443a-b98e-19bc408b7d46,69,so i said i want to meet so and so and you know i have appointment or i don't and then i let the,Discussion
+60c1e992-3d08-4e7a-8300-dfb2c47dc443,717b4ae4-77b6-443a-b98e-19bc408b7d46,70,person who is up front you know make the phone call to that person or you know or direct you,Discussion
+e8c5b37b-b3db-426a-9d6e-667116531d1a,717b4ae4-77b6-443a-b98e-19bc408b7d46,71,stay here please usually they say stay here somebody gonna come up to you so i i didn't know that,Discussion
+53aa5587-7000-4b19-9f63-d3ff01d1bd1c,717b4ae4-77b6-443a-b98e-19bc408b7d46,72,people can walk in and just walk freely through through our buildings here and that not apply only,Discussion
+5b31307b-0e9e-48dd-a7fd-f624bbbde385,717b4ae4-77b6-443a-b98e-19bc408b7d46,73,through the administration building yeah that apply probably to uh public works buildings and police,Discussion
+90407f33-3f86-4acb-8b69-d7f99e3dd852,717b4ae4-77b6-443a-b98e-19bc408b7d46,74,station and yeah and i think right now that's probably what's happening people are going to the,Discussion
+39816db5-b32c-4844-b203-8b6544593de3,717b4ae4-77b6-443a-b98e-19bc408b7d46,75,front desk we try to inform the front staff if we have a meeting and who they can expect to come at,Discussion
+bcdb3cdf-a7ff-44fb-ae9d-bc48673039b9,717b4ae4-77b6-443a-b98e-19bc408b7d46,76,what time right now we're just making it official where they sign in they take a visitor badge especially,Question
+dd62ea9a-0dd3-4b3d-8e72-a66aee1321a3,717b4ae4-77b6-443a-b98e-19bc408b7d46,77,for an emergency if we had to evacuate the building we could quickly look at that list and say okay we,Discussion
+f5623853-1d79-421f-89cf-5a28fb0b90e2,717b4ae4-77b6-443a-b98e-19bc408b7d46,78,know there's an extra person that has to be accounted for when we evacuate so it's just a safety measure,Discussion
+4bcf4ad4-6f2a-4e2b-ad64-4dad8ac9dc02,717b4ae4-77b6-443a-b98e-19bc408b7d46,79,that we're putting in place another thing like how about if people coming to the council meeting,Discussion
+df6a4f0d-1f00-4e0c-933e-567e312289bc,717b4ae4-77b6-443a-b98e-19bc408b7d46,80,sometimes we don't know all the residents here in our community sometimes you see person that,Discussion
+30c73049-9462-4f25-8792-d70f2bc04ef2,717b4ae4-77b6-443a-b98e-19bc408b7d46,81,maybe we don't recognize we said well who is that person yeah so so you think you think the,Discussion
+95eb0eb1-9060-4573-beba-5b958b5e6edc,717b4ae4-77b6-443a-b98e-19bc408b7d46,82,visitors from outside of our municipality should register when they're coming to the council meeting,Discussion
+d9682b33-ffc8-4360-9bd4-1d46076992e2,717b4ae4-77b6-443a-b98e-19bc408b7d46,83,yeah so we consider the council chambers a public space when a meeting is on we wouldn't have just,Discussion
+4778a383-fee8-4f65-a4ac-84650c436249,717b4ae4-77b6-443a-b98e-19bc408b7d46,84,people randomly coming and sitting in the council chambers if there's no meeting so that's when staff,Discussion
+7a2e4811-52fd-4766-8fef-e1d1d59cee58,717b4ae4-77b6-443a-b98e-19bc408b7d46,85,will know why they're here and who they're visiting and what their business is in the office,Discussion
+32b8106f-79f4-43bf-88a6-a3e8466f4f16,717b4ae4-77b6-443a-b98e-19bc408b7d46,86,so no we're not making people that are coming to pay taxes or utilities at the front counter sign in,Discussion
+5335655a-739c-4f96-ac7c-81633c98804f,717b4ae4-77b6-443a-b98e-19bc408b7d46,87,because it's an in and out but i know after evening council meetings as staff we actively go throughout,Discussion
+737fb70c-310f-4f8d-82e6-511f213a7ba6,717b4ae4-77b6-443a-b98e-19bc408b7d46,88,the building and check that there's nobody here before we set the alarm so the people who coming,Discussion
+5360408a-9395-483d-8d4a-4a8bde681236,717b4ae4-77b6-443a-b98e-19bc408b7d46,89,like for delegation for instance we have this security people are they have to sign in when they coming,Discussion
+d652fb69-d5ab-4ef7-a888-5a23041e4781,717b4ae4-77b6-443a-b98e-19bc408b7d46,90,to the council chamber we're not making people sign in when they come to a council meeting no,Discussion
+6d9c3d49-08c1-4c67-86e8-3c7522ab6bb3,717b4ae4-77b6-443a-b98e-19bc408b7d46,91,okay okay okay thank you um i can only add uh as part of that email uh from uh one citizen uh there,Discussion
+6e4d3e81-14b9-468c-a015-112e896ddec6,717b4ae4-77b6-443a-b98e-19bc408b7d46,92,i haven't got his name uh permission to use it there but he did comment about information uh that was,Discussion
+41ea1ae6-977e-4cec-aa55-2f68ec1f112d,717b4ae4-77b6-443a-b98e-19bc408b7d46,93,stored uh there and uh um i i've been saying it for quite some time uh data is is extremely important,Discussion
+cbc3db20-2ee8-41e9-a175-332561b3f890,717b4ae4-77b6-443a-b98e-19bc408b7d46,94,and where that data goes um has to be safeguarded uh um and i keep on saying this is that uh we we,Discussion
+5c628044-2189-47c9-a8e3-3da7105cd204,717b4ae4-77b6-443a-b98e-19bc408b7d46,95,take it seriously in the rm as any other uh business i guess can would say you're responsible for that,Action Item
+c866e6ee-2d1f-451e-8c51-138a1f2271c8,717b4ae4-77b6-443a-b98e-19bc408b7d46,96,data so when you get people coming to your door and asking for personal information uh i.e a petition,Discussion
+86851456-954b-4149-a612-4bbb13ec2acb,717b4ae4-77b6-443a-b98e-19bc408b7d46,97,it does not require an email address so the person's coming to your uh uh to your door and wants an email,Discussion
+423705c3-a413-42a6-8e0b-d48a2b30ca01,717b4ae4-77b6-443a-b98e-19bc408b7d46,98,address for a petition petitions do not require email addresses i'd be second uh uh secondary,Discussion
+33f1cf49-5243-4e4a-b4af-d865de1dfdc8,717b4ae4-77b6-443a-b98e-19bc408b7d46,99,precaution to about even giving your phone number out there because let's just face it when you're,Discussion
+e4977793-8aa9-49a7-847d-2a4e25a8168a,717b4ae4-77b6-443a-b98e-19bc408b7d46,100,going to an address you know what the address is you know what the person's name is there you've got a,Discussion
+33082e50-983a-4d44-bfaa-de8b31e675c3,717b4ae4-77b6-443a-b98e-19bc408b7d46,101,description of the person and so on like that in today's world i don't want people to be scared of,Discussion
+de377d88-afcb-439e-8352-30ba0b6500e7,717b4ae4-77b6-443a-b98e-19bc408b7d46,102,the people in the bushes and stuff like that we have a very safe community but that said we have to be,Discussion
+276c780b-d175-4976-812f-e76b04b5e870,717b4ae4-77b6-443a-b98e-19bc408b7d46,103,very concerned about fraudulent use of this data so somebody or two or three people coming to your door,Discussion
+e9f3a424-5e06-4b4c-bd4a-454b4f99fe20,717b4ae4-77b6-443a-b98e-19bc408b7d46,104,already suspicious uh they're if they're asking for your email address and trying to sell you some,Discussion
+058b1c32-ad8c-492e-ae6a-b396c852a3f7,717b4ae4-77b6-443a-b98e-19bc408b7d46,105,product of misinformation i would close the door on these kind of people there so i'm just saying,Discussion
+bae1d984-236b-4117-8341-440a52e1326d,717b4ae4-77b6-443a-b98e-19bc408b7d46,106,that the weapons petitions have become weaponized um so email addresses are required on on a petition no,Discussion
+b24e2de4-ebe2-4d73-b5d8-31c69c01ca0a,717b4ae4-77b6-443a-b98e-19bc408b7d46,107,they're not required if they ask for that uh my personal opinion is i'd be slamming the door and,Discussion
+a5b21743-5839-4a5b-9f64-bd6356b96e65,717b4ae4-77b6-443a-b98e-19bc408b7d46,108,telling them very quickly to leave my property uh so if somebody's coming to your uh to your door,Discussion
+2b5583a5-0ed6-4f7d-afb0-20e70b1546ba,717b4ae4-77b6-443a-b98e-19bc408b7d46,109,you know if they're running for office it's typically going to be the one person you know the one person's,Discussion
+fc9a8ce8-c646-43de-909a-8515618e77e5,717b4ae4-77b6-443a-b98e-19bc408b7d46,110,giving out the pamphlet and so on like that but if they got a group of a team of two or three people,Discussion
+747068ba-1414-4d67-bc22-cf29730015fa,717b4ae4-77b6-443a-b98e-19bc408b7d46,111,and so on like that uh and the candidate is amongst this uh there it's uh ask you got to ask why why,Discussion
+0b4729ef-03b7-44bd-8d49-63976cec03c8,717b4ae4-77b6-443a-b98e-19bc408b7d46,112,why do you need this information and why is that there's two or three is uh there uh so guard your,Question
+f625a080-60ab-4ada-956c-ee6b7768b2e5,717b4ae4-77b6-443a-b98e-19bc408b7d46,113,data uh very like a vault uh and uh don't release this data and that was a very good point uh by this,Discussion
+4295372a-9249-47db-8de4-c5a282411991,717b4ae4-77b6-443a-b98e-19bc408b7d46,114,by this subject councillor kaczynski thank you um our question why you mr mayor saying that that thing,Discussion
+e3a19d05-8f62-4416-9cfd-2a10173c542f,717b4ae4-77b6-443a-b98e-19bc408b7d46,115,because i have document here from manitoba government that said yes for petition governed by the legislative,Discussion
+c5129f3f-61b9-49f3-aef5-3025dbbb6ee3,717b4ae4-77b6-443a-b98e-19bc408b7d46,116,assembly of manitoba including phone number or email address on the petition itself it's permitted,Discussion
+91ed1ea4-3283-4cfe-a3b3-a08e5dffc1f7,717b4ae4-77b6-443a-b98e-19bc408b7d46,117,but not required the primary contact requirements are more focused on residential and physical addresses,Discussion
+24576b7e-16aa-43e9-86d1-62b49c99d5e6,717b4ae4-77b6-443a-b98e-19bc408b7d46,118,so so it's permitted so why are you saying that people nobody force anybody to do anything people can,Discussion
+3bbc9112-2d34-4db4-9c21-00a4080c48f5,717b4ae4-77b6-443a-b98e-19bc408b7d46,119,if somebody come to your door and ask you for you know come with the petition as a citizen somebody,Discussion
+c6669cdd-d6f3-4a79-98b5-ac3a6520e46e,717b4ae4-77b6-443a-b98e-19bc408b7d46,120,coming with the issue to to to the community they they should be welcome not just being restricted,Discussion
+85aea286-ec31-4e93-a5e4-cd70d03b4f24,717b4ae4-77b6-443a-b98e-19bc408b7d46,121,because you're wishing so no people we're living in democracy and we can do and people can do whatever,Discussion
+cad6af69-c151-4872-90a2-9212b429716a,717b4ae4-77b6-443a-b98e-19bc408b7d46,122,they wish if they want to have petition against something that they they have the rights to do it if,Discussion
+037796af-201c-4a8a-b952-1e7e3acd5044,717b4ae4-77b6-443a-b98e-19bc408b7d46,123,they want to why don't we just ask for social insurance numbers as well you know why is that you need,Discussion
+26a3c650-91a4-439f-a4e7-15d9d6e4b292,717b4ae4-77b6-443a-b98e-19bc408b7d46,124,why do you need an email address there's no reason don't go to extremes they have email address so they,Question
+0b3d1842-f87e-4339-90df-bf696b4630b8,717b4ae4-77b6-443a-b98e-19bc408b7d46,125,can tell them the results what happened with that petition so they can answer to the people and if if,Discussion
+7bec8cf4-9e0e-40e5-9a92-6cc72b5ec76f,717b4ae4-77b6-443a-b98e-19bc408b7d46,126,if they really wish to because not not everybody putting their phone numbers whatever they don't want,Discussion
+41461652-7ff1-4c25-9e0b-99b0c5903b55,717b4ae4-77b6-443a-b98e-19bc408b7d46,127,to put it nobody uh requesting for people to do it just it's it's your your prerogative if you want to,Discussion
+fd18f6d6-953c-40fe-8cfe-9cf4bdbc3055,717b4ae4-77b6-443a-b98e-19bc408b7d46,128,put that or not well then no it says it's it's not a requirement to put an email address down there,Discussion
+c82b0e37-abb9-48b9-96dc-f796de864e38,717b4ae4-77b6-443a-b98e-19bc408b7d46,129,and like we've had we've had uh many discussions on this and many courses an email address is a is a,Discussion
+b518bea3-9d62-4b59-a57f-8e35c0bc4372,717b4ae4-77b6-443a-b98e-19bc408b7d46,130,gateway into your computer so why would you want to send out email addresses they they ask it everywhere,Discussion
+338ef956-870e-4b3c-ba57-e9689bafe1f9,717b4ae4-77b6-443a-b98e-19bc408b7d46,131,you go in the shopping malls they want an email address i never give that who why is it required to,Discussion
+cdd75383-2558-4392-b52a-f57dfd5f7d17,717b4ae4-77b6-443a-b98e-19bc408b7d46,132,put that in there and for a petition a petition as well you actually go into the person's door you know,Discussion
+bc25df6a-b7dd-40bd-88d9-0c07f3397578,717b4ae4-77b6-443a-b98e-19bc408b7d46,133,the identity of the person and all that all that stuff is pertinent data and it's got to be,Discussion
+73c87366-5d00-4b0a-b834-25b46f62440b,717b4ae4-77b6-443a-b98e-19bc408b7d46,134,safeguarded who's going to safeguard that information councillor warren the resident who who gonna put,Discussion
+5a527574-f1ef-4413-b074-e356dfef6f31,717b4ae4-77b6-443a-b98e-19bc408b7d46,135,that information there or not it's not up to you to tell people what to do i'm not telling what people,Discussion
+70cfda77-b14a-4d55-9f97-cccad2e64f91,717b4ae4-77b6-443a-b98e-19bc408b7d46,136,have to do well you do because you're already stating this same issue second time go ahead excuse,Discussion
+016b4b9f-07e3-40c7-a6e7-3e71015e78cf,717b4ae4-77b6-443a-b98e-19bc408b7d46,137,me i'm i'm in my voice now she she she has an order a point here i'll let her speak andy andy you're next,Discussion
+a9b02224-acd4-44d2-91b5-62b98496537c,717b4ae4-77b6-443a-b98e-19bc408b7d46,138,but go ahead we're talking about a visitor sign-in procedure we're not talking about petitions at the,Discussion
+aa7836ca-dcf3-477b-b3e5-afc029f38ee4,717b4ae4-77b6-443a-b98e-19bc408b7d46,139,moment no i know but i get back yes so can we get back to the the meeting the agenda thank you okay so,Discussion
+40e4d805-c757-4fc3-afdf-c1524da82347,717b4ae4-77b6-443a-b98e-19bc408b7d46,140,yeah for this procedure we're not asking for very sensitive information for people we're asking for their,Discussion
+ccc03eee-6049-40d7-95db-dc958ac02d2d,717b4ae4-77b6-443a-b98e-19bc408b7d46,141,name who they're meeting if they're with a contracting business we're asking that i know,Discussion
+4b5ca64c-fe22-423d-90df-be3329ce6fe1,717b4ae4-77b6-443a-b98e-19bc408b7d46,142,a lot of times facilities will have people working in the buildings and so they'll send it out an email,Discussion
+3cfe9759-c81d-4203-9b3a-90584c5a7f34,717b4ae4-77b6-443a-b98e-19bc408b7d46,143,saying you know so and so will be working on you know something in the basement so we know they've,Discussion
+96ed98ae-802e-4b99-acef-1c2fb3fba4ac,717b4ae4-77b6-443a-b98e-19bc408b7d46,144,signed in and we can check when the office is closed that everybody is left that should be out of the,Discussion
+45d34573-f896-47d0-b0c3-1f79afef9fa7,717b4ae4-77b6-443a-b98e-19bc408b7d46,145,building so any other uh issues or concerns i see none uh then uh with that uh there the the new,Discussion
+7d224b1e-e18b-4ec1-af66-ac4ee08d61f5,717b4ae4-77b6-443a-b98e-19bc408b7d46,146,business for visitors sign in that will go to the board of uh revision appointments um so the board of,Discussion
+c3c6f8bf-6046-4b4d-b12f-c4689f0b7a2e,717b4ae4-77b6-443a-b98e-19bc408b7d46,147,revision we expect to be held in november so that will be um obviously after the election so we're not,Discussion
+3baf9c01-5e0e-45b7-8149-0c2afd86f6f2,717b4ae4-77b6-443a-b98e-19bc408b7d46,148,asking for appointments at this time um but typically the board is does consist of two councillors and one,Discussion
+c869731f-7ec7-4660-8e89-2573b5fa5cfc,717b4ae4-77b6-443a-b98e-19bc408b7d46,149,private individual that um council appoints as the board chair um so just wondering if council still,Discussion
+4dc21c12-f40b-4c47-a33b-9380fc9987be,717b4ae4-77b6-443a-b98e-19bc408b7d46,150,wanting to look at that board composition or would you prefer i know we've talked about having three,Discussion
+58cccf5f-78d7-4b7d-a2d0-c4941d4e238e,717b4ae4-77b6-443a-b98e-19bc408b7d46,151,people from the outside and council not being involved in the board of revision so now that you've all had a,Discussion
+59dc9e19-5303-42ef-9dcd-5317c63a928b,717b4ae4-77b6-443a-b98e-19bc408b7d46,152,chance to sit on the board of revision i just thought it'd be nice to hear your feelings on whether you,Discussion
+1ab98695-27fd-45fd-85a6-60c86e407a3e,717b4ae4-77b6-443a-b98e-19bc408b7d46,153,think it's important council sits on the board or should you keep yourself out of that matter and,Discussion
+84d19b56-ddf9-46d8-b567-3d4020ef8c39,717b4ae4-77b6-443a-b98e-19bc408b7d46,154,have private individuals so just something that we would like to get your feedback on so if we have,Discussion
+884f4f7a-45e2-4ec0-abf7-149b8b842638,717b4ae4-77b6-443a-b98e-19bc408b7d46,155,to start looking for outside parties we have some time to do that but we'd have to pay the outside,Discussion
+59052909-eef6-4bd4-b655-a7394cc90f9c,717b4ae4-77b6-443a-b98e-19bc408b7d46,156,parties uh 25 an hour is that what they pay for that something like that yeah i think it's the board,Discussion
+ee9017ac-3592-4edb-a822-53d50db96689,717b4ae4-77b6-443a-b98e-19bc408b7d46,157,chair gets 50 an hour okay i i personally think it's working well with the councillors who knows the,Discussion
+e3deffaa-5c3f-43a9-b7c6-3bab8b7b939f,717b4ae4-77b6-443a-b98e-19bc408b7d46,158,area better than uh the councillors uh their council warren i think you're all on the right track we need,Discussion
+3acb4887-9e00-41aa-b38f-39bec8fce18b,717b4ae4-77b6-443a-b98e-19bc408b7d46,159,to have a council person at least one on the board of revision just because it to have like a a regular,Discussion
+ec516d7f-08b8-4d9a-9e5b-c03a87f61971,717b4ae4-77b6-443a-b98e-19bc408b7d46,160,citizen they may not quite understand and so now you're whoever the board chair is whoever that may,Discussion
+f24ae4b1-be46-448f-80c4-9caa2fc7774e,717b4ae4-77b6-443a-b98e-19bc408b7d46,161,be you don't have them down here yet necessarily he's not etched in stone um he knows the protocol,Discussion
+17bb8f2f-9fed-4363-9dd1-3d6c10eb98bd,717b4ae4-77b6-443a-b98e-19bc408b7d46,162,possibly i think it's important for a council member even one that's just newly elected to understand the,Discussion
+fcb2a548-19e2-49b7-918b-bb78e7f7bc93,717b4ae4-77b6-443a-b98e-19bc408b7d46,163,process and and how the province looks at your assessment and i think it's important that the,Discussion
+9655065e-5354-4c0e-8c9d-616d883b87d3,717b4ae4-77b6-443a-b98e-19bc408b7d46,164,newly elected person gets that broad view right because when we're handed this and we've all sat,Discussion
+6c092261-bd5a-4bf6-a4fa-d4fd9c60a68b,717b4ae4-77b6-443a-b98e-19bc408b7d46,165,there once twice you get that document and you get to listen to the resident and you get to listen to,Discussion
+34815dfe-a1bc-4e08-9e74-5954227c02e5,717b4ae4-77b6-443a-b98e-19bc408b7d46,166,the province and everybody has their their perception of it and then some files say have municipal board orders,Discussion
+1df65a0d-ddcd-429e-b3e5-251f6fd5f48c,717b4ae4-77b6-443a-b98e-19bc408b7d46,167,that a newly elected official would have no idea so it's it's a good introduction and having a board,Discussion
+2c40d3f2-ba38-4c3a-8302-f063a0d09ab9,717b4ae4-77b6-443a-b98e-19bc408b7d46,168,chair whoever that may be he's he or she could be experienced right so i think it it's important to,Discussion
+9506685d-4451-4795-be85-7e0598eea552,717b4ae4-77b6-443a-b98e-19bc408b7d46,169,still have an elected official one two but i think we should still start with that or get somebody um i don't,Discussion
+840bbe0c-a67b-4fb4-a8e7-c6231c98939a,717b4ae4-77b6-443a-b98e-19bc408b7d46,170,know how you would apply to get somebody to want to apply to be on the board of revision i don't,Discussion
+0b2807ba-792a-4157-bfb6-bbe25ef4f3e3,717b4ae4-77b6-443a-b98e-19bc408b7d46,171,think another resident really wants to figure out whether or not that person should you know should,Discussion
+1f65698d-6328-4618-9ebb-bf83c45adcd1,717b4ae4-77b6-443a-b98e-19bc408b7d46,172,get that decrease or you know what i mean like i think it's important for an elect of elected official,Discussion
+06465e34-e357-46cd-a108-fa6f8eb7fa52,717b4ae4-77b6-443a-b98e-19bc408b7d46,173,yeah well i agree having having the one but i agree uh two would be the best for this it's you know it's,Discussion
+a5758641-3ff5-47e5-b2d8-2281d9d23870,717b4ae4-77b6-443a-b98e-19bc408b7d46,174,going to cost i don't think it's costing a lot but it's still 25 bucks there and counselors uh who,Discussion
+2329e422-f72b-4513-8546-2de95380b07d,717b4ae4-77b6-443a-b98e-19bc408b7d46,175,are who are the best uh to do that i've sat on them there and uh um i've known uh some of the people but,Discussion
+4b1dfda4-2fee-4611-8ce2-efd7c7242078,717b4ae4-77b6-443a-b98e-19bc408b7d46,176,you just base it on the facts and yeah so some are happy some aren't counselor krasinski i would say,Discussion
+ed6d78f8-5da4-44b9-9f4d-1ed58de30c2e,717b4ae4-77b6-443a-b98e-19bc408b7d46,177,maybe council should sit on it but if you just put the brand new counselors who's going to be on this,Discussion
+4edc3d16-2698-40a1-a4e7-0a8c620254a9,717b4ae4-77b6-443a-b98e-19bc408b7d46,178,but if none of us get elected then we have brand new people sitting on the revision board so um they,Discussion
+2d159fb5-d53b-4ec4-b728-c5e284f87f7c,717b4ae4-77b6-443a-b98e-19bc408b7d46,179,probably won't have experience some might maybe know but so maybe we should advertise right now look for,Discussion
+cbf4109c-3d34-43f7-afff-7ead8d1ad7d0,717b4ae4-77b6-443a-b98e-19bc408b7d46,180,the new board of the chairman of revision board and for the people that want to sit because just the,Discussion
+07a60374-93f8-4cfe-bc43-a0f1d89f85df,717b4ae4-77b6-443a-b98e-19bc408b7d46,181,private individual could come as long as the resident or a municipality can be on the revision,Discussion
+e7871d6b-4b7e-4cc8-ac90-0b54e81f56b2,717b4ae4-77b6-443a-b98e-19bc408b7d46,182,board so if we have counselor who is brand new or or new citizens it's going to be same thing happening,Discussion
+79a1f399-cda6-4a59-9d17-fdd85675794b,717b4ae4-77b6-443a-b98e-19bc408b7d46,183,they will be brand new on that position i guess we were all brand new at one time uh there so we all,Discussion
+6cd5f382-83b0-40d4-b9cb-bda6f92d8673,717b4ae4-77b6-443a-b98e-19bc408b7d46,184,learn and having doug in there who is a very experienced that this is a great yes great yeah,Discussion
+d8e9f1d9-c135-4695-b06c-e8810cb26b02,717b4ae4-77b6-443a-b98e-19bc408b7d46,185,well i'm hoping it is and if he doesn't then we can go from there but he's very experienced at this and,Discussion
+4ed12bbb-b8eb-4d48-9301-74561c14136e,717b4ae4-77b6-443a-b98e-19bc408b7d46,186,he he taught me and everybody else here what to look for and stuff like that so he's very good uh,Discussion
+f72b6c40-ff77-4e57-a8ed-a14fdfec1ac6,717b4ae4-77b6-443a-b98e-19bc408b7d46,187,teacher well one two three okay yeah i'm good either way i think again it's more about the,Discussion
+497c6b2b-d4e4-470a-86e1-355bad1d24fb,717b4ae4-77b6-443a-b98e-19bc408b7d46,188,understanding of how it works and some knowledge behind it if they have any i think again um experience,Discussion
+afcb1bcb-3962-4c94-9d94-170f6f32952f,717b4ae4-77b6-443a-b98e-19bc408b7d46,189,does help so again i'm good either way councillor miller uh thank you mr mayor i kind of agree with,Discussion
+253e48bc-8f98-4fa5-a942-4a3082e6669e,717b4ae4-77b6-443a-b98e-19bc408b7d46,190,councillor uh warren that uh we should have at least one member of council um and certainly one or two,Discussion
+09092154-d0f7-4afc-a0f3-05e4a8141e47,717b4ae4-77b6-443a-b98e-19bc408b7d46,191,members of the public would be ideal again we if we remember back we all received some level of,Discussion
+280c4cd6-5f7f-49d4-a8b0-bb0e2dea207d,717b4ae4-77b6-443a-b98e-19bc408b7d46,192,training on this we were all new at one time so i'm not too uncomfortable that it's rocket science,Discussion
+191a8d4e-b463-4003-a324-719ad51a9552,717b4ae4-77b6-443a-b98e-19bc408b7d46,193,we can all learn and have a new curve to it i do have to say that sometimes if you have too many,Discussion
+436a8c2b-e135-47da-bb3f-3a5e35b61144,717b4ae4-77b6-443a-b98e-19bc408b7d46,194,members of council that that could be perceived as um political interference but we wouldn't want that,Discussion
+71905783-568a-47b4-a99b-04f1dd7b7d9d,717b4ae4-77b6-443a-b98e-19bc408b7d46,195,but we do need the importance of one member of council just to make sure they understand and,Discussion
+7561cc74-c866-4a25-9c91-0894fa53297f,717b4ae4-77b6-443a-b98e-19bc408b7d46,196,and are guided somewhat but uh having said that um maybe it's new to it's good to have some new,Discussion
+0cd7aa23-d78b-42b0-a797-11ef190b7694,717b4ae4-77b6-443a-b98e-19bc408b7d46,197,members of of the private sector or the public because uh sometimes you know you're uh too ground,Discussion
+3c46b0fb-fde7-410f-b7f3-c1da70cc0071,717b4ae4-77b6-443a-b98e-19bc408b7d46,198,in the ground uh with uh old experience so sometimes you can't get out of a rut i'm not saying that that,Discussion
+4a9e9c94-8262-4b2f-8614-1faf48be8c3c,717b4ae4-77b6-443a-b98e-19bc408b7d46,199,person is that but uh it's good to have a fresh start point of view sometimes and uh so yeah we can,Discussion
+eb0cc459-8bdd-4ae1-be2b-8c1389a4c455,717b4ae4-77b6-443a-b98e-19bc408b7d46,200,definitely look at uh the option is that clear enough i think so yeah i can you want me to be three,Discussion
+da45e250-56bb-40e1-9f66-519cbe35980c,717b4ae4-77b6-443a-b98e-19bc408b7d46,201,i can make i can like looking at this right now i could volunteer or i would i would go on the board,Discussion
+dd518071-3881-49c5-9894-70d0345f8842,717b4ae4-77b6-443a-b98e-19bc408b7d46,202,if if you want to put my name on there i can go on the board whether i win or lose in this next,Discussion
+92a9dc3e-6983-45c5-ab52-346490f7277c,717b4ae4-77b6-443a-b98e-19bc408b7d46,203,election i have the experience right so and and it's not up to i'm just a resident basically going in,Discussion
+f8b43864-4217-4758-9c73-2445341ef08f,717b4ae4-77b6-443a-b98e-19bc408b7d46,204,reading a file in front of me and i have that experience so then if if the new council comes in,Discussion
+16ea4513-44e2-4de9-b652-5285f1e5e9bb,717b4ae4-77b6-443a-b98e-19bc408b7d46,205,and they want to sit on it they can't or if they don't want me to sit on it i don't have to and they,Discussion
+6637a606-d85f-4ff9-aa0b-fb343a0ac70f,717b4ae4-77b6-443a-b98e-19bc408b7d46,206,can all sit on it it's in november i think it's the third week of november it's usually on a thursday,Discussion
+2ca61128-0066-4dc7-8b1e-35eeb51cd6b7,717b4ae4-77b6-443a-b98e-19bc408b7d46,207,so but yeah i know in the past we've had all private individuals sit and we did have criteria that they had,Discussion
+cf618d6b-cdf6-467d-b4f6-6597d9b6c2ed,717b4ae4-77b6-443a-b98e-19bc408b7d46,208,to meet to sit on the board so we can research that and bring that to council and um next month and,Discussion
+8ede36b3-3b6f-4d0c-8651-6a9e8c9da85a,717b4ae4-77b6-443a-b98e-19bc408b7d46,209,and look at it that way again and there'll be a meeting with the first council anyways before this,Discussion
+c1a4b89c-d6f8-4dc8-8ec6-a10ff3d5bf20,717b4ae4-77b6-443a-b98e-19bc408b7d46,210,and that's something we can but uh we discussed that and then we'll go to 6.3 and that's the rm,Discussion
+2fae7fa5-9db7-49c7-85f6-2020c409b3aa,717b4ae4-77b6-443a-b98e-19bc408b7d46,211,public notice there 6.3 i think yes yeah so this is posted on our website and it should have gone in the,Discussion
+e0730f0d-e38a-4b0d-bebf-e90b2743af4e,717b4ae4-77b6-443a-b98e-19bc408b7d46,212,clipper this week but just letting um public know that we are having a second community safety uh,Discussion
+d7354812-c794-40ef-a38a-1683ccf5b81a,717b4ae4-77b6-443a-b98e-19bc408b7d46,213,meeting on july 20th from 6 to 9 at the dugald community club um and i think the survey closed,Discussion
+53431bce-6e38-4df9-8ff4-f2e007cd8db5,717b4ae4-77b6-443a-b98e-19bc408b7d46,214,today so we'll be able to generate some results from that and share that with the public and and see,Discussion
+882aab01-e545-43b1-af61-6a6495790a35,717b4ae4-77b6-443a-b98e-19bc408b7d46,215,what next steps are and if there's more information that the public wants to see then um hopefully we can,Question
+e564cb56-2fdf-433d-96ea-0a21b8048629,717b4ae4-77b6-443a-b98e-19bc408b7d46,216,gather that at that meeting questions uh thank you mary and i think this is a really good uh,Discussion
+ca344cb9-0cc3-4c0a-8f9c-06b38b78c18a,717b4ae4-77b6-443a-b98e-19bc408b7d46,217,opportunity again to kind of open it up to the floor of uh the public to see what they want and i'm glad,Discussion
+85bde475-996f-4af9-af7e-7b666fe2800e,717b4ae4-77b6-443a-b98e-19bc408b7d46,218,we're transparent about this that we're trying to give the options and that uh i don't think any one,Discussion
+9d740146-a335-4b16-8cfa-678db023e2db,717b4ae4-77b6-443a-b98e-19bc408b7d46,219,of us is really particular bias in which way it goes and we want to obviously have the um opportunity to,Discussion
+da940cbe-5410-4b4e-98b6-7a01b32faf75,717b4ae4-77b6-443a-b98e-19bc408b7d46,220,make the best bang for the buck for the tax dollars that we raise whether through it whether it's through,Discussion
+530f8f55-1897-4304-aa65-999d60fd518b,717b4ae4-77b6-443a-b98e-19bc408b7d46,221,the police system or the cso or by law enforcement now we know what the options are we've had a,Discussion
+e73305ab-f37a-4a4d-926f-0f0df244e08e,717b4ae4-77b6-443a-b98e-19bc408b7d46,222,presentation last meeting as a delegation as a even a fourth option kind of fitting into number three,Discussion
+3c98136a-1cb3-46a1-a37a-09f58bf873cf,717b4ae4-77b6-443a-b98e-19bc408b7d46,223,but um no i'm very pleased that we're we're engaging the public in this manner thank you yeah the,Discussion
+ed2e82b2-b841-4776-a7b8-807c27dbe35f,717b4ae4-77b6-443a-b98e-19bc408b7d46,224,point counselor your sensei i want to ask one question as i was um exercising the other day i,Discussion
+cdbce7e9-1bb4-4c34-8a9d-4cdb990af9c5,717b4ae4-77b6-443a-b98e-19bc408b7d46,225,see the are one of the vehicle black vehicle with the insignia small on the side of it with the red light,Discussion
+399baa9d-ba54-4a78-90ef-988eb03fdba0,717b4ae4-77b6-443a-b98e-19bc408b7d46,226,on the or or orange light on top of the vehicle did we hire new member of the cso like part-time that's,Discussion
+de9c6ee5-96fe-493a-82af-900139f91194,717b4ae4-77b6-443a-b98e-19bc408b7d46,227,um a fleet vehicle that was passed down from the police so it's not operating as a police vehicle,Discussion
+070abcc1-edf7-450f-a1d1-6998bcdf3c75,717b4ae4-77b6-443a-b98e-19bc408b7d46,228,it operates out of public works for the surveyors um so they would have a light just when they're,Discussion
+329243a4-5beb-4fce-a467-2464f4b58a49,717b4ae4-77b6-443a-b98e-19bc408b7d46,229,working on the side of the road they would put that on but it's not a police car okay okay so it's,Discussion
+ab018ff3-a8ec-48d0-9810-6fdb6bddf5cd,717b4ae4-77b6-443a-b98e-19bc408b7d46,230,not like a part-time cso no no it's our public works staff using that older vehicle yeah okay thank,Discussion
+a97b1d10-2b64-463f-9695-71a29f88bd21,717b4ae4-77b6-443a-b98e-19bc408b7d46,231,you all right let's see no other questions then we have nothing in a closed meeting i'm prepared to,Discussion
+862754d3-3440-43eb-bffc-b2e5b24f62b1,717b4ae4-77b6-443a-b98e-19bc408b7d46,232,close uh or adjourn the meeting if i get a mover and a seconder for adjournment counselors fuel and,Discussion
+87948f70-90a8-49fa-9368-ba10f2dbb903,717b4ae4-77b6-443a-b98e-19bc408b7d46,233,warn all those uh in support unanimous the meeting is adjourned if everybody can remain behind we've got,Discussion
+f12d49a5-9173-419c-84c5-261252deaa8c,717b4ae4-77b6-443a-b98e-19bc408b7d46,234,an administrative briefing meeting uh following us thank you,Discussion
+1fda7d5d-0fea-45ad-b81b-11b8a2e39ecc,355330c1-ae4b-42ef-931a-cacefdf4c46a,1,We begin the discussion for PR1 this afternoon.,Discussion
+17a5766b-072c-4c90-a768-8fb4faae7ae2,355330c1-ae4b-42ef-931a-cacefdf4c46a,2,"By the way, by sheer count, I think your class now has a total of 20 student participants or 20 students,",Discussion
+4d518372-533a-4dd8-b610-adb21e358578,355330c1-ae4b-42ef-931a-cacefdf4c46a,3,which would mean that we might end up having 10 pairs of students in total for while I see you.,Question
+e4889b4d-9fb7-4d94-9d26-77cea6b47d79,355330c1-ae4b-42ef-931a-cacefdf4c46a,4,I did earlier.,Discussion
+57fe743a-47b4-43b8-8163-a490788091d6,355330c1-ae4b-42ef-931a-cacefdf4c46a,5,"So once again, it just might result to having 10 pairs in total.",Discussion
+b053d88d-3c84-4516-8d4b-95e66a50d198,355330c1-ae4b-42ef-931a-cacefdf4c46a,6,"And I have yet to come up with who's going to be paired with whom, or I am still really torn with two options,",Discussion
+e295518e-1fb5-485d-976b-69ccefeb15e7,355330c1-ae4b-42ef-931a-cacefdf4c46a,7,"that I decide on who your pair will be, or you come up with a decision of who's your pair for the doing of the research.",Discussion
+b34ec8cf-0f02-41a1-a896-d8371b970c27,355330c1-ae4b-42ef-931a-cacefdf4c46a,8,"Last year, the style was that students were given the chance to have their own pairs or to choose their own pairs.",Discussion
+228d5644-e5d8-46ef-aafc-4d14b2edd02a,355330c1-ae4b-42ef-931a-cacefdf4c46a,9,That was quite an assurance on my end that there's really no reason for them to not finish the research,Discussion
+b2085adb-9e76-436e-aa93-7f94eb2e3815,355330c1-ae4b-42ef-931a-cacefdf4c46a,10,"since the person whom they've been paired with is a person of their choice,",Discussion
+b5b1ff74-40c9-4321-85ce-97c109e6fcf2,355330c1-ae4b-42ef-931a-cacefdf4c46a,11,or that there was an agreement between the two to have that kind of setup.,Discussion
+6df6e9d7-6fc9-481c-ad7b-ea1948726691,355330c1-ae4b-42ef-931a-cacefdf4c46a,12,"Compared to me letting you be paired with someone,",Discussion
+335984f5-30f0-4e01-b444-85d47b4336d8,355330c1-ae4b-42ef-931a-cacefdf4c46a,13,you might not develop a feeling of comfort or that you feel like it just might affect the dynamics of your group.,Discussion
+526a3bb7-4577-40b2-b0d9-583be7880268,355330c1-ae4b-42ef-931a-cacefdf4c46a,14,"On that matter, on that end,",Discussion
+f6c6d158-1cb7-4fc4-9d78-0db883aa77f7,355330c1-ae4b-42ef-931a-cacefdf4c46a,15,"I'd like to give the challenge that for this week, for this week,",Discussion
+611bb1fd-32cd-4f9b-9f1e-46e710be1496,355330c1-ae4b-42ef-931a-cacefdf4c46a,16,I'll give you the opportunity.,Discussion
+4303d864-f1e3-498c-8c6a-d6dcb86d7f89,355330c1-ae4b-42ef-931a-cacefdf4c46a,17,This is not yet final.,Discussion
+044caae2-6e48-45b0-b5ab-fa9129d4ba76,355330c1-ae4b-42ef-931a-cacefdf4c46a,18,This is not yet final.,Discussion
+fa63e7cb-2921-4f7e-8d01-170974df50c8,355330c1-ae4b-42ef-931a-cacefdf4c46a,19,"Just for this week though,",Discussion
+7077d72a-70a2-47e0-9339-54478a85ac7e,355330c1-ae4b-42ef-931a-cacefdf4c46a,20,I need you to have a choice of a possible pair.,Discussion
+3fdf1938-0021-4c4d-ac6a-d6a3a6a28d9e,355330c1-ae4b-42ef-931a-cacefdf4c46a,21,That's not yet final again.,Discussion
+ed5f8202-7516-42aa-a223-8ac5a532ebaf,355330c1-ae4b-42ef-931a-cacefdf4c46a,22,"But if I find your pair up quite fine,",Discussion
+962bb56c-dc72-479a-bf29-60c355a2bc00,355330c1-ae4b-42ef-931a-cacefdf4c46a,23,"if I don't see any issue with the pair up you've made,",Discussion
+80aadf06-0c75-487e-bfbb-dfbb86af0d15,355330c1-ae4b-42ef-931a-cacefdf4c46a,24,then I'll stick with that.,Discussion
+238ec332-6dd1-4253-808a-4de5a6db8e57,355330c1-ae4b-42ef-931a-cacefdf4c46a,25,I'll agree with what you've chosen.,Discussion
+042ca2f0-65f0-44cc-ba77-ca0e8ce608dd,355330c1-ae4b-42ef-931a-cacefdf4c46a,26,"So this week, again,",Discussion
+2b5ce271-6073-45bf-a191-20c1856354ab,355330c1-ae4b-42ef-931a-cacefdf4c46a,27,I'm giving you the opportunity to choose your own pair.,Discussion
+25cfad16-eefb-4191-bcaa-e85297abf365,355330c1-ae4b-42ef-931a-cacefdf4c46a,28,"Since there are only 20 people in this class,",Discussion
+66be8073-818e-4fb8-9856-00d71ad36e7f,355330c1-ae4b-42ef-931a-cacefdf4c46a,29,"there are 20 students in this class,",Discussion
+a01d7709-bf07-4148-90f1-d9d5452723b7,355330c1-ae4b-42ef-931a-cacefdf4c46a,30,that would mean 10 pairs.,Discussion
+309e9b67-274f-4e8d-bfdf-a49b5b16e3d2,355330c1-ae4b-42ef-931a-cacefdf4c46a,31,"Sir, what if,",Discussion
+51984606-c0f7-4aee-bcd3-335bdf62eb71,355330c1-ae4b-42ef-931a-cacefdf4c46a,32,"as others may say it,",Discussion
+6a024489-322b-40d3-b798-eef41d786ee4,355330c1-ae4b-42ef-931a-cacefdf4c46a,33,"it sounds unfair, sir,",Discussion
+1c5543c1-1d7d-426d-b460-7a30af461ba1,355330c1-ae4b-42ef-931a-cacefdf4c46a,34,because the ones who are doing well in their subjects have ended up paired together.,Discussion
+c9be1cb0-6527-44c4-8dac-95d1f41f946b,355330c1-ae4b-42ef-931a-cacefdf4c46a,35,"I tell you people,",Discussion
+dccdc844-2175-4731-8448-3bb75a0381f2,355330c1-ae4b-42ef-931a-cacefdf4c46a,36,that is never an assurance of a successful research work.,Discussion
+b865f611-7490-47e2-92c8-9014c957a352,355330c1-ae4b-42ef-931a-cacefdf4c46a,37,"Just because there are people in this class whom you feel like are doing well,",Discussion
+2507c046-b8c1-4fa2-895c-de1b524618f7,355330c1-ae4b-42ef-931a-cacefdf4c46a,38,doesn't mean that right away they'll have a successful research paper.,Discussion
+43189876-3e5e-46e1-be15-3f70fbe248c1,355330c1-ae4b-42ef-931a-cacefdf4c46a,40,that is more open to problems because of higher possibilities that these two people will end up having conflicts in what they want to put in the paper.,Discussion
+b8376299-ae09-466f-8b5b-12694d47a96c,355330c1-ae4b-42ef-931a-cacefdf4c46a,44,my pair is someone who isn't doing so well in his or her subjects?,Question
+038a0a2b-3006-4fed-be67-154db737ae0d,355330c1-ae4b-42ef-931a-cacefdf4c46a,45,It doesn't mean that the person cannot do well in research.,Discussion
+f7ff08d5-a153-495d-b24e-5907133e74d6,355330c1-ae4b-42ef-931a-cacefdf4c46a,46,"All of you here in this subject right now are,",Discussion
+a3c365fb-b9cf-4ee9-978a-8a903aa20f72,355330c1-ae4b-42ef-931a-cacefdf4c46a,48,taking research for the first time.,Discussion
+ab3484d2-a1ca-4872-be81-861a3dd6fef8,355330c1-ae4b-42ef-931a-cacefdf4c46a,49,Not one from you in this class has a first-hand experience of how to do research when you were in junior high school.,Discussion
+97781471-1317-4fe4-8047-326fae96e5be,355330c1-ae4b-42ef-931a-cacefdf4c46a,50,So I think everyone is in a fair situation.,Discussion
+f6691cd8-0813-433f-8f25-db907f1a7fb6,355330c1-ae4b-42ef-931a-cacefdf4c46a,51,Everyone is playing this fairly.,Discussion
+69dd2e12-5fce-4b7a-af6d-cefcff6451b2,355330c1-ae4b-42ef-931a-cacefdf4c46a,52,So let's not do labels.,Discussion
+6cc44161-d380-49c7-b644-ebda19626881,355330c1-ae4b-42ef-931a-cacefdf4c46a,53,"Let's not put labels that,",Discussion
+666bf08a-6381-4aad-b15f-dbeddd6a71f9,355330c1-ae4b-42ef-931a-cacefdf4c46a,55,"her grades are low,",Discussion
+6d274a79-56e9-458c-b030-b60393047f57,355330c1-ae4b-42ef-931a-cacefdf4c46a,56,so I should not be paired with her.,Discussion
+918bee31-1efe-46cc-a851-8133238591ff,355330c1-ae4b-42ef-931a-cacefdf4c46a,57,"His grades are high,",Discussion
+d6765fc9-b09a-4399-9402-9a3eb62ff1e4,355330c1-ae4b-42ef-931a-cacefdf4c46a,58,so I should be paired with him.,Discussion
+704f98f5-20db-4dbb-9d23-9054126d912e,355330c1-ae4b-42ef-931a-cacefdf4c46a,60,they shouldn't be paired together because they already got very good grades before last school year.,Discussion
+4c5cae09-4e76-4eb0-93e4-ed5fec7431db,355330c1-ae4b-42ef-931a-cacefdf4c46a,61,Let's put away that mentality.,Discussion
+a2f703f2-ab5b-46f8-b662-39859437397f,355330c1-ae4b-42ef-931a-cacefdf4c46a,62,I want you to once again choose a person whom you feel comfortable with as you're going to work on research.,Discussion
+4e06bfa0-bea2-4b86-9d79-1558ef959e04,355330c1-ae4b-42ef-931a-cacefdf4c46a,64,that pair-up is not yet final.,Discussion
+5eceb17e-c54d-4573-a8ec-fce6ebf6e782,355330c1-ae4b-42ef-931a-cacefdf4c46a,65,"If I do not find your pair-up,",Discussion
+ce84506e-0954-4c6f-882d-7af1e23946bd,355330c1-ae4b-42ef-931a-cacefdf4c46a,66,"if I do not find any issue with a pair-up that you've made with what your class has made,",Discussion
+df9f393a-3394-4a1b-902d-50f285b190f3,355330c1-ae4b-42ef-931a-cacefdf4c46a,67,we will settle with that.,Discussion
+5c7cfef9-92fa-4aa6-aedf-4034dedf4785,355330c1-ae4b-42ef-931a-cacefdf4c46a,68,"But what if,",Discussion
+d20d6584-b9b4-4610-ab82-28c61bd898da,355330c1-ae4b-42ef-931a-cacefdf4c46a,70,how many are you?,Question
+2cfaf19a-48fd-42e8-86cb-4a2faa738fc8,355330c1-ae4b-42ef-931a-cacefdf4c46a,72,What if 14 students have already been paired?,Question
+40a4b7b5-b3cc-42da-af70-d8cc42ede7f5,355330c1-ae4b-42ef-931a-cacefdf4c46a,73,So seven pairs have already been made.,Discussion
+bb5fea87-dde5-4c5c-bf7f-f5f999096cd6,355330c1-ae4b-42ef-931a-cacefdf4c46a,74,And the six remaining students don't have pairs yet or have not chosen their pairs yet.,Discussion
+23b9cf60-b9a2-4d43-bd37-bee9fe771d01,355330c1-ae4b-42ef-931a-cacefdf4c46a,76,"and then if I do not find any issue with the seven pair-ups,",Discussion
+d1403382-f415-4aeb-a91e-bb8393b5ec85,355330c1-ae4b-42ef-931a-cacefdf4c46a,77,I'll do the pairing of the remaining six students.,Discussion
+3a085b1d-7460-485e-9e14-354bc69e7583,355330c1-ae4b-42ef-931a-cacefdf4c46a,79,you do not also want the research to be delayed because of your difficulty to choose a pair,Discussion
+f3923a03-8b66-483f-a73d-b16ff6467ab0,355330c1-ae4b-42ef-931a-cacefdf4c46a,80,or because of the lack of chances to have your own pair.,Discussion
+67c2d34e-0018-4196-84b7-1893a984d562,355330c1-ae4b-42ef-931a-cacefdf4c46a,82,"to those who just got into this call,",Discussion
+9cd415d8-14dd-4a97-b59e-03967a4d36c2,355330c1-ae4b-42ef-931a-cacefdf4c46a,84,"to those who just got into this call,",Discussion
+bc728795-2d6b-4cb2-8847-deb766c692e3,355330c1-ae4b-42ef-931a-cacefdf4c46a,86,I'm reminding you,Discussion
+0a7796ff-ffd2-4c03-bb91-54c8848069a2,355330c1-ae4b-42ef-931a-cacefdf4c46a,87,"that as for this week,",Discussion
+733d038f-3458-4c9f-8d7a-9f5fa63de9f1,355330c1-ae4b-42ef-931a-cacefdf4c46a,88,"you are requested to choose a pair of your own like or,",Discussion
+9290b950-0fed-40e0-992c-f445c08743b9,355330c1-ae4b-42ef-931a-cacefdf4c46a,90,of your own liking.,Discussion
+a3d988fc-3f50-4e16-8c1b-80d45ee84d36,355330c1-ae4b-42ef-931a-cacefdf4c46a,91,You choose the person with whom you shall be doing your research undertaking this semester.,Discussion
+8567ea1f-9cb1-4cf0-88cf-be626b56f63a,355330c1-ae4b-42ef-931a-cacefdf4c46a,93,that same pair will actually be working with you until the second semester.,Discussion
+6e32b4e3-3f10-4413-8241-204a540a601d,355330c1-ae4b-42ef-931a-cacefdf4c46a,94,Don't worry yourself of what's going to happen next year.,Discussion
+36cee60a-c624-4d8f-9e86-8d972c94a034,355330c1-ae4b-42ef-931a-cacefdf4c46a,95,Think of what's to be done this school year for PR1 and for PR2.,Discussion
+a684b27c-e522-46e0-9162-921d73546f64,355330c1-ae4b-42ef-931a-cacefdf4c46a,96,By the last time I'll be able to meet with you is Thursday.,Discussion
+2cfa8b80-55ff-41eb-97cd-d22269734a9e,355330c1-ae4b-42ef-931a-cacefdf4c46a,99,who's the class mayor?,Question
+2064aac3-ad2b-4851-b189-791d94a86692,355330c1-ae4b-42ef-931a-cacefdf4c46a,104,I don't know if Lorraine can hear me though.,Discussion
+c13acc8f-1ac4-408c-80a1-c4ffa67303a2,355330c1-ae4b-42ef-931a-cacefdf4c46a,105,"I'd like to request by Thursday,",Discussion
+08074241-5833-4975-9e42-a9162d73aaa8,355330c1-ae4b-42ef-931a-cacefdf4c46a,107,"in any of our classes in Oralcom or in Philo,",Discussion
+0496713c-2451-4e9e-a314-a2f976f03843,355330c1-ae4b-42ef-931a-cacefdf4c46a,108,remind me of the final arrangements of the pair ups that you have made yourselves.,Discussion
+e2576752-0bbe-4527-aff2-f3c4519351e2,355330c1-ae4b-42ef-931a-cacefdf4c46a,109,So these names will have to be said in class.,Discussion
+8d173113-38ad-4dc1-8f1d-eee02411a05b,355330c1-ae4b-42ef-931a-cacefdf4c46a,110,"Like for instance,",Discussion
+264b3dbb-2243-4474-aec2-a531d302cd91,355330c1-ae4b-42ef-931a-cacefdf4c46a,111,I'll call in Thea.,Discussion
+99dd8393-ad66-4686-bd04-ce94fd04666e,355330c1-ae4b-42ef-931a-cacefdf4c46a,113,who's your pair?,Question
+ef6d5aa2-0bc1-4b09-810f-880f04e6b0be,355330c1-ae4b-42ef-931a-cacefdf4c46a,117,"By the way,",Discussion
+b7bca6f5-6a25-4d4d-9ed0-96455fb7f0ae,355330c1-ae4b-42ef-931a-cacefdf4c46a,118,"when you declare who your pair is,",Question
+75b4893e-57ab-4199-a8eb-b94379d41626,355330c1-ae4b-42ef-931a-cacefdf4c46a,119,let it be an agreement between you and the person you have chosen to be your pair.,Discussion
+e810f5df-739a-4300-86d1-4e733310ac27,355330c1-ae4b-42ef-931a-cacefdf4c46a,120,"We do not want that when Thea says,",Discussion
+377b8c83-c977-4912-b6ed-5b80f5406827,355330c1-ae4b-42ef-931a-cacefdf4c46a,123,my pair is Fiona.,Discussion
+f41e59f3-9efa-48e3-9e48-93eacbf63c5a,355330c1-ae4b-42ef-931a-cacefdf4c46a,124,And then Fiona will just end up being surprised.,Discussion
+7a9b77c5-920d-45ad-b186-7b4f7c83ea6d,355330c1-ae4b-42ef-931a-cacefdf4c46a,126,I didn't know that it was the pair of Fiona.,Discussion
+064d0dca-c4c1-496e-8c1e-77ec28cbb55f,355330c1-ae4b-42ef-931a-cacefdf4c46a,127,Let it be agreed.,Discussion
+8dd4d2f3-4213-45b6-a6d8-2bec33063b33,355330c1-ae4b-42ef-931a-cacefdf4c46a,128,"Let it be that there was an agreement between the two of you that the both of you will do,",Action Item
+c5ec45f8-03f6-456c-a45e-9bbc7c979e5b,355330c1-ae4b-42ef-931a-cacefdf4c46a,129,will do this research undertaking this semester and during the second semester.,Discussion
+7d69b768-69bb-4da4-8c60-23517e76e4bb,355330c1-ae4b-42ef-931a-cacefdf4c46a,130,Any question regarding the initial plan?,Question
+d32a8ff8-43bd-401b-8b5e-a292f340d960,355330c1-ae4b-42ef-931a-cacefdf4c46a,132,Any question regarding the initial plan for the pair ups?,Question
+639d3de3-d836-4388-8e51-11b998199a2a,355330c1-ae4b-42ef-931a-cacefdf4c46a,133,"If there's none,",Discussion
+2b7a8cfe-8e86-4004-b902-2f556b02ccbc,355330c1-ae4b-42ef-931a-cacefdf4c46a,134,I'll have a share screen with you for the discussion this afternoon.,Discussion
+2719511f-a305-4db1-8f38-68934923deca,355330c1-ae4b-42ef-931a-cacefdf4c46a,135,This is the structure of your cell phone break class.,Discussion
+7bdbc95a-1487-4220-8805-c8d18c6c3c6a,355330c1-ae4b-42ef-931a-cacefdf4c46a,136,Your cell phone break is a bilayer of protein and fats.,Discussion
+2d49c9f7-397f-47f4-b6e1-7d353ec59feb,355330c1-ae4b-42ef-931a-cacefdf4c46a,137,I hope you could see the screen.,Discussion
+bdde5290-957b-43c5-a6fa-881d49e13d69,355330c1-ae4b-42ef-931a-cacefdf4c46a,138,Can everybody see this?,Question
+413832b1-26ae-4846-9b51-f21692077947,355330c1-ae4b-42ef-931a-cacefdf4c46a,139,Can everybody see this?,Question
+b3b30f66-fdc8-4282-85ca-c0840b40a71f,355330c1-ae4b-42ef-931a-cacefdf4c46a,140,"As for this afternoon,",Discussion
+3aa7cd4e-a445-4fc4-8543-2d745893d1db,355330c1-ae4b-42ef-931a-cacefdf4c46a,141,what we'll do in PR1 is to create a differentiation of qualitative research and quantitative research.,Question
+63911c30-c114-4ea6-8d72-c0189a8d3ad1,355330c1-ae4b-42ef-931a-cacefdf4c46a,142,So you have here qualitative research and quantitative research differentiated.,Discussion
+691e25ba-a152-418f-83ba-5cd4d1839fd1,355330c1-ae4b-42ef-931a-cacefdf4c46a,143,PR1 aims for the creation of a qualitative paper and PR2 tries to do one which is quantitative in nature.,Discussion
+f1589a69-6975-4753-a85c-4f686b97918b,355330c1-ae4b-42ef-931a-cacefdf4c46a,144,But here's what I'd like to also give you ahead of time what happened or I think I've shared this already before.,Discussion
+b397cc0f-7a6f-4acc-aaff-3402f8695233,355330c1-ae4b-42ef-931a-cacefdf4c46a,145,"But as a sort of a reminder,",Discussion
+646a013a-cc74-4d3f-9a26-02a2497518d7,355330c1-ae4b-42ef-931a-cacefdf4c46a,146,this is what happened last school year.,Discussion
+17ae5d3a-2299-4f22-ab65-119f40081fdb,355330c1-ae4b-42ef-931a-cacefdf4c46a,148,"which is qualitative,",Question
+59640906-3b39-4c7a-8e69-7c84ac3322d5,355330c1-ae4b-42ef-931a-cacefdf4c46a,149,"which is for qualitative research,",Question
+4d1715a3-434c-4d1a-a202-3987478c4fe8,355330c1-ae4b-42ef-931a-cacefdf4c46a,150,wasn't able to proceed with data gathering.,Discussion
+c14516fc-be40-4a81-ba2f-56b5e3170664,355330c1-ae4b-42ef-931a-cacefdf4c46a,151,"There wasn't any data that any of the pairs or groups gathered last year,",Discussion
+f8cbf11b-57f1-4792-9d41-35199608f759,355330c1-ae4b-42ef-931a-cacefdf4c46a,152,but it didn't mean that they weren't able to accomplish anything.,Discussion
+4a5d7766-6adc-4cfd-bc85-fe6080935f07,355330c1-ae4b-42ef-931a-cacefdf4c46a,154,the students were able to create a chapter 1.,Discussion
+ef6b4902-fa75-4d3a-9a5c-04cfc8cb5858,355330c1-ae4b-42ef-931a-cacefdf4c46a,155,"That chapter 1 was made ready such that,",Discussion
+c0fa04af-7820-4547-bfda-a577155625fa,355330c1-ae4b-42ef-931a-cacefdf4c46a,157,"such that if the students were to carry it for PR2,",Discussion
+1e866249-b4c1-46c3-aa1b-ab69bc532ade,355330c1-ae4b-42ef-931a-cacefdf4c46a,158,"it can be easily,",Discussion
+60a71a3c-7e75-470d-b1ba-517b7b5e2800,355330c1-ae4b-42ef-931a-cacefdf4c46a,160,it can be easily tweaked,Discussion
+504964eb-4fa6-4af3-868a-05714b995a25,355330c1-ae4b-42ef-931a-cacefdf4c46a,161,to whatever is the style,Discussion
+7a01ec5e-c707-44e1-bfa1-5ffd1a900e9e,355330c1-ae4b-42ef-931a-cacefdf4c46a,162,or the technique to be employed in PR2.,Discussion
+f0c8ef9a-be35-4797-ab6d-6864ab884142,355330c1-ae4b-42ef-931a-cacefdf4c46a,164,it might have come out that no data were gathered for PR1.,Discussion
+5078b1f2-de2c-464a-b6e0-bc4c4b79ca5d,355330c1-ae4b-42ef-931a-cacefdf4c46a,165,I just do not want you to also think of your PR1 output in the same way this time.,Discussion
+660bb244-d629-4029-8c20-cb500e8f11db,355330c1-ae4b-42ef-931a-cacefdf4c46a,166,"If we could gather some data this semester,",Discussion
+de6b5eda-7cb2-4c3b-9392-f624decbf45d,355330c1-ae4b-42ef-931a-cacefdf4c46a,168,"But at least,",Discussion
+6aee8a97-ebe7-4c72-929a-2056c957fcfa,355330c1-ae4b-42ef-931a-cacefdf4c46a,169,the minimum target that we should be able to achieve this semester,Discussion
+2447c150-11ff-4c53-a7ba-1f6a2bd95566,355330c1-ae4b-42ef-931a-cacefdf4c46a,170,is the completion of your chapter 1.,Discussion
+b8b94d41-de7a-4e77-b70f-7cda58ed9fa5,355330c1-ae4b-42ef-931a-cacefdf4c46a,171,Let that be our minimum target.,Discussion
+0f244835-087b-4647-83ba-9490f210285e,355330c1-ae4b-42ef-931a-cacefdf4c46a,172,So we begin the differentiation by looking at the definitions of these two types of researches.,Discussion
+c24f0e3a-266a-43cd-ba5b-d1edbda7abed,355330c1-ae4b-42ef-931a-cacefdf4c46a,173,So we define quantity and qualitative researches.,Discussion
+5894c7bb-1b85-432a-85bb-31123ae2d2be,355330c1-ae4b-42ef-931a-cacefdf4c46a,174,"Starting with quantitative research,",Discussion
+0ce54d3c-30c5-4d0e-a03b-ecc960880976,355330c1-ae4b-42ef-931a-cacefdf4c46a,175,I'm going to pick out on some important points.,Discussion
+54ad16b6-c4a8-4993-997a-7b1a0fb0674f,355330c1-ae4b-42ef-931a-cacefdf4c46a,176,Quantitative research is an educational research.,Discussion
+39281b71-3542-43cd-a2ab-ca2ae85f57c7,355330c1-ae4b-42ef-931a-cacefdf4c46a,177,"So the goal of any type of research actually,",Discussion
+4b4acec6-8270-4ea5-b11e-7cc2739e7588,355330c1-ae4b-42ef-931a-cacefdf4c46a,178,"not just for qualitative,",Discussion
+c2753675-9c8b-40a1-aacc-f656e7c8c7dc,355330c1-ae4b-42ef-931a-cacefdf4c46a,179,"but also of quantitative research,",Discussion
+42bf48d7-b8a0-4ebc-bfaf-00c407e61aef,355330c1-ae4b-42ef-931a-cacefdf4c46a,180,"is to provide some form of knowledge,",Discussion
+231249ed-2920-422c-9f4c-9b53a5c6c073,355330c1-ae4b-42ef-931a-cacefdf4c46a,181,"some form of understanding,",Discussion
+23aa5ae5-9d91-40d5-9448-dc1499222060,355330c1-ae4b-42ef-931a-cacefdf4c46a,182,or maybe there's a new discovery,Discussion
+caa7f3d2-4972-403b-aba8-6069501c10a2,355330c1-ae4b-42ef-931a-cacefdf4c46a,183,that research wants to relay,Discussion
+5422cb29-ef74-4a05-bcda-e07323c11ec4,355330c1-ae4b-42ef-931a-cacefdf4c46a,184,to the readers,Discussion
+bd8b3f5d-b2cf-4b4d-b560-6d945359a4c6,355330c1-ae4b-42ef-931a-cacefdf4c46a,185,and to other scholars,Discussion
+cf670d86-4c30-4335-a014-9ac696280353,355330c1-ae4b-42ef-931a-cacefdf4c46a,186,or to experts,Discussion
+c65bea8b-bfce-4f78-9cb9-9c780b932865,355330c1-ae4b-42ef-931a-cacefdf4c46a,187,who are in the same field,Question
+128d01e3-aaf8-493f-bc77-e90338259e78,355330c1-ae4b-42ef-931a-cacefdf4c46a,188,where that research is actually being conducted.,Question
+124c4318-636e-41f6-8f9d-d6d9bee9b81f,355330c1-ae4b-42ef-931a-cacefdf4c46a,189,"In this kind of educational research,",Discussion
+1d9ece09-65f0-40b9-a233-24041e27f992,355330c1-ae4b-42ef-931a-cacefdf4c46a,191,the researcher decides what to study.,Discussion
+e8dd2c58-4a10-4f74-88ac-f8a48b2ccd67,355330c1-ae4b-42ef-931a-cacefdf4c46a,192,How can that decision be made?,Question
+1cdf7509-472d-42ce-90b0-3256bb6d9c5b,355330c1-ae4b-42ef-931a-cacefdf4c46a,193,The researcher asks,Discussion
+8f6e98a2-e9e3-422a-a408-d538e9c3ad0a,355330c1-ae4b-42ef-931a-cacefdf4c46a,194,specific and narrow questions,Discussion
+b02f6de9-cdf5-4332-9ed1-b4ae68c3f0b2,355330c1-ae4b-42ef-931a-cacefdf4c46a,195,"compared to one,",Discussion
+6eeca309-6015-47dc-b844-001539e9a71a,355330c1-ae4b-42ef-931a-cacefdf4c46a,197,"if you don't mind,",Discussion
+e212164c-1249-42fe-b21c-aaabbc461037,355330c1-ae4b-42ef-931a-cacefdf4c46a,198,I'll just flash as well,Discussion
+da960c4c-58dc-44ab-80f4-405cfe2516cb,355330c1-ae4b-42ef-931a-cacefdf4c46a,199,the definition of qualitative research.,Discussion
+139927c5-d1ec-4d96-aabf-88b5b06b0d38,355330c1-ae4b-42ef-931a-cacefdf4c46a,200,If you look at the questions,Discussion
+974d4bd6-c390-4ce3-909f-c47e7570f722,355330c1-ae4b-42ef-931a-cacefdf4c46a,201,"asked for qualitative research,",Discussion
+a513cb56-93fb-4ba4-a0dc-3ad71c552cef,355330c1-ae4b-42ef-931a-cacefdf4c46a,202,they are broad and general.,Discussion
+6a20e68d-e6e6-48ad-b9a2-377fdac7c431,355330c1-ae4b-42ef-931a-cacefdf4c46a,204,when researchers try to obtain data,Question
+7ab2baf9-716f-4d81-a0ec-0fb0005d6f31,355330c1-ae4b-42ef-931a-cacefdf4c46a,205,"to respond to these questions,",Discussion
+42a66258-42fd-4fdd-bf16-90a73195a791,355330c1-ae4b-42ef-931a-cacefdf4c46a,206,the data obtained from qualitative research,Discussion
+ea81a8b6-52f2-4f34-9965-6d3a8fd83708,355330c1-ae4b-42ef-931a-cacefdf4c46a,207,would come out to be so much,Discussion
+e60c13ab-0263-472d-83f9-ba836789ab0b,355330c1-ae4b-42ef-931a-cacefdf4c46a,208,and researchers are not going to stop,Discussion
+e8dfef8f-3fe0-4426-8f89-2060a3de7612,355330c1-ae4b-42ef-931a-cacefdf4c46a,210,from revealing whatever information,Discussion
+e6a2d7a9-6460-4beb-b58b-ceaa6e0c7a64,355330c1-ae4b-42ef-931a-cacefdf4c46a,211,they could reveal,Discussion
+cce016e1-0e09-40bb-8fab-4b4fa09549a2,355330c1-ae4b-42ef-931a-cacefdf4c46a,212,as a response to a question.,Discussion
+f7709c29-db65-4c76-ab09-8f83e5ef32a1,355330c1-ae4b-42ef-931a-cacefdf4c46a,213,Let me give you,Discussion
+ded7827b-dbca-4eab-8a6e-757925100413,355330c1-ae4b-42ef-931a-cacefdf4c46a,214,a sample research question.,Discussion
+88a6e2d9-29f8-46fe-a5e7-16816ba54932,355330c1-ae4b-42ef-931a-cacefdf4c46a,216,What is your age?,Question
+54b2a4eb-7a0a-4bcf-bc00-052449f8380f,355330c1-ae4b-42ef-931a-cacefdf4c46a,217,That is a quantitative question.,Discussion
+e5114f91-bc49-44ff-810c-00e51643ca5c,355330c1-ae4b-42ef-931a-cacefdf4c46a,218,Narrow and specific.,Discussion
+3ba701b5-69b4-41bf-8b7b-34108237141f,355330c1-ae4b-42ef-931a-cacefdf4c46a,219,Because that kind of question,Discussion
+d81c81f3-f962-4680-9d7b-bf6a7dae97ae,355330c1-ae4b-42ef-931a-cacefdf4c46a,220,can only be answered,Discussion
+e96ae608-e5b7-4b11-969c-3aa973d2e22d,355330c1-ae4b-42ef-931a-cacefdf4c46a,221,if you ask that to one participant.,Discussion
+9576c930-ef1d-4518-b27c-79b298942065,355330c1-ae4b-42ef-931a-cacefdf4c46a,222,That will yield just one information.,Discussion
+25c5d452-d39b-4662-958c-ce851b116744,355330c1-ae4b-42ef-931a-cacefdf4c46a,223,One basic number.,Discussion
+5af7713d-9b84-4507-8330-feff8b99f19a,355330c1-ae4b-42ef-931a-cacefdf4c46a,225,And that's it.,Discussion
+3c3b5871-e13f-4900-ad26-b4672ff9d3cb,355330c1-ae4b-42ef-931a-cacefdf4c46a,226,"If someone says,",Discussion
+35d2ab2b-e641-4522-adfe-27badcba18ac,355330c1-ae4b-42ef-931a-cacefdf4c46a,227,"if the participant reveals,",Discussion
+1617576f-f837-485c-938c-27360421011c,355330c1-ae4b-42ef-931a-cacefdf4c46a,228,I am 18 years old.,Discussion
+98706518-dba0-4458-bac8-865abd897dc5,355330c1-ae4b-42ef-931a-cacefdf4c46a,230,That's the specific and narrow data,Discussion
+274b584b-7837-4d52-a344-ab5a630d9a23,355330c1-ae4b-42ef-931a-cacefdf4c46a,231,that you have obtained,Discussion
+0acda105-d251-448b-91c8-1a96c2c22482,355330c1-ae4b-42ef-931a-cacefdf4c46a,232,because your question,Discussion
+c7f5c6cc-e2ff-4831-aa79-0be2af673820,355330c1-ae4b-42ef-931a-cacefdf4c46a,233,is also specific and narrow in itself.,Discussion
+4a15126f-0ce3-49aa-b940-66407c68d2d7,355330c1-ae4b-42ef-931a-cacefdf4c46a,234,Let's go to a qualitative question,Discussion
+5d66e943-e8c0-4047-ab3d-4d75f9b587ad,355330c1-ae4b-42ef-931a-cacefdf4c46a,235,such that the answer,Discussion
+cfb12800-57e1-464f-ad17-f3414a8828e9,355330c1-ae4b-42ef-931a-cacefdf4c46a,236,is not also narrow and specific.,Discussion
+f5232b4f-bbb6-4341-b2bd-492ae8bfa60b,355330c1-ae4b-42ef-931a-cacefdf4c46a,237,"What if, as a researcher,",Question
+1abf0fac-92e0-44bb-be47-d4f40bf43fed,355330c1-ae4b-42ef-931a-cacefdf4c46a,238,"you ask your respondent,",Discussion
+39e8e651-4baf-428c-bfe1-1c6f0491ab06,355330c1-ae4b-42ef-931a-cacefdf4c46a,239,how do you feel?,Question
+0798c54f-efb4-45c0-8dec-900b73bddbd5,355330c1-ae4b-42ef-931a-cacefdf4c46a,240,How did you feel,Question
+50edd951-9328-4541-b7d9-2dc442a8c71f,355330c1-ae4b-42ef-931a-cacefdf4c46a,241,when your grades are lower this semester,Question
+e4df8660-4661-420c-b150-1220c349a5a3,355330c1-ae4b-42ef-931a-cacefdf4c46a,242,compared to your last semester's grades?,Question
+11f29b76-f30f-4923-ace2-160114064f7a,355330c1-ae4b-42ef-931a-cacefdf4c46a,243,Let that question float,Discussion
+898e767e-1466-427b-9b1e-a1a7b3088f74,355330c1-ae4b-42ef-931a-cacefdf4c46a,244,"and then the respondent might say,",Discussion
+b599ffce-f451-403b-b838-3b9e2fd5f0e4,355330c1-ae4b-42ef-931a-cacefdf4c46a,245,I felt quite bad because...,Discussion
+ca628bba-ccba-440a-9ee5-eb4d5ec91bfe,355330c1-ae4b-42ef-931a-cacefdf4c46a,246,"See, when the respondent provides",Discussion
+159ff18e-4199-48b6-83c4-397f305eb10b,355330c1-ae4b-42ef-931a-cacefdf4c46a,247,"that elaboration of the feeling,",Discussion
+db158b86-f204-4597-a55b-b0d294d47340,355330c1-ae4b-42ef-931a-cacefdf4c46a,248,the researchers cannot stop the respondent.,Discussion
+2eebe9af-40d7-4c59-890e-07940ae63ea5,355330c1-ae4b-42ef-931a-cacefdf4c46a,249,"Plus, think also of this one.",Discussion
+e77ca652-f7b9-4ed6-acef-4407b53d97a5,355330c1-ae4b-42ef-931a-cacefdf4c46a,250,"When you ask of what that respondent felt,",Question
+b7575b2a-e4a4-49cf-ad33-de71a086f11d,355330c1-ae4b-42ef-931a-cacefdf4c46a,251,did you give options of what are the expected choices?,Question
+40d6e658-f69e-4009-8da4-92d01951d514,355330c1-ae4b-42ef-931a-cacefdf4c46a,252,You did not.,Discussion
+5a7a0ff9-941e-40a2-80b2-222414d181df,355330c1-ae4b-42ef-931a-cacefdf4c46a,253,"So from the very beginning,",Discussion
+4861fc2f-64f7-4c3e-b334-b31c503464e4,355330c1-ae4b-42ef-931a-cacefdf4c46a,254,you did not limit,Discussion
+f6bdce76-3f0f-47d8-bebf-84d0f872a172,355330c1-ae4b-42ef-931a-cacefdf4c46a,255,the respondent's opportunity,Discussion
+7b4a0087-09c9-4a85-9b37-6fb12a7bba5c,355330c1-ae4b-42ef-931a-cacefdf4c46a,256,to provide an answer,Discussion
+a506f51c-f782-4834-9aaa-a1cff5433fb1,355330c1-ae4b-42ef-931a-cacefdf4c46a,257,to the question,Discussion
+03e08f8f-5e14-42c7-a225-dd005f68ba5e,355330c1-ae4b-42ef-931a-cacefdf4c46a,258,"because in the first place,",Discussion
+a7824f48-264d-415f-865c-9be49281ea1b,355330c1-ae4b-42ef-931a-cacefdf4c46a,259,the question raised,Discussion
+06d70c6a-4de8-46a8-9cd5-2e5c6e22285e,355330c1-ae4b-42ef-931a-cacefdf4c46a,260,in the qualitative statement,Discussion
+70936b93-3ae1-4c62-a5c2-2ce18954be94,355330c1-ae4b-42ef-931a-cacefdf4c46a,261,is broad and general.,Discussion
+69ec81b7-6fd1-4f26-8764-c6a0ae855706,355330c1-ae4b-42ef-931a-cacefdf4c46a,262,"Again, the question is,",Discussion
+0db951a7-2303-4328-8ea4-ab2c1212611a,355330c1-ae4b-42ef-931a-cacefdf4c46a,263,how did you feel?,Question
+f91778c8-a9d6-43e6-a20b-12b6da0e7e1f,355330c1-ae4b-42ef-931a-cacefdf4c46a,264,"You did not present options,",Discussion
+40fa2a7b-e295-40c1-a750-187f45e53be4,355330c1-ae4b-42ef-931a-cacefdf4c46a,265,so you are going to make the participant,Discussion
+a1bb3e6c-0ed8-49e0-bed2-f8c1fc8f1b86,355330c1-ae4b-42ef-931a-cacefdf4c46a,266,think back of what emotions were felt,Discussion
+cc5806ef-b8e4-460a-8e12-f8efc3e6b4e1,355330c1-ae4b-42ef-931a-cacefdf4c46a,267,"or in fact, no,",Discussion
+3b5d06c7-5e32-4fde-83a2-7616ebf7f4c0,355330c1-ae4b-42ef-931a-cacefdf4c46a,268,it could be a combination of emotions.,Discussion
+535f7363-9cc7-4b98-9639-93d10f91730c,355330c1-ae4b-42ef-931a-cacefdf4c46a,269,One participant may give just one emotion.,Discussion
+670be765-5b60-4c56-99fd-49ac19eea07a,355330c1-ae4b-42ef-931a-cacefdf4c46a,270,Another participant may give,Discussion
+d20a4aa6-5ce1-40a6-b27f-9b38b5a2f99e,355330c1-ae4b-42ef-931a-cacefdf4c46a,271,a combination of emotions.,Discussion
+3729f664-a2e7-4d2a-9b18-a323a6bd3449,355330c1-ae4b-42ef-931a-cacefdf4c46a,272,That's how limitless the possibility is,Discussion
+7f242eee-a3ed-4e12-a631-af888eb1666f,355330c1-ae4b-42ef-931a-cacefdf4c46a,273,for the answering of the question,Discussion
+70fd2829-3070-47c3-897b-251cc15cbbb8,355330c1-ae4b-42ef-931a-cacefdf4c46a,274,"because again, in the first place,",Discussion
+aefb5af8-50a3-43cd-a184-59be7140b7e2,355330c1-ae4b-42ef-931a-cacefdf4c46a,275,"for that qualitative endeavor,",Discussion
+a859f814-0d68-49da-8d6b-97544e1d24d0,355330c1-ae4b-42ef-931a-cacefdf4c46a,276,the question is broad and general.,Discussion
+e4addc34-73de-490f-9073-eb62fd95cd81,355330c1-ae4b-42ef-931a-cacefdf4c46a,277,"Second, in quantitative research,",Discussion
+806b21a0-dcc9-4402-98ca-a3b856009225,355330c1-ae4b-42ef-931a-cacefdf4c46a,278,"data comes out to be quantifiable,",Discussion
+7695140c-2445-4ebd-9182-53660d3ac20e,355330c1-ae4b-42ef-931a-cacefdf4c46a,279,"which means in relation to that,",Question
+8ec2770a-0c43-448a-b100-795f73f2610d,355330c1-ae4b-42ef-931a-cacefdf4c46a,280,data turns out to be numeric.,Discussion
+a754ca2f-bfa8-4ccb-a259-a7784fc22876,355330c1-ae4b-42ef-931a-cacefdf4c46a,281,Your data can only be quantifiable,Discussion
+675396b4-755c-4184-b9c9-73170f9e555f,355330c1-ae4b-42ef-931a-cacefdf4c46a,282,if they are expressed in the form of numbers.,Discussion
+ffb3d7a7-2056-4c9f-89d0-db341d4cd6d0,355330c1-ae4b-42ef-931a-cacefdf4c46a,283,"For instance, what is your age?",Question
+75c27d45-a4b4-454f-a9c7-334cfadacc58,355330c1-ae4b-42ef-931a-cacefdf4c46a,284,"And then, sorry,",Discussion
+38cdb562-6784-4779-95af-7e4eedacc2a2,355330c1-ae4b-42ef-931a-cacefdf4c46a,285,the question is what is your age?,Question
+99151842-c133-41a5-b832-598a43b1f350,355330c1-ae4b-42ef-931a-cacefdf4c46a,286,"So respondents may choose from 13 years old,",Discussion
+4d8499c2-e50b-4252-9389-be90d3253b79,355330c1-ae4b-42ef-931a-cacefdf4c46a,287,"14 years old,",Discussion
+76e34850-fdd3-423e-be1b-f46bb0fa0768,355330c1-ae4b-42ef-931a-cacefdf4c46a,288,15 years old to 16 years old.,Discussion
+c46a94f7-4293-40d9-b218-9e0e946bca0a,355330c1-ae4b-42ef-931a-cacefdf4c46a,289,Depending on the number of respondents,Discussion
+43e25bc0-5760-4178-a2dd-180b96985b1c,355330c1-ae4b-42ef-931a-cacefdf4c46a,290,"who chose that age,",Question
+cf0e11ec-5f8a-4f13-92cf-24fc248aef2c,355330c1-ae4b-42ef-931a-cacefdf4c46a,291,"you could actually count, right?",Question
+1e72f92a-2043-4ee6-bf44-0cb21dcec0e3,355330c1-ae4b-42ef-931a-cacefdf4c46a,292,"If Thea says,",Discussion
+0cebab87-4071-4d8d-8b44-9a9deb7c717c,355330c1-ae4b-42ef-931a-cacefdf4c46a,293,"I am 14 years old,",Discussion
+8f6fd58a-0e27-47c3-8fcb-142c49c597c8,355330c1-ae4b-42ef-931a-cacefdf4c46a,295,"I'm 15 years old,",Discussion
+f2cf64af-1072-4d20-8b2d-e6e3d2ba9947,355330c1-ae4b-42ef-931a-cacefdf4c46a,297,"I'm 14 years old,",Discussion
+d905a752-6b9b-4fc6-8808-f84b07fda2ae,355330c1-ae4b-42ef-931a-cacefdf4c46a,298,"that would tell you that out of the three,",Discussion
+ec3e2203-ef64-4390-b5cf-6333e4a6ed60,355330c1-ae4b-42ef-931a-cacefdf4c46a,299,"two are 13 years old participants,",Discussion
+b55f634f-92ab-4615-a107-7c178fdaf6e7,355330c1-ae4b-42ef-931a-cacefdf4c46a,300,and one is of a 14-year-old age.,Discussion
+fb86b00f-b574-44e4-8cea-5c4c5a51ce33,355330c1-ae4b-42ef-931a-cacefdf4c46a,301,"So you have managed to count your data,",Discussion
+d4ed2dde-6c3e-4fa6-ad0f-620108d46709,355330c1-ae4b-42ef-931a-cacefdf4c46a,302,"which makes it really quantifiable,",Question
+30463d6e-c665-4d53-ba45-f7c8f4e8afcb,355330c1-ae4b-42ef-931a-cacefdf4c46a,303,"compared to qualitative research,",Discussion
+14ee703f-300b-4e88-803d-d417e1de1c9e,355330c1-ae4b-42ef-931a-cacefdf4c46a,304,such that the data is actually consisting largely of words or text.,Discussion
+8920a73b-e289-4c17-a4fb-364c4c5945ee,355330c1-ae4b-42ef-931a-cacefdf4c46a,305,"And in fact,",Discussion
+55639e97-eff7-4088-a20f-6787db9cd76f,355330c1-ae4b-42ef-931a-cacefdf4c46a,306,you cannot expect that the words or text given by one participant,Discussion
+8b181911-8abd-4305-9b2b-6fd6f714b06b,355330c1-ae4b-42ef-931a-cacefdf4c46a,307,could actually be the same as what another participant provides.,Discussion
+d7df5e11-fba2-491c-bab6-db00d2b27e84,355330c1-ae4b-42ef-931a-cacefdf4c46a,308,"Take for instance,",Discussion
+3d322a3e-4ae1-405f-a26d-d221b4a76704,355330c1-ae4b-42ef-931a-cacefdf4c46a,309,"let's go back to the question of,",Discussion
+cf76b98c-06bd-4f8d-9320-76a0c8f434ae,355330c1-ae4b-42ef-931a-cacefdf4c46a,310,how did the participant feel?,Question
+b1b2aeab-ec6b-404e-b5ff-4aca9287b97e,355330c1-ae4b-42ef-931a-cacefdf4c46a,311,"IC may say,",Discussion
+30bdfeee-4d86-447f-8bc1-6abff0495a4b,355330c1-ae4b-42ef-931a-cacefdf4c46a,312,"as the person whose grades are lower this semester than last semester's grades,",Discussion
+39004c96-7fd5-4abd-a920-092b5b64f75f,355330c1-ae4b-42ef-931a-cacefdf4c46a,313,I felt quite worried.,Discussion
+c157e81b-4d6b-44d5-b1d5-09f18c16762d,355330c1-ae4b-42ef-931a-cacefdf4c46a,314,I also felt quite anxious because I'm not sure anymore.,Discussion
+772d9d0e-bb81-465c-a900-9ea59338cf96,355330c1-ae4b-42ef-931a-cacefdf4c46a,315,Then comes a lie.,Discussion
+4b43f9e2-638c-4e77-8b0e-aa51786b8456,355330c1-ae4b-42ef-931a-cacefdf4c46a,316,I felt bothered.,Discussion
+84bb7516-3f17-4476-9ab4-af4535e7468c,355330c1-ae4b-42ef-931a-cacefdf4c46a,317,I felt disappointed.,Discussion
+9a034101-69cd-419d-a71a-4fe4735da3c3,355330c1-ae4b-42ef-931a-cacefdf4c46a,318,I felt frustrated.,Discussion
+fca50167-e2de-4af3-b8ab-78dac8a385c4,355330c1-ae4b-42ef-931a-cacefdf4c46a,319,"You cannot just simply count,",Discussion
+388fc8d7-6cda-4bb4-aaf3-3d7e4aa8f79a,355330c1-ae4b-42ef-931a-cacefdf4c46a,320,"IC as one person for anxious,",Discussion
+3e65fe43-25d6-4638-a5db-95053a9c0534,355330c1-ae4b-42ef-931a-cacefdf4c46a,321,that a lie is one person for bothered.,Discussion
+dc45afa8-1ff1-4cbd-8f75-5a0a2bbaf3e2,355330c1-ae4b-42ef-931a-cacefdf4c46a,322,"No, it doesn't work that way.",Discussion
+4b2d2ae6-6db4-4997-abd9-3789ab35f007,355330c1-ae4b-42ef-931a-cacefdf4c46a,323,"What you would actually do for qualitative research is,",Question
+7ac5b543-c997-47b3-b804-d6f7cd05301f,355330c1-ae4b-42ef-931a-cacefdf4c46a,324,you will give honor and credit to everything that IC said.,Action Item
+d97ce60c-8a72-4028-ae94-39ebb63cd3f2,355330c1-ae4b-42ef-931a-cacefdf4c46a,325,And let that come out really as the data.,Discussion
+c4192090-bd9c-4d06-abba-b171945754cf,355330c1-ae4b-42ef-931a-cacefdf4c46a,326,The same goes with a lie.,Discussion
+ecfbcf16-9e64-406e-9ce4-fe7adc7801eb,355330c1-ae4b-42ef-931a-cacefdf4c46a,327,"Sir, can I not combine a lie's answer with IC's answer?",Question
+a9db9200-92fa-40f5-b9bd-f99d06175297,355330c1-ae4b-42ef-931a-cacefdf4c46a,329,You just cannot really do that.,Discussion
+09b8a847-3490-48b1-a9a2-a3d68c96401c,355330c1-ae4b-42ef-931a-cacefdf4c46a,330,"Because if you do,",Discussion
+9fc92baa-b06a-4652-9e41-4900fc587c12,355330c1-ae4b-42ef-931a-cacefdf4c46a,331,"you just might,",Discussion
+59b84fcf-8682-47fa-b201-21eaf07b8709,355330c1-ae4b-42ef-931a-cacefdf4c46a,333,allow me to change my answers.,Discussion
+12907354-d952-444c-813c-bdbf9b60d933,355330c1-ae4b-42ef-931a-cacefdf4c46a,334,You cannot always do that for qualitative research.,Discussion
+4a6c854f-439a-4819-ace6-97715212c430,355330c1-ae4b-42ef-931a-cacefdf4c46a,335,"Because if you do,",Discussion
+ff37f1fd-84cc-4d09-a551-3c96fc071573,355330c1-ae4b-42ef-931a-cacefdf4c46a,336,you just might end up with an interpretation,Discussion
+965b0a9f-3d23-464c-9fc6-c97971f71a23,355330c1-ae4b-42ef-931a-cacefdf4c46a,337,that says two out of the total number of participants.,Discussion
+9002a765-8b0e-4e02-84ba-3e465c3255f3,355330c1-ae4b-42ef-931a-cacefdf4c46a,338,"The moment you create a statement that's in this framing,",Discussion
+d1240a7d-f952-4a85-b87e-1b83620164d3,355330c1-ae4b-42ef-931a-cacefdf4c46a,339,"the research is really quantitative,",Discussion
+a8d11e8f-ef64-48de-b2cf-33db9bf36cc9,355330c1-ae4b-42ef-931a-cacefdf4c46a,341,"That is why,",Discussion
+15118c9a-898e-4abb-84c3-32f5e9b35e87,355330c1-ae4b-42ef-931a-cacefdf4c46a,342,"if you are to interpret something like that,",Discussion
+7158f6a1-81e0-4a9c-b83b-5c0d1170c0b6,355330c1-ae4b-42ef-931a-cacefdf4c46a,343,"you can just actually come up with framings like,",Discussion
+cdc27974-05fd-4243-9db3-7071b5706c49,355330c1-ae4b-42ef-931a-cacefdf4c46a,344,a feeling of disappointment came out from the respondents.,Discussion
+c7fdda11-7ec8-4f0e-bc04-827457fa83dc,355330c1-ae4b-42ef-931a-cacefdf4c46a,345,This feeling is caused by.,Discussion
+fd32fc0b-e47e-42f5-afa7-03a09ec66f03,355330c1-ae4b-42ef-931a-cacefdf4c46a,346,There's also this feeling of anxiety.,Discussion
+dd4de80e-a727-4de2-9c32-a4d7d15ddb81,355330c1-ae4b-42ef-931a-cacefdf4c46a,348,"so far with the data,",Discussion
+47f074cc-1299-4c8b-8e45-e0fbb8836522,355330c1-ae4b-42ef-931a-cacefdf4c46a,349,"with the interpretation that I've done of the data,",Discussion
+12003dd4-d82d-4266-80ad-db0e79ff71d2,355330c1-ae4b-42ef-931a-cacefdf4c46a,350,did I talk of how many?,Question
+51666557-23be-43bf-b639-6dbd07d6e711,355330c1-ae4b-42ef-931a-cacefdf4c46a,351,I did not.,Discussion
+fc4fa073-986e-4976-af89-61f82dc5ee25,355330c1-ae4b-42ef-931a-cacefdf4c46a,352,Did I talk of the number of people positive of that feeling?,Question
+de25f518-bbad-4d2b-bc9b-27b7d53a047c,355330c1-ae4b-42ef-931a-cacefdf4c46a,353,I did not.,Discussion
+5208bcec-2c28-46c8-8dea-d214e480af29,355330c1-ae4b-42ef-931a-cacefdf4c46a,354,Because the moment I touch that act of counting,Discussion
+6c979802-c8c7-4fa5-910a-f43518b187af,355330c1-ae4b-42ef-931a-cacefdf4c46a,355,"for the number of persons who provided that information,",Discussion
+f50a55e3-cbb1-4dab-b2c2-90a8a684a121,355330c1-ae4b-42ef-931a-cacefdf4c46a,356,that's again a touch on quantitative research.,Discussion
+3098c13b-b21c-438d-b272-a9ed21a7d7eb,355330c1-ae4b-42ef-931a-cacefdf4c46a,358,"Since quantitative research deals with quantifiable or numeric data,",Discussion
+bd57c9ed-6244-4da2-b57a-52b91444d513,355330c1-ae4b-42ef-931a-cacefdf4c46a,359,the analysis of it will use statistics.,Discussion
+379d6d96-5853-41cc-810b-4acf3742df9e,355330c1-ae4b-42ef-931a-cacefdf4c46a,360,"As for qualitative data,",Discussion
+e727625e-8a99-4947-a352-30e06c8ffe04,355330c1-ae4b-42ef-931a-cacefdf4c46a,361,the analysis involves themes.,Discussion
+e9c5cb1f-23bd-497a-a92b-2081483fb80b,355330c1-ae4b-42ef-931a-cacefdf4c46a,362,Statistical treatment over thematic analysis.,Discussion
+66bd8e5f-3a89-498d-8011-4d1e54d45070,355330c1-ae4b-42ef-931a-cacefdf4c46a,364,we give that to quantitative research.,Discussion
+7a54c7f2-52ae-4989-be7e-b3b28999534c,355330c1-ae4b-42ef-931a-cacefdf4c46a,366,we give that to qualitative research.,Discussion
+373e5212-17da-4fb1-a19e-6eb380748745,355330c1-ae4b-42ef-931a-cacefdf4c46a,367,I feel like you had a statistics class in junior high.,Discussion
+1f89e48c-c70f-4187-85af-0949bfbf2b2f,355330c1-ae4b-42ef-931a-cacefdf4c46a,368,Did you have statistics class?,Question
+43aeb54a-88ba-408e-89af-62edcaa494fe,355330c1-ae4b-42ef-931a-cacefdf4c46a,374,Do they sound familiar?,Question
+65902bdb-2bf0-4cb0-bd4b-c31da84b051b,355330c1-ae4b-42ef-931a-cacefdf4c46a,375,Measures of central tendency.,Discussion
+edd522c3-dbf5-463e-86bc-70b145dadd5b,355330c1-ae4b-42ef-931a-cacefdf4c46a,376,Mean median mode.,Discussion
+b2ec330a-1dac-497c-afce-fc9d367cfab9,355330c1-ae4b-42ef-931a-cacefdf4c46a,379,"Oh, you just kept on nodding your heads.",Discussion
+2be17a0e-ddbe-4399-b5b4-d5e8e32c5c38,355330c1-ae4b-42ef-931a-cacefdf4c46a,381,those are very useful,Discussion
+d88dd1f8-9c9e-495f-b540-f2f9dcb24873,355330c1-ae4b-42ef-931a-cacefdf4c46a,382,as you are going to do quantitative research.,Discussion
+78c234e0-be09-4f66-9788-bcf85c169cbf,355330c1-ae4b-42ef-931a-cacefdf4c46a,383,You will capitalize on your knowledge,Action Item
+f24f3ddc-9b04-4669-93ed-a4d7716e5a87,355330c1-ae4b-42ef-931a-cacefdf4c46a,384,on these many formula,Discussion
+14729e59-2551-4624-8d7a-4b83bc20da53,355330c1-ae4b-42ef-931a-cacefdf4c46a,385,the moment you deal with quantitative research.,Discussion
+08f932ba-a578-473a-830b-48b6805f0134,355330c1-ae4b-42ef-931a-cacefdf4c46a,387,is there a definite treatment,Discussion
+52fd485d-af88-4c45-912e-0de85442e2bf,355330c1-ae4b-42ef-931a-cacefdf4c46a,390,The treatment you employ,Discussion
+b8439413-e2c5-43b9-9897-60351636a700,355330c1-ae4b-42ef-931a-cacefdf4c46a,391,depends on whatever it is,Discussion
+c1e0c2d2-fc56-4729-9ca6-61d48df5bab8,355330c1-ae4b-42ef-931a-cacefdf4c46a,392,that you wish to accomplish,Discussion
+277226b0-4f65-43c0-a437-d2449c7a3a92,355330c1-ae4b-42ef-931a-cacefdf4c46a,393,in your research.,Discussion
+4449c24d-f90b-4e85-b729-788a22f658fc,355330c1-ae4b-42ef-931a-cacefdf4c46a,394,If your research wants to do,Discussion
+b5f2bf5a-98aa-41d9-a87f-b75505c216a4,355330c1-ae4b-42ef-931a-cacefdf4c46a,395,"a comparison of two groups,",Discussion
+da7c91fb-ef21-40b4-8cd5-6ec4a73b3693,355330c1-ae4b-42ef-931a-cacefdf4c46a,396,then there are plenty of,Discussion
+c6fb179f-f83c-4018-b1f1-31395f57c290,355330c1-ae4b-42ef-931a-cacefdf4c46a,397,T-test formula around you.,Discussion
+bd37d6e8-e44b-4b9c-bfce-ce769fcc0cd7,355330c1-ae4b-42ef-931a-cacefdf4c46a,398,If you want to compare,Discussion
+ea8abfab-1a08-4599-acb2-68bc02497726,355330c1-ae4b-42ef-931a-cacefdf4c46a,399,"at least three groups,",Discussion
+90957b02-c004-4a27-ace7-be1fa83d8dbc,355330c1-ae4b-42ef-931a-cacefdf4c46a,400,analysis of variants,Discussion
+syn_Action Item_0,synthetic_seed,0,I will update the API routes and documentation tomorrow morning.,Action Item
+syn_Action Item_1,synthetic_seed,0,Can you make sure the tests pass before we push to staging?,Action Item
+syn_Action Item_2,synthetic_seed,0,John is assigned to review the pull request by Wednesday.,Action Item
+syn_Action Item_3,synthetic_seed,0,Let's prepare the slide deck for the sprint review next week.,Action Item
+syn_Action Item_4,synthetic_seed,0,Please follow up with the design team regarding the button contrast.,Action Item
+syn_Action Item_5,synthetic_seed,0,I'll investigate the bug in the authentication middleware today.,Action Item
+syn_Action Item_6,synthetic_seed,0,We need to implement error handling for the Whisper background job.,Action Item
+syn_Action Item_7,synthetic_seed,0,Sarah will take ownership of setting up the Supabase database migrations.,Action Item
+syn_Action Item_8,synthetic_seed,0,Please send out the meeting notes to all attendees after this call.,Action Item
+syn_Action Item_9,synthetic_seed,0,I will configure the Cloudflare R2 bucket credentials in the server config.,Action Item
+syn_Action Item_10,synthetic_seed,0,You should check the memory usage during large audio file processing.,Action Item
+syn_Action Item_11,synthetic_seed,0,Let's schedule a 15 minute sync to debug the test failures.,Action Item
+syn_Action Item_12,synthetic_seed,0,Alex will create the Jira tickets for the backend tasks.,Action Item
+syn_Action Item_13,synthetic_seed,0,Make sure to test the GPU inference with the int8 compute type.,Action Item
+syn_Action Item_14,synthetic_seed,0,I will write the test cases for the sentence classification model.,Action Item
+syn_Decision_15,synthetic_seed,0,We decided to use faster-whisper on GPU instead of the Google Cloud STT API.,Decision
+syn_Decision_16,synthetic_seed,0,The team agreed that FastAPI with BackgroundTasks is the right architecture.,Decision
+syn_Decision_17,synthetic_seed,0,We have chosen Supabase PostgreSQL with pgvector for the memory layer.,Decision
+syn_Decision_18,synthetic_seed,0,It is finalized that we will deploy the frontend to Vercel.,Decision
+syn_Decision_19,synthetic_seed,0,The consensus is that we will not use Redis or RQ on the free tier.,Decision
+syn_Decision_20,synthetic_seed,0,We agreed to use Gemini 2.5 Flash for the structured summary extraction.,Decision
+syn_Decision_21,synthetic_seed,0,The architectural decision is to keep the ML classifier lightweight with TF-IDF.,Decision
+syn_Decision_22,synthetic_seed,0,We decided that audio uploads will be stored directly in Cloudflare R2.,Decision
+syn_Decision_23,synthetic_seed,0,We have settled on using React with Vite and Tailwind CSS for the UI.,Decision
+syn_Decision_24,synthetic_seed,0,The decision is to classify sentences into five distinct meeting categories.,Decision
+syn_Deadline_25,synthetic_seed,0,All pull requests must be merged by Friday 5 PM.,Deadline
+syn_Deadline_26,synthetic_seed,0,The project proposal submission is due next Monday morning.,Deadline
+syn_Deadline_27,synthetic_seed,0,We need the prototype ready before the viva on March 15th.,Deadline
+syn_Deadline_28,synthetic_seed,0,The sprint deadline is strictly next Wednesday at midnight.,Deadline
+syn_Deadline_29,synthetic_seed,0,Please deliver the preliminary benchmarks by end of day tomorrow.,Deadline
+syn_Deadline_30,synthetic_seed,0,The report draft must be completed before the midterm review.,Deadline
+syn_Deadline_31,synthetic_seed,0,We have until tomorrow morning to finish the database migration.,Deadline
+syn_Deadline_32,synthetic_seed,0,The final presentation slides are due this Sunday at 6 PM.,Deadline
+syn_Deadline_33,synthetic_seed,0,Ensure the audio dataset is collected before the end of the week.,Deadline
+syn_Deadline_34,synthetic_seed,0,The deadline for team feature freeze is end of day Friday.,Deadline
+92d12a89-0768-4965-aad1-837281584657,348b1f6b-cba3-48a3-93a2-f5729a077635,13,as specified. Unanimous. So carried. Adoption of the minutes. So please move our seconder. Warren and a few.,Decision
+276ed53c-6b4a-4b11-8272-8d22c461988c,348b1f6b-cba3-48a3-93a2-f5729a077635,15,of hands to those in support. That is unanimous. So carried. We have a delegation. We're a bit fast on,Decision
+4c9bf47e-c575-4956-9c2b-2f5263bddc06,348b1f6b-cba3-48a3-93a2-f5729a077635,17,board bylaw 2124. Can I get a mover and a seconder for that please? Warren and Fuel. Be resolved that,Decision
+2f17ffde-38ac-4ac9-ada5-c34ac88053d4,348b1f6b-cba3-48a3-93a2-f5729a077635,21,in support. That is unanimous and so carried. That was the second reading. If we can go to the third,Decision
+07459c95-7c38-440f-9515-5829c38e98da,348b1f6b-cba3-48a3-93a2-f5729a077635,23,It resolved that third and final reading be given to bylaw number 2606 being a bylaw of the arm of,Decision
+488b241f-e80e-4e33-a31a-1233c4f1cf58,348b1f6b-cba3-48a3-93a2-f5729a077635,26,question first to those in support of the third reading? That is unanimous and so carried. Then we,Decision
+bbab78ea-3b67-4102-bf70-2db849e37d8a,348b1f6b-cba3-48a3-93a2-f5729a077635,31,question of those in support with a show of hands. That was unanimous. I'd like to read the letter sent to us by Springfield,Decision
+f6aedc8f-f25a-4f34-8fa0-25c6cfbf5b98,348b1f6b-cba3-48a3-93a2-f5729a077635,73,mover and seconder for 10.1. This is where we're at there. Miller and Kaczynski. Be it resolved that,Decision
+a1055f07-48ff-4a39-aa05-13917350685b,348b1f6b-cba3-48a3-93a2-f5729a077635,78,"business 10.1. That's unanimous and so carried. Mr. Giesberg, would you want to start five minutes",Decision
+a12030dd-041c-4584-9a2b-2cdeada84645,348b1f6b-cba3-48a3-93a2-f5729a077635,196,"Be resolved that the financial statements for the month of January, February, and March 2026 be approved as presented.",Decision
+5ab13265-10b2-4a0a-babf-cc53542f7dc5,348b1f6b-cba3-48a3-93a2-f5729a077635,198,"With that being read, first I'll pose a question for those in support, a show of hands, as unanimous is so carried.",Decision
+80d733e9-67ed-4ed9-97f4-7e08d420cceb,348b1f6b-cba3-48a3-93a2-f5729a077635,226,Be it resolved that the following 2026 board appropriations be approved.,Decision
+c9f0ce9b-8fe5-4a3d-914e-0b3fda6af585,348b1f6b-cba3-48a3-93a2-f5729a077635,229,"That is unanimous, so carried.",Decision
+c9098868-775e-46b5-ab15-9e304b785923,348b1f6b-cba3-48a3-93a2-f5729a077635,326,It can be resolved that the municipality not proceed with our Springfield zoning by-law number,Decision
+40efb8ec-4c23-406b-b0f6-52c6d04c2424,348b1f6b-cba3-48a3-93a2-f5729a077635,335,"The meeting is closed under unanimous, uh, vote, uh, at, uh, 634.",Decision
