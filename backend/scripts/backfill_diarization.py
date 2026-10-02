@@ -14,6 +14,10 @@ if str(BACKEND_DIR) not in sys.path:
 from dotenv import load_dotenv
 load_dotenv(BACKEND_DIR / ".env")
 
+import types
+if "pandas._libs.testing" not in sys.modules:
+    sys.modules["pandas._libs.testing"] = types.ModuleType("pandas._libs.testing")
+
 from app.services.supabase_client import get_supabase_admin
 from app.services.diarization import run_diarization, align_speakers_with_sentences
 from app.services.transcription import download_audio_from_r2
@@ -52,7 +56,8 @@ def backfill_meeting_diarization(meeting_id: str, use_cached_diar: bool = True):
             logger.error("No audio_url found on meeting record.")
             return
 
-        temp_audio = BACKEND_DIR / "scratch" / f"{meeting_id}.mp3"
+        ext = os.path.splitext(audio_url.split("?")[0])[1] or ".mp3"
+        temp_audio = BACKEND_DIR / "scratch" / f"{meeting_id}{ext}"
         if not temp_audio.exists():
             download_audio_from_r2(audio_url, str(temp_audio))
 

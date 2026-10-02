@@ -1,5 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
-import { User, X, Check, Loader2, AlertCircle, Sparkles, MessageSquare, Clock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Check, Clock, Users } from 'lucide-react';
 import { fetchMeetingSpeakers, updateMeetingSpeakers } from '../services/api';
 import type { SpeakerStats } from '../types/meeting';
 
@@ -50,7 +50,7 @@ export const SpeakerRenameModal: React.FC<SpeakerRenameModalProps> = ({
   if (!isOpen) return null;
 
   const handleNameChange = (label: string, value: string) => {
-    setNameMap((prev) => ({
+    setNameMap((prev: Record<string, string>) => ({
       ...prev,
       [label]: value,
     }));
@@ -70,7 +70,7 @@ export const SpeakerRenameModal: React.FC<SpeakerRenameModalProps> = ({
           updatedMap[s.speaker_label] = s.custom_name;
         }
       }
-      setSuccessMsg('Speaker names saved successfully!');
+      setSuccessMsg('Speaker names saved successfully.');
       onSpeakersUpdated?.(updatedMap);
       setTimeout(() => {
         onClose();
@@ -92,98 +92,93 @@ export const SpeakerRenameModal: React.FC<SpeakerRenameModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75">
+      <div className="w-full max-w-xl bg-[#11131a] border border-[#212635] rounded-lg shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/80 bg-slate-900/50">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
-              <User className="w-5 h-5" />
-            </div>
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#1f2433] bg-[#0d0e14]">
+          <div className="flex items-center gap-2.5">
+            <Users className="w-4 h-4 text-blue-400" />
             <div>
-              <h2 className="text-lg font-semibold text-white">Identify & Rename Speakers</h2>
-              <p className="text-xs text-slate-400">
-                Assign real names to detected voice labels to clarify transcript attribution.
+              <h2 className="text-sm font-semibold text-[#f1f4f9]">Speaker Attribution</h2>
+              <p className="text-[11px] text-[#717e97]">
+                Map voice cluster labels to participant names
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="p-1 text-[#66728a] hover:text-[#d3dbe9] rounded transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="p-6 overflow-y-auto space-y-4 flex-1">
+        <div className="p-5 overflow-y-auto space-y-3.5 flex-1">
           {error && (
-            <div className="flex items-start gap-2.5 p-3.5 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-300 text-xs">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{error}</span>
+            <div className="p-3 bg-[#241113] border border-[#441a1f] rounded text-rose-300 text-xs font-mono">
+              {error}
             </div>
           )}
 
           {successMsg && (
-            <div className="flex items-center gap-2 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs font-medium">
+            <div className="p-2.5 bg-[#0f1f18] border border-[#1b3b2c] rounded text-[#86efac] text-xs font-medium flex items-center gap-2">
               <Check className="w-4 h-4" />
               <span>{successMsg}</span>
             </div>
           )}
 
           {loading ? (
-            <div className="py-16 flex flex-col items-center justify-center space-y-3">
-              <Loader2 className="w-8 h-8 text-purple-400 animate-spin" />
-              <p className="text-xs text-slate-400">Analyzing speaker segments and talk-time...</p>
+            <div className="py-12 text-center text-xs text-[#6e7b94] font-mono">
+              Retrieving speaker statistics...
             </div>
           ) : speakers.length === 0 ? (
-            <div className="py-12 text-center text-slate-500 text-sm">
+            <div className="py-8 text-center text-[#738099] text-xs">
               No distinct speakers detected for this meeting.
             </div>
           ) : (
-            <div className="space-y-3.5">
-              {speakers.map((spk) => (
+            <div className="space-y-3">
+              {speakers.map((spk: SpeakerStats) => (
                 <div
                   key={spk.speaker_label}
-                  className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 transition-all hover:border-slate-700/80"
+                  className="bg-[#0c0d13] border border-[#1d2230] rounded p-3 space-y-2.5"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs px-2.5 py-0.5 rounded-md bg-purple-500/15 border border-purple-500/30 text-purple-300 font-semibold">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#161a25] border border-[#242b3d] text-[#c4cfdf]">
                         {spk.speaker_label}
                       </span>
-                      <span className="text-xs font-semibold text-slate-200">
-                        Current: {spk.display_name}
+                      <span className="text-xs font-medium text-[#edf1f8]">
+                        {spk.display_name}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
+                    <div className="text-[11px] text-[#6e7b94] font-mono tabular-nums flex items-center gap-2">
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-slate-500" />
+                        <Clock className="w-3 h-3 text-[#505a70]" />
                         {formatSeconds(spk.total_talk_time_seconds)} ({spk.percentage}%)
                       </span>
-                      <span>•</span>
+                      <span>&middot;</span>
                       <span>{spk.segment_count} turns</span>
                     </div>
                   </div>
 
                   {spk.sample_quote && (
-                    <div className="mb-3 px-3 py-2 bg-slate-900/60 rounded-lg border border-slate-800/50 flex items-start gap-2 text-xs text-slate-300/90 italic">
-                      <MessageSquare className="w-3.5 h-3.5 shrink-0 text-slate-500 mt-0.5 not-italic" />
-                      <span>"{spk.sample_quote}"</span>
+                    <div className="text-[11px] text-[#8692a8] bg-[#11131b] p-2 rounded border border-[#181c26] italic line-clamp-2">
+                      "{spk.sample_quote}"
                     </div>
                   )}
 
-                  <div className="flex items-center gap-3">
-                    <label className="text-xs font-medium text-slate-400 shrink-0">
-                      Display Name:
+                  <div className="flex items-center gap-2.5 pt-0.5">
+                    <label className="text-xs text-[#717e97] shrink-0 font-medium">
+                      Participant Name:
                     </label>
                     <input
                       type="text"
                       value={nameMap[spk.speaker_label] || ''}
                       onChange={(e) => handleNameChange(spk.speaker_label, e.target.value)}
-                      placeholder={`e.g. John Doe (default: ${spk.display_name})`}
-                      className="flex-1 bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-1.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
+                      placeholder={`Default: ${spk.display_name}`}
+                      className="flex-1 bg-[#10121a] border border-[#202534] rounded px-2.5 py-1 text-xs text-[#edf1f8] placeholder-[#4f5970] focus:outline-hidden focus:border-blue-500 transition-colors"
                     />
                   </div>
                 </div>
@@ -193,36 +188,25 @@ export const SpeakerRenameModal: React.FC<SpeakerRenameModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-slate-800/80 bg-slate-900/80">
-          <div className="text-[11px] text-slate-500 flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-            <span>Names apply throughout the transcript and search view.</span>
-          </div>
+        <div className="flex items-center justify-between px-5 py-3 border-t border-[#1f2433] bg-[#0d0e14] text-xs">
+          <span className="text-[11px] text-[#5e6b83]">
+            Changes update dialogue tags across the entire transcript.
+          </span>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <button
               onClick={onClose}
               disabled={saving}
-              className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs text-[#8c97ad] hover:text-white transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
               disabled={saving || loading || speakers.length === 0}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="px-3.5 py-1.5 bg-[#1e2538] hover:bg-[#273048] text-white border border-[#323d5a] rounded text-xs font-medium transition-colors cursor-pointer disabled:opacity-50"
             >
-              {saving ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  Saving...
-                </>
-              ) : (
-                <>
-                  <Check className="w-3.5 h-3.5" />
-                  Save Names
-                </>
-              )}
+              {saving ? 'Saving...' : 'Save Attribution'}
             </button>
           </div>
         </div>

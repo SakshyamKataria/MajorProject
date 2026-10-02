@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Copy, Check, Hash, ListChecks } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import type { Summary } from '../types/meeting';
 
 interface SummarySectionProps {
@@ -12,7 +12,7 @@ export const SummarySection: React.FC<SummarySectionProps> = ({ summary, tags = 
 
   if (!summary) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center text-slate-500 text-sm">
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-6 text-center text-[#738099] text-xs">
         No executive summary generated for this meeting yet.
       </div>
     );
@@ -28,29 +28,26 @@ export const SummarySection: React.FC<SummarySectionProps> = ({ summary, tags = 
   };
 
   return (
-    <div className="space-y-6">
-      {/* Executive Summary Card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4 relative">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-          <div className="flex items-center space-x-2.5">
-            <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
-                Executive Summary
-              </h3>
-              <p className="text-[11px] text-slate-500">Synthesized key narrative</p>
-            </div>
+    <div className="space-y-4">
+      {/* Executive Narrative */}
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-5 space-y-3">
+        <div className="flex items-center justify-between pb-2.5 border-b border-[#1b202d]">
+          <div className="space-y-0.5">
+            <h3 className="text-xs font-semibold text-[#f1f4f9] uppercase tracking-wider">
+              Executive Briefing
+            </h3>
+            <p className="text-[11px] text-[#717e97]">
+              Synthesized narrative of discussion and objectives
+            </p>
           </div>
 
           <button
             onClick={copyFullSummary}
-            className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-[#7e8aa4] hover:text-[#d3dbe9] px-2.5 py-1 rounded bg-[#141722] hover:bg-[#1a1e2c] border border-[#212635] transition-colors cursor-pointer"
           >
             {copied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
+                <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied
               </>
             ) : (
               <>
@@ -60,20 +57,20 @@ export const SummarySection: React.FC<SummarySectionProps> = ({ summary, tags = 
           </button>
         </div>
 
-        <p className="text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800/80 whitespace-pre-line">
+        <p className="text-xs sm:text-sm text-[#cbd4e2] leading-relaxed bg-[#0c0d14] p-3.5 rounded border border-[#1b1f2c] whitespace-pre-line">
           {summary.executive_summary}
         </p>
 
-        {/* Topic Tags */}
+        {/* Thematic Tags */}
         {tags.length > 0 && (
-          <div className="pt-2 flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] text-slate-500 flex items-center gap-1 mr-1">
-              <Hash className="w-3 h-3" /> Topics:
+          <div className="pt-1 flex items-center gap-1.5 flex-wrap">
+            <span className="text-[11px] text-[#5d6880] mr-0.5">
+              Topics:
             </span>
             {tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2.5 py-1 rounded-lg text-xs bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium"
+                className="px-2 py-0.5 rounded text-[11px] bg-[#161a25] text-[#8e9bb2] border border-[#252c3e] font-mono"
               >
                 #{tag}
               </span>
@@ -82,31 +79,28 @@ export const SummarySection: React.FC<SummarySectionProps> = ({ summary, tags = 
         )}
       </div>
 
-      {/* Key Takeaways & Discussion Highlights */}
+      {/* Key Discussion Points */}
       {summary.key_points && summary.key_points.length > 0 && (
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
-          <div className="flex items-center space-x-2.5 pb-3 border-b border-slate-800">
-            <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              <ListChecks className="w-4 h-4" />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
-                Key Discussion Points ({summary.key_points.length})
-              </h3>
-              <p className="text-[11px] text-slate-500">Core themes and strategic items discussed</p>
-            </div>
+        <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-5 space-y-3">
+          <div className="pb-2.5 border-b border-[#1b202d]">
+            <h3 className="text-xs font-semibold text-[#f1f4f9] uppercase tracking-wider">
+              Key Discussion Points ({summary.key_points.length})
+            </h3>
+            <p className="text-[11px] text-[#717e97]">
+              Essential topics and structural takeaways
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-2.5">
+          <div className="divide-y divide-[#181c28]">
             {summary.key_points.map((point, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 transition-colors"
+                className="py-2.5 first:pt-0 last:pb-0 flex items-start gap-3"
               >
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center justify-center text-xs font-bold font-mono">
-                  {idx + 1}
+                <span className="text-xs font-mono tabular-nums text-[#5b667e] pt-0.5 shrink-0">
+                  {(idx + 1).toString().padStart(2, '0')}.
                 </span>
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed pt-0.5">
+                <p className="text-xs sm:text-sm text-[#cbd4e2] leading-relaxed">
                   {point}
                 </p>
               </div>

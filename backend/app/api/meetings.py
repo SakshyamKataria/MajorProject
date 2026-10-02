@@ -256,6 +256,54 @@ async def trigger_intelligence_extraction(
     }
 
 
+@router.post("/{meeting_id}/retry", status_code=status.HTTP_202_ACCEPTED)
+async def retry_meeting_pipeline_endpoint(
+    meeting_id: str,
+    background_tasks: BackgroundTasks,
+):
+    """
+    Cleans up any partial or stuck state and re-enqueues the full processing pipeline for a meeting.
+    """
+    validate_uuid(meeting_id, "meeting_id")
+    supabase = get_supabase_admin()
+    res = supabase.table("meetings").select("*").eq("id", meeting_id).execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Meeting not found")
+
+    meeting = res.data[0]
+    audio_url = meeting.get("audio_url")
+    if not audio_url:
+        raise HTTPException(status_code=400, detail="Meeting does not have an audio URL")
+
+    # Clean up prior partial transcripts or intelligence to start fresh
+    try:
+        supabase.table("transcripts").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("summaries").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("decisions").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("action_items").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("meeting_tags").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("embeddings").delete().eq("meeting_id", meeting_id).execute()
+        supabase.table("meetings").update({
+            "status": "processing",
+            "duration_seconds": 0,
+            "error_message": None,
+        }).eq("id", meeting_id).execute()
+    except Exception as e:
+        logger.warning(f"Cleanup before retry had non-fatal warning for {meeting_id}: {e}")
+
+    background_tasks.add_task(
+        process_meeting_pipeline,
+        meeting_id=meeting_id,
+        audio_url_or_key=audio_url,
+    )
+
+    return {
+        "message": "Meeting processing pipeline restarted in background",
+        "meeting_id": meeting_id,
+        "status": "processing",
+    }
+
+
 @router.get("/{meeting_id}/intelligence")
 def get_meeting_intelligence(meeting_id: str):
     """

@@ -57,6 +57,17 @@ export async function fetchMeetingStatus(meetingId: string): Promise<MeetingStat
   return response.json();
 }
 
+export async function retryMeetingPipeline(meetingId: string): Promise<{ message: string; status: string }> {
+  const response = await fetch(`${API_BASE_URL}/meetings/${encodeURIComponent(meetingId)}/retry`, {
+    method: 'POST',
+  });
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    throw new Error(errorData?.detail || `Failed to restart meeting pipeline (${response.status})`);
+  }
+  return response.json();
+}
+
 export async function fetchMeetingIntelligence(meetingId: string): Promise<MeetingIntelligenceResponse> {
   const response = await fetch(`${API_BASE_URL}/meetings/${meetingId}/intelligence`);
   if (!response.ok) {

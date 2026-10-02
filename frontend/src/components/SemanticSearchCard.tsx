@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  Sparkles,
   Scale,
   CheckSquare,
   MessageSquare,
   ArrowRight,
-  TrendingUp,
+  FileText,
 } from 'lucide-react';
 import type { SearchResultItem } from '../types/meeting';
 
@@ -24,87 +23,61 @@ export const SemanticSearchCard: React.FC<SemanticSearchCardProps> = ({
     switch (type) {
       case 'summary':
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2 py-0.5 rounded-md">
-            <Sparkles className="w-3 h-3 text-indigo-400" /> Executive Summary
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-zinc-300 bg-[#1a1e2b] border border-[#2a3147] px-2 py-0.5 rounded">
+            <FileText className="w-3 h-3 text-zinc-400" /> Executive Summary
           </span>
         );
       case 'decision':
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-md">
-            <Scale className="w-3 h-3 text-emerald-400" /> Ratified Decision
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-300 bg-[#12231b] border border-[#1f4030] px-2 py-0.5 rounded">
+            <Scale className="w-3 h-3 text-emerald-400" /> Decision
           </span>
         );
       case 'action_item':
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-md">
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-amber-300 bg-[#251d13] border border-[#47341e] px-2 py-0.5 rounded">
             <CheckSquare className="w-3 h-3 text-amber-400" /> Action Item
           </span>
         );
       case 'transcript':
       default:
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-300 bg-blue-500/15 border border-blue-500/30 px-2 py-0.5 rounded-md">
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-blue-300 bg-[#141d2d] border border-[#21324f] px-2 py-0.5 rounded">
             <MessageSquare className="w-3 h-3 text-blue-400" /> Transcript Excerpt
           </span>
         );
     }
   };
 
-  const getScoreColor = (score: number) => {
-    if (score >= 70) return 'text-emerald-400 bg-emerald-500';
-    if (score >= 50) return 'text-indigo-400 bg-indigo-500';
-    return 'text-amber-400 bg-amber-500';
-  };
-
-  const scoreColor = getScoreColor(similarityPct);
-
   return (
     <div
       onClick={() => onOpenMeeting(result.meeting_id)}
-      className="group bg-slate-900/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 shadow-lg hover:shadow-indigo-500/5 transition-all flex flex-col justify-between space-y-4 cursor-pointer"
+      className="group bg-[#11131a] hover:bg-[#141722] border border-[#202534] hover:border-[#333b52] rounded-lg p-4 transition-colors flex flex-col justify-between space-y-3 cursor-pointer"
     >
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {/* Top Header Row */}
-        <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center justify-between gap-3">
           {getChunkBadge(result.chunk_type)}
 
-          {/* Similarity Meter */}
-          <div className="flex items-center gap-2">
-            <div className="w-16 sm:w-20 bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800">
-              <div
-                className={`h-full rounded-full ${scoreColor.split(' ')[1]}`}
-                style={{ width: `${Math.min(similarityPct, 100)}%` }}
-              />
-            </div>
-            <span
-              className={`text-xs font-mono font-bold inline-flex items-center gap-1 ${
-                scoreColor.split(' ')[0]
-              }`}
-            >
-              <TrendingUp className="w-3 h-3" />
-              {similarityPct}% Match
-            </span>
-          </div>
+          {/* Similarity Metric */}
+          <span className="text-xs font-mono tabular-nums text-[#8995ad]">
+            {similarityPct}% match
+          </span>
         </div>
 
         {/* Content Excerpt */}
-        <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 line-clamp-4 group-hover:border-slate-700 transition-colors">
+        <p className="text-xs sm:text-sm text-[#cbd3e1] leading-relaxed bg-[#0c0d13] p-3 rounded border border-[#1d212d] line-clamp-3 group-hover:border-[#282e40] transition-colors">
           "{result.content}"
         </p>
       </div>
 
       {/* Meeting Attribution Footer */}
-      <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-        <div className="space-y-0.5 max-w-[80%]">
-          <span className="text-[10px] uppercase tracking-wider text-slate-500 block">
-            From Meeting
-          </span>
-          <span className="text-slate-300 font-semibold truncate block group-hover:text-indigo-300 transition-colors">
-            {result.meeting_title || 'Untitled Meeting'}
-          </span>
-        </div>
+      <div className="pt-2.5 border-t border-[#1b1f2b] flex items-center justify-between text-xs">
+        <span className="text-[#8793ab] truncate font-medium max-w-[80%] group-hover:text-white transition-colors">
+          {result.meeting_title || 'Untitled Meeting'}
+        </span>
 
-        <span className="inline-flex items-center gap-1 text-indigo-400 font-semibold group-hover:translate-x-0.5 transition-transform">
+        <span className="inline-flex items-center gap-1 text-[#8b9bb4] group-hover:text-white transition-colors">
           Open <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </div>

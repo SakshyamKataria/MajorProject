@@ -90,9 +90,10 @@ def transcribe_meeting_task(meeting_id: str, audio_url_or_key: str) -> None:
         model = get_whisper_model()
         logger.info(f"Transcribing '{temp_audio_path}' with VAD silence trimming...")
         
+        beam_size = getattr(settings, "WHISPER_BEAM_SIZE", 1) or 1
         segments, info = model.transcribe(
             temp_audio_path,
-            beam_size=5,
+            beam_size=beam_size,
             vad_filter=True,
             vad_parameters=dict(
                 min_silence_duration_ms=500,
@@ -102,7 +103,9 @@ def transcribe_meeting_task(meeting_id: str, audio_url_or_key: str) -> None:
 
         total_duration = round(info.duration) if hasattr(info, "duration") and info.duration else 0
         transcript_rows: List[Dict[str, Any]] = []
+        pending_batch: List[Dict[str, Any]] = []
         sentence_order = 0
+        STREAM_BATCH_SIZE = 25
 
         for segment in segments:
             text = segment.text.strip()
@@ -110,54 +113,84 @@ def transcribe_meeting_task(meeting_id: str, audio_url_or_key: str) -> None:
                 continue
 
             sentence_order += 1
-            transcript_rows.append({
+            row = {
                 "meeting_id": meeting_id,
-                "speaker": None,
-                "speaker_label": None,
+                "speaker": "SPEAKER_00",
+                "speaker_label": "SPEAKER_00",
                 "sentence_order": sentence_order,
                 "start_time": round(segment.start, 3),
                 "end_time": round(segment.end, 3),
                 "text": text,
                 "classifier_label": None,
                 "classifier_confidence": None,
-            })
+            }
+            transcript_rows.append(row)
+            pending_batch.append(row)
+
+            # Periodically stream into Supabase so frontend tracker updates live
+            if len(pending_batch) >= STREAM_BATCH_SIZE:
+                try:
+                    supabase.table("transcripts").insert(pending_batch).execute()
+                    supabase.table("meetings").update({
+                        "duration_seconds": round(segment.end)
+                    }).eq("id", meeting_id).execute()
+                    logger.info(
+                        f"Meeting {meeting_id}: transcribed {sentence_order} segments "
+                        f"({round(segment.end)}s / {total_duration}s)..."
+                    )
+                except Exception as stream_err:
+                    logger.warning(f"Error streaming transcript batch for {meeting_id}: {stream_err}")
+                pending_batch = []
+
+        # Flush remaining pending segments
+        if pending_batch:
+            try:
+                supabase.table("transcripts").insert(pending_batch).execute()
+            except Exception as flush_err:
+                logger.warning(f"Error flushing final transcript batch for {meeting_id}: {flush_err}")
+            pending_batch = []
 
         logger.info(f"Generated {len(transcript_rows)} transcript segments for meeting {meeting_id}.")
 
         # 4. Run speaker diarization and align with transcript sentences
         if transcript_rows:
             try:
+                # Reclaim VRAM from Whisper before launching PyAnnote
+                import gc
+                import torch
+                from collections import defaultdict
+                gc.collect()
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+
                 from app.services.diarization import run_diarization, align_speakers_with_sentences
                 logger.info(f"Running speaker diarization for meeting {meeting_id}...")
                 diar_segments = run_diarization(temp_audio_path)
-                transcript_rows = align_speakers_with_sentences(transcript_rows, diar_segments)
+                aligned_rows = align_speakers_with_sentences(transcript_rows, diar_segments)
+
+                # Batch update speaker labels in Supabase
+                speaker_to_orders: Dict[str, List[int]] = defaultdict(list)
+                for s in aligned_rows:
+                    spk = s.get("speaker_label") or "SPEAKER_00"
+                    speaker_to_orders[spk].append(s["sentence_order"])
+
+                for spk_label, orders in speaker_to_orders.items():
+                    try:
+                        for chunk_idx in range(0, len(orders), 200):
+                            sub_orders = orders[chunk_idx:chunk_idx + 200]
+                            supabase.table("transcripts").update({
+                                "speaker_label": spk_label,
+                                "speaker": spk_label
+                            }).eq("meeting_id", meeting_id).in_("sentence_order", sub_orders).execute()
+                    except Exception as upd_err:
+                        logger.warning(f"Failed to update speaker labels for {spk_label}: {upd_err}")
+
                 logger.info(f"Speaker alignment completed for {len(transcript_rows)} sentences.")
             except Exception as diar_err:
                 logger.warning(
                     f"Diarization failed for meeting {meeting_id}: {diar_err}. "
-                    "Proceeding with unassigned speaker labels."
+                    "Proceeding with default speaker labels."
                 )
-
-        # 5. Batch insert into transcripts table
-        if transcript_rows:
-            BATCH_SIZE = 100
-            for i in range(0, len(transcript_rows), BATCH_SIZE):
-                batch = transcript_rows[i:i + BATCH_SIZE]
-                try:
-                    supabase.table("transcripts").insert(batch).execute()
-                except Exception as insert_err:
-                    if "speaker_label" in str(insert_err).lower():
-                        logger.warning(
-                            "Column 'speaker_label' does not exist in transcripts table yet. "
-                            "Inserting without speaker_label (please run migration 20260913000000_transcripts_speaker_label.sql)."
-                        )
-                        fallback_batch = [
-                            {k: v for k, v in row.items() if k != "speaker_label"}
-                            for row in batch
-                        ]
-                        supabase.table("transcripts").insert(fallback_batch).execute()
-                    else:
-                        raise insert_err
 
         # 5. Update meeting status to 'transcribed'
         status_update = {

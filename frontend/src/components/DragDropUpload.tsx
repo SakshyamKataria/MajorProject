@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { UploadCloud, FileAudio, AlertCircle, X } from 'lucide-react';
+import { Upload, FileAudio, AlertCircle, X } from 'lucide-react';
 
 interface DragDropUploadProps {
   onFileSelect: (file: File) => void;
@@ -20,13 +20,13 @@ export const DragDropUpload: React.FC<DragDropUploadProps> = ({ onFileSelect, di
     const ext = '.' + file.name.split('.').pop()?.toLowerCase();
     
     if (!ALLOWED_EXTENSIONS.includes(ext)) {
-      setErrorMessage(`Unsupported format (${ext}). Allowed: ${ALLOWED_EXTENSIONS.join(', ')}`);
+      setErrorMessage(`Unsupported format (${ext}). Supported: ${ALLOWED_EXTENSIONS.join(', ')}`);
       return;
     }
 
     const fileSizeMB = file.size / (1024 * 1024);
     if (fileSizeMB > MAX_FILE_SIZE_MB) {
-      setErrorMessage(`File exceeds max size of ${MAX_FILE_SIZE_MB}MB (${fileSizeMB.toFixed(1)}MB).`);
+      setErrorMessage(`File exceeds maximum size of ${MAX_FILE_SIZE_MB}MB (${fileSizeMB.toFixed(1)}MB).`);
       return;
     }
 
@@ -76,16 +76,16 @@ export const DragDropUpload: React.FC<DragDropUploadProps> = ({ onFileSelect, di
   };
 
   return (
-    <div className="w-full space-y-3">
+    <div className="w-full space-y-2.5">
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !disabled && inputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-200 cursor-pointer flex flex-col items-center justify-center min-h-[220px] ${
+        className={`border border-dashed rounded-lg p-6 sm:p-8 text-center transition-colors cursor-pointer flex flex-col items-center justify-center min-h-[190px] ${
           isDragOver
-            ? 'border-indigo-500 bg-indigo-500/10 shadow-lg shadow-indigo-500/10 scale-[1.01]'
-            : 'border-slate-800 bg-slate-900/50 hover:bg-slate-900/80 hover:border-slate-700'
+            ? 'border-blue-500 bg-[#121826]'
+            : 'border-[#262c3e] bg-[#0c0d14] hover:bg-[#10121b] hover:border-[#353d54]'
         } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
       >
         <input
@@ -97,36 +97,36 @@ export const DragDropUpload: React.FC<DragDropUploadProps> = ({ onFileSelect, di
           onChange={handleInputChange}
         />
 
-        <div className="p-4 rounded-2xl bg-indigo-500/10 text-indigo-400 mb-3 border border-indigo-500/20">
-          <UploadCloud className="w-8 h-8" />
+        <div className="w-9 h-9 rounded bg-[#161a26] border border-[#242b3e] text-[#8694ad] flex items-center justify-center mb-2.5">
+          <Upload className="w-4 h-4 text-blue-400" />
         </div>
 
-        <h3 className="text-base font-semibold text-slate-100 mb-1">
-          {isDragOver ? 'Drop audio file here' : 'Click to browse or drag & drop'}
+        <h3 className="text-xs sm:text-sm font-medium text-[#edf1f8] mb-1">
+          {isDragOver ? 'Drop audio recording to upload' : 'Click to select or drag and drop audio file'}
         </h3>
         
-        <p className="text-xs text-slate-400 max-w-sm mb-3 leading-relaxed">
-          Upload recorded meetings, lectures, or conference discussions. Supported formats: MP3, WAV, M4A, MP4, AAC, FLAC (up to 150MB).
+        <p className="text-xs text-[#717e97] max-w-sm mb-3 leading-relaxed">
+          Supports meeting recordings, board sessions, and team discussions up to 150MB.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-slate-500">
-          <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">.mp3</span>
-          <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">.wav</span>
-          <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">.m4a</span>
-          <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">.mp4</span>
-          <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">.webm</span>
+        <div className="flex flex-wrap items-center justify-center gap-1 text-[11px] text-[#5e6b83] font-mono">
+          <span className="px-1.5 py-0.5 rounded bg-[#131622] border border-[#1e2334]">.mp3</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#131622] border border-[#1e2334]">.wav</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#131622] border border-[#1e2334]">.m4a</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#131622] border border-[#1e2334]">.mp4</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#131622] border border-[#1e2334]">.webm</span>
         </div>
       </div>
 
       {selectedFile && (
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-sm">
-          <div className="flex items-center space-x-3 overflow-hidden">
-            <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 flex-shrink-0">
-              <FileAudio className="w-4 h-4" />
-            </div>
+        <div className="flex items-center justify-between p-3 rounded bg-[#11131b] border border-[#1f2434] text-xs">
+          <div className="flex items-center space-x-2.5 overflow-hidden">
+            <FileAudio className="w-4 h-4 text-blue-400 shrink-0" />
             <div className="truncate">
-              <p className="font-medium text-slate-100 truncate">{selectedFile.name}</p>
-              <p className="text-xs text-slate-400">{(selectedFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+              <p className="font-medium text-[#edf1f8] truncate">{selectedFile.name}</p>
+              <p className="text-[11px] text-[#717e97] font-mono tabular-nums">
+                {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
+              </p>
             </div>
           </div>
           {!disabled && (
@@ -135,7 +135,7 @@ export const DragDropUpload: React.FC<DragDropUploadProps> = ({ onFileSelect, di
                 e.stopPropagation();
                 clearFile();
               }}
-              className="p-1 hover:bg-slate-800 rounded-md text-slate-400 hover:text-slate-200 transition-colors"
+              className="p-1 hover:bg-[#1a1f2e] rounded text-[#6c7891] hover:text-[#d3dbe9] transition-colors cursor-pointer"
               title="Remove file"
             >
               <X className="w-4 h-4" />
@@ -145,8 +145,8 @@ export const DragDropUpload: React.FC<DragDropUploadProps> = ({ onFileSelect, di
       )}
 
       {errorMessage && (
-        <div className="flex items-start space-x-2.5 p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs">
-          <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+        <div className="flex items-center gap-1.5 text-xs text-rose-400 p-2.5 rounded bg-[#241113] border border-[#441a1f]">
+          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}

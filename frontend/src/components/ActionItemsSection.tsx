@@ -7,7 +7,6 @@ import {
   AlertCircle,
   Copy,
   Check,
-  Tag,
   Loader2,
   Trash2,
 } from 'lucide-react';
@@ -36,7 +35,6 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [syncError, setSyncError] = useState<{ id: string; message: string } | null>(null);
 
-  // Sync state if props change
   React.useEffect(() => {
     setItems(actionItems);
   }, [actionItems]);
@@ -117,40 +115,34 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
 
   if (!actionItems || actionItems.length === 0) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center text-slate-500 text-sm">
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-6 text-center text-[#738099] text-xs">
         No actionable tasks or deadlines were detected for this meeting.
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
-        <div className="flex items-center space-x-2.5">
-          <div className="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <CheckSquare className="w-4 h-4" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider">
-              Action Items ({items.length})
-            </h3>
-            <p className="text-[11px] text-slate-500">
-              {completedCount} of {items.length} completed
-            </p>
-          </div>
+    <div className="space-y-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 border-b border-[#1b202d]">
+        <div className="space-y-0.5">
+          <h3 className="text-xs font-semibold text-[#f1f4f9] uppercase tracking-wider">
+            Action Items ({items.length})
+          </h3>
+          <p className="text-[11px] text-[#717e97] font-mono tabular-nums">
+            {completedCount} of {items.length} tasks completed
+          </p>
         </div>
 
-        {/* Priority Filter */}
-        <div className="flex items-center gap-1 text-xs">
-          <span className="text-slate-500 text-[11px] mr-1">Priority:</span>
+        {/* Priority Tabs */}
+        <div className="flex items-center bg-[#131621] p-0.5 rounded border border-[#202534] text-xs">
           {(['ALL', 'high', 'medium', 'low'] as const).map((p) => (
             <button
               key={p}
               onClick={() => setPriorityFilter(p)}
-              className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer capitalize ${
+              className={`px-2 py-0.5 rounded text-[11px] capitalize transition-colors cursor-pointer ${
                 priorityFilter === p
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'bg-slate-800/80 text-slate-400 hover:text-slate-200'
+                  ? 'bg-[#222839] text-white border border-[#313a52] font-medium'
+                  : 'text-[#7e8aa4] hover:text-[#d4dceb]'
               }`}
             >
               {p}
@@ -159,91 +151,91 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
         </div>
       </div>
 
-      {/* Google Calendar Connection Notice Banner */}
+      {/* Google Calendar Connection Banner (if not connected) */}
       {!isCalendarConnected && onConnectCalendar && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-slate-300">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded bg-[#131722] border border-[#202738] text-xs text-[#8f9bb3]">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-indigo-400 flex-shrink-0" />
-            <span>Connect Google Calendar to schedule action items and deadlines directly with one click.</span>
+            <Calendar className="w-4 h-4 text-blue-400 shrink-0" />
+            <span>Connect Google Calendar to sync deadlines with one click.</span>
           </div>
           <button
             onClick={onConnectCalendar}
-            className="self-start sm:self-auto px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold cursor-pointer transition-colors whitespace-nowrap shadow-sm text-[11px]"
+            className="self-start sm:self-auto px-2.5 py-1 bg-[#1e2538] hover:bg-[#273048] text-white border border-[#323d5a] rounded text-[11px] font-medium cursor-pointer transition-colors whitespace-nowrap"
           >
-            Connect Google Calendar
+            Connect Calendar
           </button>
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-3">
+      <div className="space-y-2.5">
         {filteredItems.map((item, index) => {
           const isDone = item.status === 'completed';
 
           return (
             <div
               key={item.id || index}
-              className={`group bg-slate-900 border rounded-2xl p-4 sm:p-5 shadow-lg space-y-3 transition-all ${
+              className={`group bg-[#10121a] border rounded-lg p-3.5 space-y-2.5 transition-colors ${
                 isDone
-                  ? 'border-slate-800/60 opacity-60 bg-slate-950/40'
+                  ? 'border-[#1b1f2b] opacity-65 bg-[#0b0c12]'
                   : item.priority === 'high'
-                  ? 'border-rose-500/30 border-l-4 border-l-rose-500'
+                  ? 'border-[#1f2434] border-l-2 border-l-rose-500/80'
                   : item.priority === 'medium'
-                  ? 'border-amber-500/30 border-l-4 border-l-amber-500'
-                  : 'border-slate-800 border-l-4 border-l-blue-500'
+                  ? 'border-[#1f2434] border-l-2 border-l-amber-500/80'
+                  : 'border-[#1f2434] border-l-2 border-l-blue-500/80'
               }`}
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="flex items-start gap-3 flex-1">
+                <div className="flex items-start gap-2.5 flex-1 min-w-0">
                   {/* Status Checkbox */}
                   <button
                     onClick={() => toggleStatus(item.id)}
-                    className="mt-0.5 text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer"
+                    className="mt-0.5 text-[#5e6b83] hover:text-white transition-colors cursor-pointer shrink-0"
+                    aria-label={isDone ? 'Mark as incomplete' : 'Mark as complete'}
                   >
                     {isDone ? (
-                      <CheckSquare className="w-5 h-5 text-emerald-400" />
+                      <CheckSquare className="w-4 h-4 text-emerald-400" />
                     ) : (
-                      <Square className="w-5 h-5" />
+                      <Square className="w-4 h-4" />
                     )}
                   </button>
 
-                  <div className="space-y-2 flex-1">
+                  <div className="space-y-1.5 flex-1 min-w-0">
                     <p
-                      className={`text-sm font-medium leading-snug ${
-                        isDone ? 'line-through text-slate-400' : 'text-slate-100'
+                      className={`text-xs sm:text-sm font-medium leading-relaxed ${
+                        isDone ? 'line-through text-[#6a768e]' : 'text-[#edf1f8]'
                       }`}
                     >
                       {item.task}
                     </p>
 
-                    {/* Metadata Badges */}
+                    {/* Metadata Chips */}
                     <div className="flex items-center gap-2 flex-wrap text-xs">
-                      {/* Priority Badge */}
+                      {/* Priority */}
                       <span
-                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider ${
+                        className={`px-1.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider ${
                           item.priority === 'high'
-                            ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                            ? 'text-rose-400 bg-[#241113] border border-[#441a1f]'
                             : item.priority === 'medium'
-                            ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                            : 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                            ? 'text-amber-400 bg-[#241a10] border border-[#442e1a]'
+                            : 'text-blue-400 bg-[#121c2e] border border-[#1f3152]'
                         }`}
                       >
-                        <AlertCircle className="w-3 h-3" />
                         {item.priority}
                       </span>
 
                       {/* Assignee */}
                       {item.assignee && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 text-slate-300 border border-slate-800 text-[11px]">
-                          <User className="w-3 h-3 text-indigo-400" />
-                          <span className="text-slate-400">Assignee:</span> {item.assignee}
+                        <span className="inline-flex items-center gap-1 text-[11px] text-[#8e9bb2] bg-[#161a25] px-2 py-0.5 rounded border border-[#242b3d] font-mono">
+                          <User className="w-3 h-3 text-[#64718a]" />
+                          {item.assignee}
                         </span>
                       )}
 
                       {/* Deadline */}
                       {item.deadline && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 text-amber-300/90 border border-amber-500/20 text-[11px]">
-                          <Calendar className="w-3 h-3 text-amber-400" />
-                          <span className="text-slate-400">Due:</span> {item.deadline}
+                        <span className="inline-flex items-center gap-1 text-[11px] text-[#8e9bb2] bg-[#161a25] px-2 py-0.5 rounded border border-[#242b3d] font-mono tabular-nums">
+                          <Calendar className="w-3 h-3 text-[#64718a]" />
+                          {item.deadline}
                         </span>
                       )}
 
@@ -253,10 +245,9 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
                           {item.tags.map((t, idx) => (
                             <span
                               key={idx}
-                              className="inline-flex items-center gap-0.5 text-[10px] text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800 font-mono"
+                              className="text-[10px] text-[#717d94] font-mono"
                             >
-                              <Tag className="w-2.5 h-2.5 text-slate-500" />
-                              {t}
+                              #{t}
                             </span>
                           ))}
                         </div>
@@ -265,30 +256,26 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
+                <div className="flex items-center gap-1.5 shrink-0">
                   {/* Google Calendar Action */}
                   {item.google_event_id ? (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 text-xs">
                       <span
                         title={`Google Event ID: ${item.google_event_id}`}
-                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-lg border border-emerald-500/20"
+                        className="inline-flex items-center gap-1 text-[11px] text-emerald-400 bg-[#0e1f18] px-2 py-0.5 rounded border border-[#1a3d2e] font-mono"
                       >
-                        <Check className="w-3.5 h-3.5" /> Added
+                        <Check className="w-3 h-3" /> Synced
                       </span>
                       <button
                         onClick={() => handleRemoveFromCalendar(item.id)}
                         disabled={removingId === item.id}
-                        title="Remove event from Google Calendar"
-                        className="inline-flex items-center gap-1 text-[11px] font-medium text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 px-2 py-1 rounded-lg border border-rose-500/20 transition-all cursor-pointer"
+                        title="Remove from Google Calendar"
+                        className="p-1 text-[#64718a] hover:text-rose-400 transition-colors cursor-pointer"
                       >
                         {removingId === item.id ? (
-                          <>
-                            <Loader2 className="w-3 h-3 animate-spin" /> Removing...
-                          </>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
                         ) : (
-                          <>
-                            <Trash2 className="w-3 h-3" /> Remove
-                          </>
+                          <Trash2 className="w-3.5 h-3.5" />
                         )}
                       </button>
                     </div>
@@ -301,20 +288,16 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
                           ? 'Connect Google Calendar to schedule this action item'
                           : 'Schedule this action item on Google Calendar'
                       }
-                      className={`inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
-                        isCalendarConnected
-                          ? 'bg-indigo-600 hover:bg-indigo-500 text-white border-indigo-500/30 shadow-sm'
-                          : 'bg-slate-800/80 hover:bg-slate-700 text-slate-300 border-slate-700'
-                      }`}
+                      className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#161a25] hover:bg-[#1f2536] text-[#c1cce0] border border-[#242b3d] transition-colors cursor-pointer"
                     >
                       {syncingId === item.id ? (
                         <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Adding...
+                          <Loader2 className="w-3 h-3 animate-spin" /> Syncing...
                         </>
                       ) : (
                         <>
-                          <Calendar className="w-3.5 h-3.5 text-indigo-300" />
-                          {isCalendarConnected ? 'Add to Calendar' : 'Connect Calendar'}
+                          <Calendar className="w-3 h-3 text-blue-400" />
+                          <span>{isCalendarConnected ? 'Sync' : 'Connect'}</span>
                         </>
                       )}
                     </button>
@@ -323,7 +306,8 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
                   {onFindInTranscript && (
                     <button
                       onClick={() => onFindInTranscript(item.task)}
-                      className="text-[11px] text-indigo-400 hover:text-indigo-300 px-2 py-1 rounded bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 transition-all cursor-pointer"
+                      className="text-[11px] text-[#8e9bb2] hover:text-white px-2 py-0.5 rounded bg-[#161a25] hover:bg-[#1f2536] border border-[#242b3d] transition-colors cursor-pointer"
+                      title="Jump to where this was discussed in the transcript"
                     >
                       Locate
                     </button>
@@ -332,21 +316,21 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
                   <button
                     onClick={() => copyItem(item)}
                     title="Copy task"
-                    className="p-1.5 text-slate-400 hover:text-slate-200 rounded-lg hover:bg-slate-800 transition-all cursor-pointer"
+                    className="p-1 text-[#64718a] hover:text-[#d3dbe9] rounded transition-colors cursor-pointer"
                   >
                     {copiedId === item.id ? (
-                      <Check className="w-4 h-4 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
                     ) : (
-                      <Copy className="w-4 h-4" />
+                      <Copy className="w-3.5 h-3.5" />
                     )}
                   </button>
                 </div>
               </div>
 
-              {/* Sync Error Banner */}
+              {/* Sync Error Notice */}
               {syncError && syncError.id === item.id && (
-                <div className="pt-2 text-[11px] text-rose-400 flex items-center gap-1.5 border-t border-slate-800">
-                  <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
+                <div className="text-[11px] text-rose-400 flex items-center gap-1.5 border-t border-[#241113] pt-2 font-mono">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                   <span>{syncError.message}</span>
                 </div>
               )}
@@ -357,4 +341,3 @@ export const ActionItemsSection: React.FC<ActionItemsSectionProps> = ({
     </div>
   );
 };
-

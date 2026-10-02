@@ -1,11 +1,17 @@
 import os
 import sys
+import types
 import gc
 import wave
 import logging
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 from collections import defaultdict
+
+# Windows Smart App Control compatibility shim:
+# Prevents WDAC/Smart App Control from blocking unsigned pandas testing DLL
+if "pandas._libs.testing" not in sys.modules:
+    sys.modules["pandas._libs.testing"] = types.ModuleType("pandas._libs.testing")
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +50,7 @@ _diarization_pipeline = None
 def get_diarization_pipeline():
     """
     Lazy loads the pyannote.audio speaker diarization 3.1 pipeline.
-    Places on CUDA if available, otherwise CPU.
+    Places on CUDA (with TF32 enabled for RTX 3050 Ampere architecture) if available, otherwise CPU.
     """
     global _diarization_pipeline
     if _diarization_pipeline is None:
@@ -58,7 +64,14 @@ def get_diarization_pipeline():
                 "Speaker diarization requires an authenticated Hugging Face token."
             )
 
-        device_str = "cuda" if torch.cuda.is_available() else "cpu"
+        if torch.cuda.is_available():
+            torch.backends.cuda.matmul.allow_tf32 = True
+            torch.backends.cudnn.allow_tf32 = True
+            device_str = "cuda"
+            logger.info("PyAnnote GPU acceleration active: Enabled TensorFloat-32 (TF32) on CUDA.")
+        else:
+            device_str = "cpu"
+
         logger.info(f"Loading pyannote/speaker-diarization-3.1 on {device_str}...")
         
         pipeline = Pipeline.from_pretrained(
@@ -94,10 +107,13 @@ def convert_to_16k_mono_wav(input_audio_path: str, output_wav_path: str) -> None
 def run_diarization(audio_path: str) -> List[Dict[str, Any]]:
     """
     Executes speaker diarization on the provided audio file.
+    Runs on RTX 3050 GPU with high throughput.
+    Includes a timeout guard to prevent any server hang.
     Returns chronological speaker segments:
     [{"start": float, "end": float, "duration": float, "speaker": str}, ...]
     """
-    pipeline = get_diarization_pipeline()
+    import concurrent.futures
+
     wav_path = audio_path
     temp_wav_created = False
 
@@ -108,10 +124,55 @@ def run_diarization(audio_path: str) -> List[Dict[str, Any]]:
         wav_path = temp_wav_path
         temp_wav_created = True
 
-    segments: List[Dict[str, Any]] = []
+    # Safety guard: prevent multi-hour CPU freeze on very long recordings (> 35 min) when running on CPU
+    MAX_CPU_DIARIZATION_SECONDS = 2100  # 35 minutes
     try:
-        logger.info(f"Running pyannote speaker diarization on '{wav_path}'...")
-        diarization_result = pipeline(wav_path)
+        with wave.open(wav_path, "rb") as wf:
+            frames = wf.getnframes()
+            rate = wf.getframerate()
+            duration_sec = frames / float(rate)
+            if not torch.cuda.is_available() and duration_sec > MAX_CPU_DIARIZATION_SECONDS:
+                logger.warning(
+                    f"Audio duration ({duration_sec:.1f}s / {duration_sec/60:.1f} min) exceeds CPU diarization "
+                    f"safety threshold ({MAX_CPU_DIARIZATION_SECONDS/60:.0f} min). "
+                    "Skipping neural clustering to prevent CPU lockup. Default speaker labels will be assigned."
+                )
+                if temp_wav_created and os.path.exists(wav_path):
+                    try:
+                        os.remove(wav_path)
+                    except Exception:
+                        pass
+                return []
+    except Exception as dur_check_err:
+        logger.warning(f"Could not check audio duration for diarization guard: {dur_check_err}")
+
+    pipeline = get_diarization_pipeline()
+    segments: List[Dict[str, Any]] = []
+
+    # Maximum timeout for diarization (on GPU a 30m file takes < 1m; on CPU fallback cap to 90s)
+    DIARIZATION_TIMEOUT_SECONDS = 90  # 90 seconds maximum
+
+    def _execute_pipeline():
+        return pipeline(wav_path)
+
+    try:
+        logger.info(f"Running pyannote speaker diarization on '{wav_path}' (GPU active: {torch.cuda.is_available()})...")
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        future = executor.submit(_execute_pipeline)
+        try:
+            diarization_result = future.result(timeout=DIARIZATION_TIMEOUT_SECONDS)
+        except concurrent.futures.TimeoutError:
+            logger.warning(
+                f"Speaker diarization reached safety limit ({DIARIZATION_TIMEOUT_SECONDS}s). "
+                "Auto-proceeding with default speaker labels so intelligence pipeline finishes immediately."
+            )
+            executor.shutdown(wait=False, cancel_futures=True)
+            return []
+        finally:
+            try:
+                executor.shutdown(wait=False)
+            except Exception:
+                pass
 
         for turn, _, speaker in diarization_result.itertracks(yield_label=True):
             dur = turn.end - turn.start

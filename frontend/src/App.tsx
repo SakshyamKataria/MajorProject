@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import {
-  Sparkles,
-  CheckCircle,
-  Server,
-  FileText,
-  UploadCloud,
+  FolderArchive,
+  Upload,
+  MessageSquare,
   Activity,
-  FolderOpen,
-  FileSearch,
+  FileText,
   Calendar,
   AlertCircle,
+  CheckCircle2,
   X,
   ExternalLink,
+  Layers,
 } from 'lucide-react';
 import { UploadPage } from './pages/UploadPage';
 import { MeetingsListPage } from './pages/MeetingsListPage';
@@ -79,13 +78,13 @@ function App() {
   };
 
   const handleDisconnectCalendar = async () => {
-    if (!confirm('Are you sure you want to disconnect Google Calendar?')) return;
+    if (!confirm('Disconnect Google Calendar? Scheduled action items will remain in your calendar.')) return;
     try {
       await disconnectCalendar();
       await loadCalendarStatus();
       setCalendarToast({
         type: 'success',
-        message: 'Google Calendar disconnected successfully.',
+        message: 'Google Calendar disconnected.',
       });
       setTimeout(() => setCalendarToast(null), 5000);
     } catch (err: any) {
@@ -105,16 +104,15 @@ function App() {
     if (params.get('calendar_connected') === 'true') {
       setCalendarToast({
         type: 'success',
-        message: 'Google Calendar successfully connected! You can now sync meeting action items with 1 click.',
+        message: 'Google Calendar connected. Action items can now be synced directly to your schedule.',
       });
-      // Clean query string from browser bar
       window.history.replaceState({}, document.title, window.location.pathname);
       loadCalendarStatus();
       setTimeout(() => setCalendarToast(null), 6000);
     } else if (params.get('calendar_error')) {
       setCalendarToast({
         type: 'error',
-        message: `Google Calendar connection error: ${params.get('calendar_error')}`,
+        message: `Google Calendar authentication error: ${params.get('calendar_error')}`,
       });
       window.history.replaceState({}, document.title, window.location.pathname);
       setTimeout(() => setCalendarToast(null), 8000);
@@ -134,135 +132,132 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      {/* Top Navigation Bar */}
-      <header className="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div
-            onClick={() => setActiveTab('library')}
-            className="flex items-center space-x-3 cursor-pointer select-none"
-          >
-            <div className="p-2 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="font-bold text-slate-100 text-base sm:text-lg tracking-tight">
-                MeetFlow <span className="text-indigo-400">AI</span>
-              </span>
-              <span className="hidden sm:inline-block ml-2 text-xs text-slate-500 font-normal">
-                Autonomous Meeting Intelligence
-              </span>
-            </div>
+    <div className="min-h-screen bg-[#0a0b10] text-[#e1e4ea] flex flex-col antialiased">
+      {/* Top Application Bar */}
+      <header className="border-b border-[#1f2330] bg-[#0f1118] sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+          {/* Brand mark */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setActiveTab('library')}
+              className="flex items-center gap-2.5 text-left group cursor-pointer focus:outline-hidden"
+            >
+              <div className="w-7 h-7 rounded bg-[#1e2333] border border-[#2d344d] flex items-center justify-center text-blue-400 group-hover:border-blue-500/50 transition-colors">
+                <Layers className="w-4 h-4" />
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-semibold text-sm tracking-tight text-[#f1f4f9] group-hover:text-white transition-colors">
+                  MeetFlow
+                </span>
+                <span className="text-[11px] font-mono text-[#687289] uppercase tracking-wider hidden sm:inline">
+                  Intelligence
+                </span>
+              </div>
+            </button>
           </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <nav className="flex items-center space-x-1 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+          {/* Center Segmented Navigation Tabs */}
+          <nav className="flex items-center bg-[#141721] p-1 rounded-md border border-[#212635] text-xs font-medium">
+            <button
+              onClick={() => setActiveTab('library')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer ${
+                activeTab === 'library'
+                  ? 'bg-[#22283a] text-white border border-[#323a54] shadow-xs'
+                  : 'text-[#8b95ad] hover:text-[#e1e5ee] hover:bg-[#191d2a]'
+              }`}
+            >
+              <FolderArchive className="w-3.5 h-3.5" />
+              <span>Library</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('chat')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer ${
+                activeTab === 'chat'
+                  ? 'bg-[#22283a] text-white border border-[#323a54] shadow-xs'
+                  : 'text-[#8b95ad] hover:text-[#e1e5ee] hover:bg-[#191d2a]'
+              }`}
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>Q&A</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('upload')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer ${
+                activeTab === 'upload'
+                  ? 'bg-[#22283a] text-white border border-[#323a54] shadow-xs'
+                  : 'text-[#8b95ad] hover:text-[#e1e5ee] hover:bg-[#191d2a]'
+              }`}
+            >
+              <Upload className="w-3.5 h-3.5" />
+              <span>Upload & Record</span>
+            </button>
+
+            {activeTab === 'detail' && selectedMeetingId && (
               <button
-                onClick={() => setActiveTab('library')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  activeTab === 'library'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
+                onClick={() => setActiveTab('detail')}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer bg-[#22283a] text-white border border-[#323a54] shadow-xs"
               >
-                <FolderOpen className="w-3.5 h-3.5" /> Search & Library
+                <FileText className="w-3.5 h-3.5 text-blue-400" />
+                <span>Meeting Detail</span>
               </button>
+            )}
+          </nav>
 
-              <button
-                onClick={() => setActiveTab('chat')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  activeTab === 'chat'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5 text-indigo-400" /> Ask AI
-              </button>
-
-              <button
-                onClick={() => setActiveTab('upload')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  activeTab === 'upload'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <UploadCloud className="w-3.5 h-3.5" /> Upload Audio
-              </button>
-
-              {activeTab === 'detail' && selectedMeetingId && (
-                <button
-                  onClick={() => setActiveTab('detail')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer bg-indigo-600 text-white shadow-sm"
-                >
-                  <FileSearch className="w-3.5 h-3.5" /> Meeting Details
-                </button>
-              )}
-
+          {/* Right Status Actions */}
+          <div className="flex items-center gap-2.5">
+            {/* Google Calendar Status */}
+            {calendarStatus?.connected ? (
               <button
                 onClick={() => setActiveTab('health')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  activeTab === 'health'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
+                className="hidden md:flex items-center gap-1.5 text-xs text-[#8f9bb3] hover:text-white bg-[#141721] px-2.5 py-1 rounded border border-[#212635] hover:border-[#2f364b] transition-colors cursor-pointer"
+                title="Calendar synchronized. Click to manage."
               >
-                <Activity className="w-3.5 h-3.5" /> Diagnostics
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span>Calendar Synced</span>
               </button>
-            </nav>
+            ) : (
+              <a
+                href={getCalendarAuthorizeUrl()}
+                className="hidden sm:flex items-center gap-1.5 text-xs text-[#95a1bc] hover:text-white bg-[#141721] hover:bg-[#1a1e2c] px-2.5 py-1 rounded border border-[#212635] hover:border-[#2f364b] transition-colors cursor-pointer"
+                title="Connect Google Calendar to schedule action items"
+              >
+                <Calendar className="w-3.5 h-3.5 text-[#6c7895]" />
+                <span>Connect Calendar</span>
+              </a>
+            )}
 
-            <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
-              {/* Google Calendar Connection Status in Top Bar */}
-              {calendarStatus?.connected ? (
-                <div
-                  className="flex items-center gap-1.5 text-xs text-indigo-300 bg-indigo-500/10 px-2.5 py-1 rounded-full border border-indigo-500/20 font-medium"
-                  title={`Google Calendar connected (User: ${calendarStatus.user_id || 'active'})`}
-                >
-                  <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-                  <span className="hidden md:inline">Calendar</span> Connected
-                </div>
-              ) : (
-                <a
-                  href={getCalendarAuthorizeUrl()}
-                  className="flex items-center gap-1.5 text-xs text-white bg-indigo-600 hover:bg-indigo-500 px-2.5 py-1 rounded-lg font-medium transition-colors cursor-pointer shadow-sm"
-                  title="Connect Google Calendar to sync action items directly"
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Connect Calendar</span>
-                  <span className="sm:hidden">Calendar</span>
-                  <ExternalLink className="w-3 h-3 text-indigo-200" />
-                </a>
-              )}
-
-              {backendHealth?.status === 'ok' ? (
-                <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span className="hidden md:inline">Backend</span> Online
-                </div>
-              ) : (
-                <div className="flex items-center gap-1.5 text-xs text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-rose-400"></span>
-                  <span className="hidden md:inline">Backend</span> Offline
-                </div>
-              )}
-            </div>
+            {/* Diagnostics Link */}
+            <button
+              onClick={() => setActiveTab('health')}
+              className={`p-1.5 rounded text-xs transition-colors cursor-pointer ${
+                activeTab === 'health'
+                  ? 'bg-[#22283a] text-white border border-[#323a54]'
+                  : 'text-[#6c7895] hover:text-[#d0d7e6] hover:bg-[#141721]'
+              }`}
+              title="System Diagnostics & API Status"
+              aria-label="System Diagnostics"
+            >
+              <Activity className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Global Calendar Notification Toast */}
+      {/* Global Notification Toast */}
       {calendarToast && (
         <div
-          className={`border-b px-4 py-2.5 flex items-center justify-between transition-all ${
+          className={`border-b px-4 py-2 flex items-center justify-between text-xs font-medium transition-all ${
             calendarToast.type === 'success'
-              ? 'bg-emerald-950/80 border-emerald-800/80 text-emerald-200'
-              : 'bg-rose-950/80 border-rose-800/80 text-rose-200'
+              ? 'bg-[#0f1f18] border-[#1b3a2c] text-[#86efac]'
+              : 'bg-[#241113] border-[#441a1f] text-[#fca5a5]'
           }`}
         >
           <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
+            <div className="flex items-center gap-2">
               {calendarToast.type === 'success' ? (
-                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
               ) : (
                 <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
               )}
@@ -270,16 +265,16 @@ function App() {
             </div>
             <button
               onClick={() => setCalendarToast(null)}
-              className="text-slate-400 hover:text-slate-200 p-1 rounded transition-colors cursor-pointer ml-4"
-              aria-label="Dismiss message"
+              className="text-[#64748b] hover:text-[#e2e8f0] p-1 rounded transition-colors cursor-pointer"
+              aria-label="Dismiss notification"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
       )}
 
-      {/* Main Content View */}
+      {/* Main Content Area */}
       <main className="flex-1 flex flex-col">
         {activeTab === 'library' && (
           <MeetingsListPage
@@ -289,7 +284,7 @@ function App() {
         )}
 
         {activeTab === 'chat' && (
-          <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center justify-start">
+          <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col">
             <MeetingChatPanel onOpenMeeting={handleOpenMeeting} />
           </div>
         )}
@@ -307,16 +302,11 @@ function App() {
 
         {activeTab === 'health' && (
           <div className="flex-1 flex items-center justify-center p-6">
-            <div className="max-w-xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                <div className="flex items-center space-x-3">
-                  <div className="p-3 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
-                    <Server className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-slate-100">System Diagnostics</h2>
-                    <p className="text-xs text-slate-400">Service health & connectivity</p>
-                  </div>
+            <div className="max-w-xl w-full bg-[#11131a] border border-[#212635] rounded-lg p-6 shadow-sm space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[#1f2433]">
+                <div className="space-y-0.5">
+                  <h2 className="text-base font-semibold text-[#f1f4f9]">System Diagnostics</h2>
+                  <p className="text-xs text-[#737f99]">Pipeline connectivity and authentication status</p>
                 </div>
                 <button
                   onClick={() => {
@@ -324,110 +314,120 @@ function App() {
                     loadCalendarStatus();
                   }}
                   disabled={loading || calendarLoading}
-                  className="text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition-colors cursor-pointer"
+                  className="text-xs px-3 py-1.5 bg-[#181c28] hover:bg-[#202536] text-[#c4ccd9] rounded border border-[#2b3245] transition-colors cursor-pointer"
                 >
-                  {loading || calendarLoading ? 'Checking...' : 'Refresh All'}
+                  {loading || calendarLoading ? 'Checking...' : 'Refresh'}
                 </button>
               </div>
 
               {/* Backend Service Box */}
-              <div className="p-4 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-3">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-400 font-medium">Backend API Status:</span>
+              <div className="p-4 bg-[#0c0d13] rounded border border-[#1f2332] space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-[#8b95ad] font-medium">Backend REST API</span>
                   {loading ? (
-                    <span className="text-xs text-amber-400 animate-pulse font-medium">Checking...</span>
+                    <span className="text-amber-400 font-mono">connecting...</span>
                   ) : backendHealth?.status === 'ok' ? (
-                    <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-                      <CheckCircle className="w-3.5 h-3.5" /> ONLINE
+                    <span className="flex items-center gap-1.5 text-emerald-400 font-mono font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      HEALTHY (Port 8000)
                     </span>
                   ) : (
-                    <span className="text-xs text-rose-400 font-semibold px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/20">
+                    <span className="flex items-center gap-1.5 text-rose-400 font-mono font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                       OFFLINE
                     </span>
                   )}
                 </div>
 
                 {backendHealth && (
-                  <div className="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
-                    <div>Service: <span className="text-slate-200">{backendHealth.service}</span></div>
-                    <div>Environment: <span className="text-slate-200">{backendHealth.environment}</span></div>
-                    <div>Version: <span className="text-slate-200">{backendHealth.version}</span></div>
+                  <div className="text-xs text-[#737f99] space-y-1 pt-2 border-t border-[#181c27] font-mono">
+                    <div className="flex justify-between">
+                      <span>Service:</span>
+                      <span className="text-[#c1cbdd]">{backendHealth.service}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Environment:</span>
+                      <span className="text-[#c1cbdd]">{backendHealth.environment}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Version:</span>
+                      <span className="text-[#c1cbdd]">{backendHealth.version}</span>
+                    </div>
                   </div>
                 )}
 
                 {error && (
-                  <p className="text-xs text-rose-400/90 pt-1">
-                    Backend not responding on port 8000: {error}
+                  <p className="text-xs text-rose-400 pt-1 font-mono">
+                    {error}
                   </p>
                 )}
               </div>
 
-              {/* Google Calendar Integration Box */}
-              <div className="p-4 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-3">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-400 font-medium flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-indigo-400" /> Google Calendar OAuth:
-                  </span>
+              {/* Google Calendar Box */}
+              <div className="p-4 bg-[#0c0d13] rounded border border-[#1f2332] space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-[#8b95ad] font-medium">Google Calendar Integration</span>
                   {calendarLoading ? (
-                    <span className="text-xs text-amber-400 animate-pulse font-medium">Checking...</span>
+                    <span className="text-amber-400 font-mono">checking...</span>
                   ) : calendarStatus?.connected ? (
-                    <span className="flex items-center gap-1.5 text-xs text-indigo-400 font-semibold px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">
-                      <CheckCircle className="w-3.5 h-3.5" /> CONNECTED
+                    <span className="flex items-center gap-1.5 text-blue-400 font-mono font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      CONNECTED
                     </span>
                   ) : (
-                    <span className="text-xs text-slate-400 font-semibold px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+                    <span className="text-[#647087] font-mono">
                       NOT CONNECTED
                     </span>
                   )}
                 </div>
 
                 {calendarStatus?.connected ? (
-                  <div className="text-xs text-slate-400 space-y-2 pt-2 border-t border-slate-800">
-                    <div className="font-mono">
-                      User ID: <span className="text-slate-200">{calendarStatus.user_id || 'Current User'}</span>
+                  <div className="text-xs text-[#737f99] space-y-2 pt-2 border-t border-[#181c27]">
+                    <div className="font-mono flex justify-between">
+                      <span>Account ID:</span>
+                      <span className="text-[#c1cbdd]">{calendarStatus.user_id || 'Primary User'}</span>
                     </div>
                     {calendarStatus.token_expiry && (
-                      <div className="font-mono text-slate-400">
-                        Token Expiry: <span className="text-slate-300">{new Date(calendarStatus.token_expiry).toLocaleString()}</span>
+                      <div className="font-mono flex justify-between">
+                        <span>Token Expiry:</span>
+                        <span className="text-[#c1cbdd]">{new Date(calendarStatus.token_expiry).toLocaleString()}</span>
                       </div>
                     )}
                     <div className="flex items-center gap-2 pt-2">
                       <button
                         onClick={handleDisconnectCalendar}
-                        className="text-xs px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-lg transition-colors cursor-pointer font-medium"
+                        className="text-xs px-2.5 py-1 text-rose-400 hover:text-rose-300 bg-[#211215] hover:bg-[#2c171b] border border-[#3f1f25] rounded transition-colors cursor-pointer"
                       >
-                        Disconnect Calendar
+                        Disconnect
                       </button>
                       <a
                         href={getCalendarAuthorizeUrl()}
-                        className="text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg transition-colors cursor-pointer"
+                        className="text-xs px-2.5 py-1 text-[#9aa7be] hover:text-white bg-[#161a25] hover:bg-[#1e2333] border border-[#272e42] rounded transition-colors cursor-pointer"
                       >
-                        Re-authenticate
+                        Re-authorize
                       </a>
                     </div>
                   </div>
                 ) : (
-                  <div className="pt-2 border-t border-slate-800 space-y-2">
-                    <p className="text-xs text-slate-400">
-                      Connect your Google Calendar to sync meeting deadlines and action items with 1 click.
+                  <div className="pt-2 border-t border-[#181c27] space-y-2 text-xs">
+                    <p className="text-[#737f99]">
+                      OAuth 2.0 authorization allows MeetFlow to dispatch scheduled deadlines to Google Calendar with one click.
                     </p>
                     <a
                       href={getCalendarAuthorizeUrl()}
-                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors font-medium cursor-pointer shadow-sm"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1e2538] hover:bg-[#273048] text-white border border-[#323d5a] rounded transition-colors cursor-pointer"
                     >
-                      <Calendar className="w-3.5 h-3.5" />
-                      Connect Google Calendar
-                      <ExternalLink className="w-3 h-3 text-indigo-200" />
+                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      Authorize Calendar Access
+                      <ExternalLink className="w-3 h-3 text-[#737f99]" />
                     </a>
                   </div>
                 )}
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <FileText className="w-3.5 h-3.5" /> Pipeline: faster-whisper + RoBERTa + Gemini 2.5 Flash
-                </span>
-                <span>FastAPI + Vite React TS</span>
+              <div className="pt-2 flex items-center justify-between text-xs text-[#5a647a] font-mono">
+                <span>faster-whisper + pyannote 3.1 + RoBERTa + Gemini 2.5 Flash</span>
+                <span>FastAPI + React 19</span>
               </div>
             </div>
           </div>

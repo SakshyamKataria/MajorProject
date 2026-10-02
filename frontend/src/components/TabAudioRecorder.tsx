@@ -248,80 +248,81 @@ export const TabAudioRecorder: React.FC<TabAudioRecorderProps> = ({ onRecordingC
   };
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-3">
       {!isRecording && !recordedFile && (
-        <div className="relative border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-200 flex flex-col items-center justify-center min-h-[220px] border-slate-800 bg-slate-900/50 hover:border-slate-700">
-          <div className="p-4 rounded-2xl bg-indigo-500/10 text-indigo-400 mb-3 border border-indigo-500/20">
-            <Radio className="w-8 h-8" />
+        <div className="border border-dashed border-[#242b3e] rounded-lg p-6 sm:p-7 text-center transition-colors bg-[#0d0f16] hover:border-[#333d57] flex flex-col items-center justify-center">
+          <div className="w-9 h-9 rounded bg-[#151824] text-[#8e9cb5] flex items-center justify-center mb-3 border border-[#22283a]">
+            <Radio className="w-4 h-4 text-blue-400" />
           </div>
 
-          <h3 className="text-base font-semibold text-slate-100 mb-1">
-            Record Live Audio from Browser Tab
+          <h3 className="text-xs sm:text-sm font-medium text-[#edf1f8] mb-1">
+            Capture Audio from Browser Tab
           </h3>
 
-          <p className="text-xs text-slate-400 max-w-sm mb-5 leading-relaxed">
-            Capture sound from a YouTube lecture, Google Meet, webinar, or podcast tab directly into Whisper & Gemini.
+          <p className="text-xs text-[#7e8ba2] max-w-sm mb-4 leading-relaxed">
+            Record meeting audio directly from a Google Meet, Zoom web, YouTube, or webinar tab.
           </p>
 
           <button
             type="button"
             onClick={startTabCapture}
             disabled={disabled}
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 transition-all hover:scale-[1.02] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded text-xs font-medium bg-[#1e2538] hover:bg-[#273048] text-white border border-[#303c5a] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Radio className="w-4 h-4 text-rose-300 animate-pulse" />
-            Select Tab & Start Recording
+            <Radio className="w-3.5 h-3.5 text-blue-400" />
+            Select Tab & Begin Capture
           </button>
 
-          <p className="text-[11px] text-slate-500 mt-3">
-            Make sure to check <span className="text-indigo-400 font-medium">'Also share tab audio'</span> in the browser popup.
+          <p className="text-[11px] text-[#5e6b83] mt-3">
+            Ensure you enable <span className="text-[#a0afca]">"Also share tab audio"</span> in the browser prompt.
           </p>
         </div>
       )}
 
       {/* Recording in Progress State */}
       {isRecording && (
-        <div className="p-6 rounded-2xl bg-slate-900/90 border border-rose-500/30 shadow-2xl space-y-5 animate-in fade-in duration-200">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-            <div className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping absolute" />
-                <div className="w-3 h-3 rounded-full bg-rose-500 relative" />
-              </div>
+        <div className="p-4 sm:p-5 rounded-lg bg-[#11131b] border border-[#3b1d24] space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#1f2230]">
+            <div className="flex items-center gap-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500" />
+              </span>
               <div>
-                <h4 className="text-sm font-bold text-slate-100">Recording Tab Audio...</h4>
-                <p className="text-xs text-slate-400">Capturing active audio stream</p>
+                <h4 className="text-xs sm:text-sm font-medium text-[#edf1f8]">Recording Tab Audio</h4>
+                <p className="text-[11px] text-[#78859e]">Capturing active stream</p>
               </div>
             </div>
-            <div className="font-mono text-lg font-bold text-rose-400 px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20">
+
+            <div className="font-mono text-sm font-medium text-rose-400 px-2.5 py-1 rounded bg-[#221015] border border-[#3d1921] tabular-nums">
               {formatTime(duration)}
             </div>
           </div>
 
-          {/* Sound Meter / Visualizer */}
+          {/* Sound Meter */}
           <div className="space-y-1.5">
-            <div className="flex justify-between text-[11px] text-slate-400">
+            <div className="flex justify-between text-[11px] text-[#6d7a94] font-mono">
               <span className="inline-flex items-center gap-1.5">
-                <Volume2 className="w-3.5 h-3.5 text-indigo-400" /> Audio Activity Level
+                <Volume2 className="w-3 h-3 text-[#58647d]" /> Signal Level
               </span>
-              <span className="font-mono">{audioLevel}%</span>
+              <span className="tabular-nums">{audioLevel}%</span>
             </div>
-            <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+            <div className="w-full h-1.5 bg-[#0b0c11] rounded-full overflow-hidden border border-[#1a1f2e]">
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 via-emerald-400 to-rose-400 rounded-full transition-all duration-75"
-                style={{ width: `${Math.max(4, audioLevel)}%` }}
+                className="h-full bg-blue-500 transition-all duration-75"
+                style={{ width: `${Math.max(2, audioLevel)}%` }}
               />
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-2">
+          <div className="flex items-center justify-end gap-2 pt-1">
             <button
               type="button"
               onClick={handleStopRecording}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-600/20 transition-all hover:scale-[1.02] cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium bg-[#291217] hover:bg-[#381820] text-rose-300 border border-[#481c25] transition-colors cursor-pointer"
             >
-              <Square className="w-3.5 h-3.5 fill-current" /> Stop Recording
+              <Square className="w-3 h-3 fill-current" /> Stop Recording
             </button>
           </div>
         </div>
@@ -329,15 +330,15 @@ export const TabAudioRecorder: React.FC<TabAudioRecorderProps> = ({ onRecordingC
 
       {/* Recorded File Ready State */}
       {recordedFile && (
-        <div className="p-5 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-4 animate-in fade-in duration-200">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-            <div className="flex items-center gap-3 overflow-hidden">
-              <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex-shrink-0">
-                <CheckCircle2 className="w-5 h-5" />
+        <div className="p-4 rounded-lg bg-[#10131d] border border-[#1b2d24] space-y-3">
+          <div className="flex items-center justify-between pb-2.5 border-b border-[#182126]">
+            <div className="flex items-center gap-2.5 overflow-hidden">
+              <div className="w-7 h-7 rounded bg-[#10241b] text-emerald-400 border border-[#1b3d2d] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-4 h-4" />
               </div>
               <div className="truncate">
-                <h4 className="text-sm font-semibold text-slate-100 truncate">{recordedFile.name}</h4>
-                <p className="text-xs text-slate-400 font-mono">
+                <h4 className="text-xs sm:text-sm font-medium text-[#edf1f8] truncate">{recordedFile.name}</h4>
+                <p className="text-[11px] text-[#71809a] font-mono tabular-nums">
                   {(recordedFile.size / (1024 * 1024)).toFixed(2)} MB • {formatTime(duration)} captured
                 </p>
               </div>
@@ -347,26 +348,26 @@ export const TabAudioRecorder: React.FC<TabAudioRecorderProps> = ({ onRecordingC
               type="button"
               onClick={handleReset}
               disabled={disabled}
-              className="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
+              className="text-xs px-2.5 py-1 rounded bg-[#161a26] hover:bg-[#1d2232] text-[#8e9cb5] border border-[#232a3d] flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
             >
-              <RefreshCw className="w-3 h-3" /> Record Again
+              <RefreshCw className="w-3 h-3" /> Retake
             </button>
           </div>
 
           {/* Audio Preview Player */}
           {previewUrl && (
-            <div className="flex items-center gap-3 bg-slate-950/80 p-3 rounded-xl border border-slate-800">
+            <div className="flex items-center gap-3 bg-[#0c0d13] p-2.5 rounded border border-[#1b202e]">
               <button
                 type="button"
                 onClick={togglePlayback}
-                className="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-all cursor-pointer flex-shrink-0"
+                className="w-7 h-7 rounded bg-[#1f2639] hover:bg-[#29324b] text-[#e2e8f5] border border-[#313c59] transition-colors cursor-pointer flex items-center justify-center shrink-0"
                 title={isPlaying ? 'Pause' : 'Play'}
               >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
+                {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
               </button>
-              <div className="flex-1 text-xs text-slate-400">
-                <p className="font-medium text-slate-200">Preview Tab Recording</p>
-                <p className="text-[11px]">Listen back to verify clarity before AI processing</p>
+              <div className="flex-1 text-xs text-[#718099] min-w-0">
+                <p className="font-medium text-[#d3dceb] text-xs truncate">Preview Tab Audio</p>
+                <p className="text-[11px] text-[#5e6b83]">Verify sound clarity before pipeline processing</p>
               </div>
               <audio
                 ref={audioPlayerRef}
@@ -380,8 +381,8 @@ export const TabAudioRecorder: React.FC<TabAudioRecorderProps> = ({ onRecordingC
       )}
 
       {error && (
-        <div className="flex items-start space-x-2.5 p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs">
-          <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+        <div className="flex items-start gap-2 p-3 rounded bg-[#241115] border border-[#441a22] text-rose-300 text-xs">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
           <span>{error}</span>
         </div>
       )}

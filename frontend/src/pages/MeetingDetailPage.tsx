@@ -3,16 +3,13 @@ import {
   ArrowLeft,
   Clock,
   FileText,
-  Sparkles,
-  CheckCircle,
-  Scale,
+  CheckCircle2,
   Copy,
   Check,
   RefreshCw,
   AlertCircle,
   FileAudio,
   Calendar,
-  Bot,
 } from 'lucide-react';
 import {
   fetchMeetingIntelligence,
@@ -158,35 +155,12 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
 
   if (loading) {
     return (
-      <div className="flex-1 flex flex-col max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 animate-pulse">
-        {/* Header Skeleton */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
-          <div className="flex items-center gap-2">
-            <div className="w-20 h-5 bg-slate-800 rounded-full" />
-            <div className="w-24 h-5 bg-slate-800 rounded-full" />
-            <div className="w-16 h-5 bg-slate-800 rounded-full" />
-          </div>
-          <div className="w-2/3 h-8 bg-slate-800 rounded-xl" />
-          <div className="w-1/2 h-4 bg-slate-800/80 rounded-lg" />
-        </div>
-
-        {/* Tabs Skeleton */}
-        <div className="flex space-x-4 border-b border-slate-800 pb-2">
-          <div className="w-36 h-8 bg-slate-800/80 rounded-lg" />
-          <div className="w-32 h-8 bg-slate-800/60 rounded-lg" />
-          <div className="w-40 h-8 bg-slate-800/60 rounded-lg" />
-        </div>
-
-        {/* Content Skeleton */}
-        <div className="space-y-6">
-          <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 space-y-3">
-            <div className="w-40 h-5 bg-slate-800 rounded-lg" />
-            <div className="w-full h-20 bg-slate-950/60 rounded-xl" />
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 h-48" />
-            <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 h-48" />
-          </div>
+      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-4">
+        <div className="h-6 w-32 bg-[#171a25] rounded" />
+        <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-6 space-y-3">
+          <div className="h-4 w-48 bg-[#171a25] rounded" />
+          <div className="h-7 w-2/3 bg-[#171a25] rounded" />
+          <div className="h-4 w-1/2 bg-[#171a25] rounded" />
         </div>
       </div>
     );
@@ -194,23 +168,23 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
 
   if (error || !meeting) {
     return (
-      <div className="max-w-3xl mx-auto p-6 space-y-4">
+      <div className="max-w-2xl mx-auto p-6 space-y-4">
         {onBack && (
           <button
             onClick={onBack}
-            className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-[#7e8aa4] hover:text-white transition-colors cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Meetings
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Archive
           </button>
         )}
-        <div className="p-6 bg-rose-500/10 border border-rose-500/30 rounded-2xl text-rose-300 space-y-3">
-          <div className="flex items-center gap-2 font-bold text-sm">
-            <AlertCircle className="w-5 h-5" /> Failed to Load Meeting
+        <div className="p-4 bg-[#241113] border border-[#441a1f] rounded text-rose-300 text-xs space-y-2">
+          <div className="flex items-center gap-1.5 font-medium">
+            <AlertCircle className="w-4 h-4" /> Failed to load meeting record
           </div>
-          <p className="text-xs">{error || 'Meeting not found.'}</p>
+          <p>{error || 'Meeting not found.'}</p>
           <button
             onClick={loadMeetingData}
-            className="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-semibold cursor-pointer"
+            className="px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded text-xs cursor-pointer"
           >
             Retry
           </button>
@@ -220,37 +194,39 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
   }
 
   return (
-    <div className="flex-1 flex flex-col max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-      {/* Top Header Card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
-        {onBack && (
-          <div>
-            <button
-              onClick={onBack}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer mb-2"
-            >
-              <ArrowLeft className="w-4 h-4" /> Back to Library
-            </button>
-          </div>
-        )}
+    <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-5">
+      {/* Back Link */}
+      {onBack && (
+        <div>
+          <button
+            onClick={onBack}
+            className="inline-flex items-center gap-1 text-xs text-[#727e96] hover:text-[#d3dbe8] transition-colors cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Meeting Archive</span>
+          </button>
+        </div>
+      )}
 
+      {/* Document Header Card */}
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-5 sm:p-6 space-y-4">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div className="space-y-2 max-w-3xl">
-            <div className="flex items-center gap-2.5 flex-wrap">
+            {/* Metadata Badges */}
+            <div className="flex items-center gap-2.5 flex-wrap text-xs font-mono">
               <span
-                className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize ${
+                className={`px-2 py-0.5 rounded text-[11px] capitalize ${
                   meeting.status === 'completed'
-                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                    ? 'text-emerald-400 bg-[#0f2119] border border-[#1b3d2e]'
                     : meeting.status === 'failed'
-                    ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                    : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
+                    ? 'text-rose-400 bg-[#241113] border border-[#441a1f]'
+                    : 'text-amber-400 bg-[#241a10] border border-[#442e1a]'
                 }`}
               >
-                <CheckCircle className="w-3.5 h-3.5" />
                 {meeting.status}
               </span>
 
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-[#6c7891] tabular-nums">
                 {new Date(meeting.created_at).toLocaleDateString('en-US', {
                   month: 'short',
                   day: 'numeric',
@@ -259,61 +235,62 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
               </span>
 
               {meeting.duration_seconds > 0 && (
-                <span className="inline-flex items-center gap-1 text-xs text-slate-400 bg-slate-950 px-2.5 py-0.5 rounded-full border border-slate-800 font-mono">
-                  <Clock className="w-3 h-3 text-slate-500" />
+                <span className="text-[#8997b1] tabular-nums flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-[#525c71]" />
                   {formatDuration(meeting.duration_seconds)}
                 </span>
               )}
 
-              <span className="inline-flex items-center gap-1 text-xs text-slate-400 bg-slate-950 px-2.5 py-0.5 rounded-full border border-slate-800 font-mono">
-                <FileText className="w-3 h-3 text-slate-500" />
+              <span className="text-[#8997b1] tabular-nums flex items-center gap-1">
+                <FileText className="w-3 h-3 text-[#525c71]" />
                 {transcripts.length} sentences
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+            {/* Document Title */}
+            <h1 className="text-xl sm:text-2xl font-semibold text-[#f1f4f9] tracking-tight">
               {meeting.title}
             </h1>
 
             {meeting.description && (
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#8793ab] leading-relaxed">
                 {meeting.description}
               </p>
             )}
           </div>
 
+          {/* Action Buttons */}
           <div className="flex items-center gap-2 self-start flex-wrap sm:flex-nowrap">
-            {/* Google Calendar Status / Connect Button */}
             {calendarConnected ? (
               <div
-                title="Google Calendar is connected and ready to schedule action items."
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold shadow-sm"
+                title="Google Calendar is connected"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#101e18] text-emerald-400 border border-[#1a3d2e] text-xs font-medium"
               >
-                <Check className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Google</span> Calendar Connected
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Calendar Synced</span>
               </div>
             ) : (
               <button
                 onClick={handleConnectCalendar}
                 disabled={calendarLoading}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#1b2234] hover:bg-[#232c44] text-[#cfd8e8] border border-[#2c3652] text-xs font-medium transition-colors cursor-pointer"
               >
-                <Calendar className="w-3.5 h-3.5" />
-                Connect Google Calendar
+                <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                <span>Connect Calendar</span>
               </button>
             )}
 
             <button
               onClick={copyFullMeetingMarkdown}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 transition-all cursor-pointer shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#151822] hover:bg-[#1d2130] text-[#c7d1e1] border border-[#242938] text-xs font-medium transition-colors cursor-pointer"
             >
               {copiedNotes ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-400" /> Notes Copied!
+                  <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
                 </>
               ) : (
                 <>
-                  <Copy className="w-4 h-4" /> Export Markdown
+                  <Copy className="w-3.5 h-3.5" /> Export Markdown
                 </>
               )}
             </button>
@@ -323,89 +300,80 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
                 loadMeetingData();
                 checkCalendarConnection();
               }}
-              title="Refresh"
-              className="p-2 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-slate-200 transition-all cursor-pointer"
+              title="Reload meeting data"
+              className="p-1.5 rounded bg-[#151822] hover:bg-[#1d2130] text-[#78859e] hover:text-[#d3dbe8] border border-[#242938] transition-colors cursor-pointer"
             >
-              <RefreshCw className="w-4 h-4" />
+              <RefreshCw className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        {/* Audio Player Bar (if URL exists) */}
+        {/* Audio Player Bar */}
         {meeting.audio_url && (
-          <div className="pt-2 border-t border-slate-800/80 flex items-center gap-3">
-            <FileAudio className="w-4 h-4 text-indigo-400 flex-shrink-0" />
+          <div className="pt-2 border-t border-[#1a1f2e] flex items-center gap-3">
+            <FileAudio className="w-4 h-4 text-[#606d86] shrink-0" />
             <audio
               controls
               src={meeting.audio_url}
-              className="w-full h-8 rounded-lg accent-indigo-600 bg-slate-950"
+              className="w-full h-8 rounded accent-blue-500 bg-[#0a0b10]"
             />
           </div>
         )}
       </div>
 
-      {/* Main Tabs Navigation */}
-      <div className="border-b border-slate-800">
-        <nav className="flex space-x-4">
+      {/* Document Tab Navigation */}
+      <div className="border-b border-[#1c2130]">
+        <nav className="flex space-x-6 text-xs sm:text-sm">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`flex items-center gap-2 py-3 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer ${
+            className={`py-2.5 border-b-2 font-medium transition-colors cursor-pointer ${
               activeTab === 'overview'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                ? 'border-blue-500 text-white'
+                : 'border-transparent text-[#7e8aa4] hover:text-[#d0d7e6]'
             }`}
           >
-            <Sparkles className="w-4 h-4" /> Intelligence Overview
-          </button>
-
-          <button
-            onClick={() => setActiveTab('transcript')}
-            className={`flex items-center gap-2 py-3 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer ${
-              activeTab === 'transcript'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
-            }`}
-          >
-            <FileText className="w-4 h-4" /> Full Transcript ({transcripts.length})
+            Executive Summary
           </button>
 
           <button
             onClick={() => setActiveTab('decisions_actions')}
-            className={`flex items-center gap-2 py-3 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer ${
+            className={`py-2.5 border-b-2 font-medium transition-colors cursor-pointer ${
               activeTab === 'decisions_actions'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                ? 'border-blue-500 text-white'
+                : 'border-transparent text-[#7e8aa4] hover:text-[#d0d7e6]'
             }`}
           >
-            <Scale className="w-4 h-4" /> Decisions ({decisions.length}) & Actions ({actionItems.length})
+            Decisions ({decisions.length}) & Actions ({actionItems.length})
+          </button>
+
+          <button
+            onClick={() => setActiveTab('transcript')}
+            className={`py-2.5 border-b-2 font-medium transition-colors cursor-pointer ${
+              activeTab === 'transcript'
+                ? 'border-blue-500 text-white'
+                : 'border-transparent text-[#7e8aa4] hover:text-[#d0d7e6]'
+            }`}
+          >
+            Transcript ({transcripts.length})
           </button>
 
           <button
             onClick={() => setActiveTab('ask')}
-            className={`flex items-center gap-2 py-3 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all cursor-pointer ${
+            className={`py-2.5 border-b-2 font-medium transition-colors cursor-pointer ${
               activeTab === 'ask'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                ? 'border-blue-500 text-white'
+                : 'border-transparent text-[#7e8aa4] hover:text-[#d0d7e6]'
             }`}
           >
-            <Bot className="w-4 h-4" /> Ask Meeting AI
+            Meeting Q&A
           </button>
         </nav>
       </div>
 
       {/* Tab Panels */}
       {activeTab === 'overview' && (
-        <div className="space-y-8 animate-in fade-in duration-300">
+        <div className="space-y-6">
           <SummarySection summary={summary} tags={tags} />
-
-          {/* Embedded Meeting Chat Box */}
-          <div className="pt-2">
-            <MeetingChatPanel
-              meetingId={meetingId}
-              meetingTitle={meeting?.title}
-              compact={true}
-            />
-          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <DecisionsSection
@@ -424,7 +392,7 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
       )}
 
       {activeTab === 'transcript' && (
-        <div className="animate-in fade-in duration-300">
+        <div>
           <TranscriptViewer
             transcripts={transcripts}
             meetingId={meetingId}
@@ -437,7 +405,7 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
       )}
 
       {activeTab === 'decisions_actions' && (
-        <div className="space-y-8 animate-in fade-in duration-300">
+        <div className="space-y-6">
           <DecisionsSection
             decisions={decisions}
             onFindInTranscript={locateInTranscript}
@@ -453,7 +421,7 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
       )}
 
       {activeTab === 'ask' && (
-        <div className="animate-in fade-in duration-300 max-w-4xl mx-auto w-full py-4">
+        <div className="max-w-4xl mx-auto w-full py-2">
           <MeetingChatPanel
             meetingId={meetingId}
             meetingTitle={meeting?.title}
@@ -461,7 +429,6 @@ export const MeetingDetailPage: React.FC<MeetingDetailPageProps> = ({
           />
         </div>
       )}
-
     </div>
   );
 };

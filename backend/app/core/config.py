@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     # Google Gemini
     GEMINI_API_KEY: str = ""
 
+    # Hugging Face (PyAnnote Diarization)
+    HUGGINGFACE_TOKEN: str = ""
+
     # Cloudflare R2
     R2_ACCOUNT_ID: str = ""
     R2_ACCESS_KEY_ID: str = ""

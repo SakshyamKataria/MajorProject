@@ -414,20 +414,20 @@ def run_intelligence_pipeline(meeting_id: str) -> Dict[str, Any]:
                 except Exception:
                     pass
 
-        # 6e. Generate and index embeddings for semantic search
+        # 6e. Atomically mark meeting as 'completed' once summary, decisions, and action items are saved
+        supabase.table("meetings").update({
+            "title": new_title,
+            "status": "completed",
+            "error_message": None,
+        }).eq("id", meeting_id).execute()
+
+        # 6f. Generate and index embeddings for semantic search in background
         try:
             from app.services.embeddings import index_meeting_embeddings
             emb_res = index_meeting_embeddings(meeting_id=meeting_id)
             logger.info(f"Indexed embeddings for meeting {meeting_id}: {emb_res.get('indexed_chunks', 0)} chunks.")
         except Exception as emb_err:
             logger.warning(f"Could not index embeddings for meeting {meeting_id}: {emb_err}")
-
-        # 6f. Atomically mark meeting as 'completed' once all records are securely saved
-        supabase.table("meetings").update({
-            "title": new_title,
-            "status": "completed",
-            "error_message": None,
-        }).eq("id", meeting_id).execute()
 
         logger.info(f"Intelligence pipeline completed successfully for meeting: {meeting_id}")
         return {

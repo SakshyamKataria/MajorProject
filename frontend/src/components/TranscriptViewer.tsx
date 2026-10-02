@@ -8,7 +8,6 @@ import {
   Check,
   Clock,
   Filter,
-  User,
   Users,
 } from 'lucide-react';
 import type { TranscriptSentence, ClassifierLabel } from '../types/meeting';
@@ -42,7 +41,7 @@ function highlightMatch(text: string, query: string) {
   const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === query.toLowerCase() ? (
-      <mark key={i} className="bg-indigo-500/35 text-indigo-100 px-1 py-0.5 rounded font-medium">
+      <mark key={i} className="bg-[#2a3a5e] text-white px-1 py-0.5 rounded font-medium">
         {part}
       </mark>
     ) : (
@@ -135,24 +134,24 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
   };
 
   return (
-    <div className="flex flex-col space-y-4">
-      {/* Controls Bar */}
-      <div className="bg-slate-900/90 backdrop-blur border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3 sticky top-18 z-20">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+    <div className="flex flex-col space-y-3">
+      {/* Transcript Toolbar */}
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-3 space-y-2.5 sticky top-16 z-20">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
           {/* Search Input */}
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-[#59647d] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search transcript sentences or speakers..."
-              className="w-full pl-10 pr-4 py-2 bg-slate-950/80 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all"
+              placeholder="Search transcript dialogue or speaker..."
+              className="w-full pl-9 pr-4 py-1.5 bg-[#0a0b10] border border-[#1f2434] rounded text-xs text-[#e1e5ee] placeholder:text-[#535d74] focus:outline-hidden focus:border-blue-500 transition-colors"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-300"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-[#636f89] hover:text-[#d3dce9] cursor-pointer"
               >
                 Clear
               </button>
@@ -160,36 +159,36 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
           </div>
 
           {/* Quick Metrics & Edit Speakers */}
-          <div className="flex items-center gap-3 self-center sm:self-auto flex-wrap">
+          <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
             {meetingId && (
               <button
                 type="button"
                 onClick={() => setIsRenameModalOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 hover:text-indigo-200 border border-slate-700 hover:border-indigo-500/50 rounded-xl text-xs font-medium transition cursor-pointer shadow-sm"
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#181d2a] hover:bg-[#202738] text-[#c5d0e2] border border-[#2b344c] rounded text-xs font-medium transition-colors cursor-pointer"
                 title="Rename speakers and view speaking stats"
               >
-                <Users className="w-3.5 h-3.5 text-indigo-400" />
+                <Users className="w-3.5 h-3.5 text-blue-400" />
                 <span>Edit Speakers</span>
               </button>
             )}
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-              <span>Showing <strong className="text-slate-200">{filteredTranscripts.length}</strong> / {stats.total} sentences</span>
-            </div>
+            <span className="text-[11px] text-[#697690] font-mono tabular-nums">
+              {filteredTranscripts.length} / {stats.total} sentences
+            </span>
           </div>
         </div>
 
-        {/* Classifier Category Filter Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
-          <span className="text-slate-500 text-[11px] flex items-center gap-1 mr-1">
-            <Filter className="w-3 h-3" /> Filter:
+        {/* Classifier Filters */}
+        <div className="flex items-center gap-1.5 overflow-x-auto text-xs pt-1 border-t border-[#171b26]">
+          <span className="text-[#59657e] text-[11px] flex items-center gap-1 mr-1">
+            <Filter className="w-3 h-3 text-[#4f5970]" /> Filter:
           </span>
 
           <button
             onClick={() => setSelectedLabel('ALL')}
-            className={`px-3 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${
+            className={`px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               selectedLabel === 'ALL'
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                ? 'bg-[#222839] text-white border border-[#313a52] font-medium'
+                : 'text-[#7e8aa4] hover:text-[#d5ddec]'
             }`}
           >
             All ({stats.total})
@@ -197,49 +196,49 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
 
           <button
             onClick={() => setSelectedLabel('Action Item')}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${
+            className={`flex items-center gap-1 px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               selectedLabel === 'Action Item'
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 hover:text-amber-300 hover:bg-slate-800'
+                ? 'bg-[#241a10] text-amber-300 border border-[#442c18] font-medium'
+                : 'text-[#7e8aa4] hover:text-amber-300'
             }`}
           >
-            <CheckSquare className="w-3.5 h-3.5 text-amber-400" />
+            <CheckSquare className="w-3 h-3 text-amber-400" />
             Action Items ({stats.actionItems})
           </button>
 
           <button
             onClick={() => setSelectedLabel('Decision')}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${
+            className={`flex items-center gap-1 px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               selectedLabel === 'Decision'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 hover:text-emerald-300 hover:bg-slate-800'
+                ? 'bg-[#0f2119] text-emerald-300 border border-[#1b3d2e] font-medium'
+                : 'text-[#7e8aa4] hover:text-emerald-300'
             }`}
           >
-            <Scale className="w-3.5 h-3.5 text-emerald-400" />
+            <Scale className="w-3 h-3 text-emerald-400" />
             Decisions ({stats.decisions})
           </button>
 
           <button
             onClick={() => setSelectedLabel('Discussion')}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${
+            className={`flex items-center gap-1 px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               selectedLabel === 'Discussion'
-                ? 'bg-slate-700 text-slate-200 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                ? 'bg-[#181c28] text-[#c9d4e5] border border-[#2b3348] font-medium'
+                : 'text-[#7e8aa4] hover:text-[#d5ddec]'
             }`}
           >
-            <MessageSquare className="w-3.5 h-3.5 text-slate-400" />
-            Discussion ({stats.discussions})
+            <MessageSquare className="w-3 h-3 text-[#58647c]" />
+            Dialogue ({stats.discussions})
           </button>
         </div>
       </div>
 
-      {/* Transcript Stream */}
+      {/* Transcript Rows */}
       {filteredTranscripts.length === 0 ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-500 text-sm">
-          No sentences match the current search query or filter.
+        <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-8 text-center text-[#738099] text-xs">
+          No dialogue matches the current filter or search query.
         </div>
       ) : (
-        <div className="space-y-2.5">
+        <div className="border border-[#1e2332] rounded-lg divide-y divide-[#171b26] bg-[#10121a] overflow-hidden">
           {filteredTranscripts.map((sentence) => {
             const isAction = sentence.classifier_label === 'Action Item';
             const isDecision = sentence.classifier_label === 'Decision';
@@ -252,32 +251,29 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
                 key={sentence.id}
                 style={{ contentVisibility: 'auto' }}
                 onClick={() => onSentenceClick?.(sentence)}
-                className={`group relative bg-slate-900/80 hover:bg-slate-900 border rounded-xl p-3.5 transition-all ${
+                className={`group px-4 py-3 hover:bg-[#141722] transition-colors ${
                   isAction
-                    ? 'border-amber-500/30 border-l-4 border-l-amber-500 hover:border-amber-500/50 shadow-sm shadow-amber-500/5'
+                    ? 'border-l-2 border-l-amber-500/80 bg-[#14120e]'
                     : isDecision
-                    ? 'border-emerald-500/30 border-l-4 border-l-emerald-500 hover:border-emerald-500/50 shadow-sm shadow-emerald-500/5'
-                    : 'border-slate-800/80 border-l-2 border-l-slate-700 hover:border-slate-700'
+                    ? 'border-l-2 border-l-emerald-500/80 bg-[#0e1612]'
+                    : ''
                 }`}
               >
-                <div className="flex items-start justify-between gap-3 mb-1.5">
+                <div className="flex items-start justify-between gap-3 mb-1">
                   <div className="flex items-center gap-2 flex-wrap">
+                    {/* Speaker Badge */}
+                    <span className="text-xs font-medium text-[#c4cfdf] bg-[#171c29] border border-[#262e43] px-2 py-0.5 rounded">
+                      {formatSpeakerDisplayName(sentence.speaker_label || sentence.speaker, speakerNames)}
+                    </span>
+
                     {/* Timestamp */}
-                    <span className="inline-flex items-center gap-1 font-mono text-[11px] text-indigo-300/80 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
-                      <Clock className="w-3 h-3" />
+                    <span className="text-[11px] font-mono tabular-nums text-[#697690] flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-[#4f5970]" />
                       {formatTimestamp(sentence.start_time)}
                     </span>
 
-                    {/* Speaker */}
-                    {(sentence.speaker_label || sentence.speaker) && (
-                      <span className="inline-flex items-center gap-1 font-mono text-[11px] font-medium text-purple-300/90 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                        <User className="w-3 h-3 text-purple-400" />
-                        {formatSpeakerDisplayName(sentence.speaker_label || sentence.speaker, speakerNames)}
-                      </span>
-                    )}
-
-                    {/* Order index */}
-                    <span className="text-[10px] text-slate-600 font-mono">
+                    {/* Order */}
+                    <span className="text-[10px] text-[#505a70] font-mono">
                       #{sentence.sentence_order + 1}
                     </span>
                   </div>
@@ -285,22 +281,16 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
                   <div className="flex items-center gap-2">
                     {/* Classifier Badge */}
                     {isAction && (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-md">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono text-amber-300 bg-[#251b10] border border-[#442c17] px-2 py-0.5 rounded">
                         <CheckSquare className="w-3 h-3 text-amber-400" />
                         Action Item {confidencePct !== null && `· ${confidencePct}%`}
                       </span>
                     )}
 
                     {isDecision && (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-md">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-300 bg-[#0f2119] border border-[#1b3d2e] px-2 py-0.5 rounded">
                         <Scale className="w-3 h-3 text-emerald-400" />
                         Decision {confidencePct !== null && `· ${confidencePct}%`}
-                      </span>
-                    )}
-
-                    {!isAction && !isDecision && sentence.classifier_label && (
-                      <span className="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60 font-mono">
-                        Discussion {confidencePct !== null && `· ${confidencePct}%`}
                       </span>
                     )}
 
@@ -311,7 +301,7 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
                         copySentence(sentence.id, sentence.text);
                       }}
                       title="Copy sentence"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity p-1 text-slate-400 hover:text-slate-200 cursor-pointer"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity p-1 text-[#64718a] hover:text-[#d3dbe9] cursor-pointer"
                     >
                       {copiedId === sentence.id ? (
                         <Check className="w-3.5 h-3.5 text-emerald-400" />
@@ -323,7 +313,7 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
                 </div>
 
                 {/* Sentence Text */}
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed pl-1">
+                <p className="text-xs sm:text-sm text-[#cbd4e2] leading-relaxed pl-0.5">
                   {highlightMatch(sentence.text, searchQuery)}
                 </p>
               </div>

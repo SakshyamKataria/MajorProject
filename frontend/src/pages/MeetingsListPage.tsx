@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  FolderOpen,
+  FolderArchive,
   Clock,
-  CheckCircle,
+  CheckCircle2,
   AlertCircle,
   RefreshCw,
   Search,
   ArrowRight,
-  UploadCloud,
+  Upload,
   FileAudio,
-  Sparkles,
   Sliders,
   X,
   Layers,
@@ -25,7 +24,6 @@ import {
   triggerMeetingClustering,
 } from '../services/api';
 import type { Meeting, SearchResultItem, MeetingGroup } from '../types/meeting';
-import { DashboardMetrics } from '../components/DashboardMetrics';
 import { SemanticSearchCard } from '../components/SemanticSearchCard';
 
 interface MeetingsListPageProps {
@@ -45,11 +43,19 @@ function formatDuration(seconds: number): string {
   return `${mins}m ${secs}s`;
 }
 
+function formatTotalTime(totalSeconds: number): string {
+  if (!totalSeconds || totalSeconds <= 0) return '0m';
+  const hrs = Math.floor(totalSeconds / 3600);
+  const mins = Math.floor((totalSeconds % 3600) / 60);
+  if (hrs > 0) return `${hrs}h ${mins}m`;
+  return `${mins}m`;
+}
+
 const SAMPLE_QUERIES = [
-  'Budget and financial concerns',
-  "Who's responsible for grouping students",
-  'Product positioning and go-to-market',
-  'Election rates and bylaw approval',
+  'Budget and financial allocations',
+  'Project deadlines and milestones',
+  'Architecture review and trade-offs',
+  'Community outreach and staffing',
 ];
 
 export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
@@ -68,7 +74,7 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
 
-  // View Mode: 'list' (flat archive) vs 'groups' (collapsible clusters)
+  // View Mode: 'list' (clean rows) vs 'groups' (thematic clusters)
   const [viewMode, setViewMode] = useState<'list' | 'groups'>('list');
 
   // Meeting list filtering & sorting
@@ -120,13 +126,13 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
       const result = await triggerMeetingClustering();
       setClusters(result.clusters || []);
       setClusteringSuccess(
-        `Successfully organized into ${result.clusters?.length || 0} smart groups (k=${result.k})!`
+        `Organized into ${result.clusters?.length || 0} thematic clusters.`
       );
       await Promise.all([loadMeetings(), loadClusters()]);
       setTimeout(() => setClusteringSuccess(null), 5000);
     } catch (err: any) {
       console.error('Error re-clustering meetings:', err);
-      setClusteringError(err.message || 'Failed to refresh meeting groups.');
+      setClusteringError(err.message || 'Failed to refresh meeting clusters.');
       setTimeout(() => setClusteringError(null), 6000);
     } finally {
       setClusteringLoading(false);
@@ -163,11 +169,6 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSemanticSearch(searchQuery);
-  };
-
   const handleClearSearch = () => {
     setSearchQuery('');
     setActiveSearchQuery('');
@@ -175,11 +176,16 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
     setSearchError(null);
   };
 
-  // Filter & Sort meetings
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSemanticSearch(searchQuery);
+  };
+
+  // Filtered and sorted meetings
   const filteredMeetings = meetings
     .filter((m) => {
-      if (statusFilter === 'completed' && m.status !== 'completed') return false;
-      if (statusFilter === 'processing' && m.status === 'completed') return false;
+      if (statusFilter === 'completed') return m.status === 'completed';
+      if (statusFilter === 'processing') return m.status === 'processing' || m.status === 'pending';
       return true;
     })
     .sort((a, b) => {
@@ -189,90 +195,83 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
 
+  const totalDurationSeconds = meetings.reduce((acc, m) => acc + (m.duration_seconds || 0), 0);
+  const completedCount = meetings.filter((m) => m.status === 'completed').length;
+
   return (
-    <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Top Banner & Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-2">
-            <Sparkles className="w-3.5 h-3.5" /> AI-Powered Search & Archive
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
-            Meetings Intelligence Hub
+    <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+      {/* Top Header & Archive Summary */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#1c202d]">
+        <div className="space-y-1">
+          <h1 className="text-xl sm:text-2xl font-semibold text-[#f1f4f9] tracking-tight">
+            Meeting Archive
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400">
-            Semantic retrieval across summaries, decisions, action items, and dialogue
+          <p className="text-xs text-[#78859e]">
+            {meetings.length} recordings &middot; {formatTotalTime(totalDurationSeconds)} total runtime &middot; {completedCount} transcribed
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <button
             onClick={loadMeetings}
-            title="Refresh"
+            title="Refresh meeting index"
             disabled={loading}
-            className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-slate-200 transition-all cursor-pointer"
+            className="p-2 rounded bg-[#131620] hover:bg-[#1a1e2c] border border-[#212635] text-[#808da7] hover:text-[#e1e5ef] transition-colors cursor-pointer"
           >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
           </button>
 
           <button
             onClick={onNavigateUpload}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all shadow-lg shadow-indigo-600/20 cursor-pointer"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded bg-[#1e2538] hover:bg-[#262f46] text-[#e8edf7] border border-[#2f3956] text-xs font-medium transition-colors cursor-pointer"
           >
-            <UploadCloud className="w-4 h-4" /> Upload Recording
+            <Upload className="w-3.5 h-3.5 text-blue-400" />
+            <span>Upload Audio</span>
           </button>
         </div>
       </div>
 
-      {/* Dashboard Metrics Row */}
-      <DashboardMetrics meetings={meetings} />
-
-      {/* AI Semantic Search Box */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-4">
-        <form onSubmit={handleFormSubmit} className="space-y-4">
+      {/* Semantic Search Box */}
+      <div className="bg-[#10121a] border border-[#1f2434] rounded-lg p-4 space-y-3">
+        <form onSubmit={handleFormSubmit} className="space-y-3">
           <div className="relative flex items-center">
-            <Search className="w-5 h-5 text-indigo-400 absolute left-4" />
+            <Search className="w-4 h-4 text-[#606d86] absolute left-3.5" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search meetings by concepts, e.g. 'budget concerns', 'group pairings', 'deadlines'..."
-              className="w-full pl-12 pr-28 py-3.5 bg-slate-950/90 border border-slate-800 rounded-2xl text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-inner"
+              placeholder="Search across all transcript dialogue, decisions, and summaries..."
+              className="w-full pl-10 pr-24 py-2 bg-[#0a0b10] border border-[#202534] rounded text-xs sm:text-sm text-[#e1e4ed] placeholder:text-[#555f75] focus:outline-hidden focus:border-blue-500 transition-colors"
             />
-            <div className="absolute right-2.5 flex items-center gap-1.5">
+            <div className="absolute right-2 flex items-center gap-1.5">
               {searchQuery && (
                 <button
                   type="button"
                   onClick={handleClearSearch}
-                  className="p-1.5 text-slate-500 hover:text-slate-300 rounded-lg transition-colors cursor-pointer"
+                  className="p-1 text-[#66728a] hover:text-[#d3dbe8] rounded transition-colors cursor-pointer"
+                  title="Clear input"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-3.5 h-3.5" />
                 </button>
               )}
               <button
                 type="submit"
                 disabled={searching || !searchQuery.trim()}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-md ${
+                className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                   searching || !searchQuery.trim()
-                    ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700'
-                    : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/20 cursor-pointer'
+                    ? 'bg-[#141722] text-[#556077] cursor-not-allowed border border-[#1e2332]'
+                    : 'bg-[#1f263a] hover:bg-[#28314a] text-white border border-[#313c5a] cursor-pointer'
                 }`}
               >
-                {searching ? (
-                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <Sparkles className="w-3.5 h-3.5" />
-                )}
-                <span>Search</span>
+                {searching ? 'Searching...' : 'Search'}
               </button>
             </div>
           </div>
 
-          {/* Search Controls: Suggested Queries & Threshold Tuning */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-1 text-xs">
-            {/* Suggested Prompts */}
+          {/* Search Controls: Sample Queries & Threshold Filter */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5 pt-1 text-xs">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-slate-500 text-[11px] font-medium">Try:</span>
+              <span className="text-[#5f6b83] text-[11px]">Suggested:</span>
               {SAMPLE_QUERIES.map((sample, idx) => (
                 <button
                   key={idx}
@@ -281,22 +280,21 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
                     setSearchQuery(sample);
                     handleSemanticSearch(sample);
                   }}
-                  className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-950/70 hover:bg-indigo-500/10 text-slate-400 hover:text-indigo-300 border border-slate-800 hover:border-indigo-500/30 transition-all cursor-pointer truncate max-w-[220px]"
+                  className="text-[11px] text-[#8692aa] hover:text-[#d8e0ed] hover:underline transition-colors cursor-pointer"
                 >
-                  "{sample}"
+                  "{sample}"{idx < SAMPLE_QUERIES.length - 1 ? ' ·' : ''}
                 </button>
               ))}
             </div>
 
-            {/* Threshold Selector */}
-            <div className="flex items-center gap-2 self-start lg:self-auto">
-              <span className="text-slate-500 text-[11px] flex items-center gap-1">
-                <Sliders className="w-3 h-3" /> Threshold:
+            <div className="flex items-center gap-1.5 text-[11px] text-[#697691]">
+              <span className="flex items-center gap-1">
+                <Sliders className="w-3 h-3 text-[#535d72]" /> Match Threshold:
               </span>
               {[
-                { label: 'Broad (0.25)', val: 0.25 },
-                { label: 'Balanced (0.35)', val: 0.35 },
-                { label: 'Strict (0.50)', val: 0.50 },
+                { label: '0.25 Broad', val: 0.25 },
+                { label: '0.35 Balanced', val: 0.35 },
+                { label: '0.50 Strict', val: 0.50 },
               ].map((item) => (
                 <button
                   key={item.val}
@@ -307,10 +305,10 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
                       handleSemanticSearch(activeSearchQuery, item.val);
                     }
                   }}
-                  className={`px-2 py-0.5 rounded text-[11px] font-mono transition-all cursor-pointer ${
+                  className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors cursor-pointer ${
                     threshold === item.val
-                      ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 font-semibold'
-                      : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
+                      ? 'bg-[#1c2234] text-white border border-[#2f3954] font-medium'
+                      : 'text-[#6c7891] hover:text-[#d0d7e6]'
                   }`}
                 >
                   {item.label}
@@ -321,50 +319,43 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
         </form>
       </div>
 
-      {/* Semantic Search Results View (Active Query) */}
+      {/* Semantic Search Results (Active Query) */}
       {activeSearchQuery && (
-        <div className="space-y-4 animate-in fade-in duration-300">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
-              <h2 className="text-base font-bold text-slate-100">
-                Semantic Matches for <span className="text-indigo-400">"{activeSearchQuery}"</span>
-              </h2>
-              <span className="text-xs text-slate-500 font-mono">
-                ({searchResults.length} excerpts found)
+        <div className="space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-[#1f2434]">
+            <div className="flex items-center gap-2 text-xs">
+              <span className="font-medium text-[#f1f4f9]">
+                Matches for <span className="text-blue-400 font-mono">"{activeSearchQuery}"</span>
+              </span>
+              <span className="text-[#647087] font-mono">
+                ({searchResults.length} excerpts)
               </span>
             </div>
 
             <button
               onClick={handleClearSearch}
-              className="text-xs text-slate-400 hover:text-slate-200 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
+              className="text-xs text-[#7e8b9f] hover:text-[#e1e5ee] transition-colors cursor-pointer"
             >
-              Close Search Results
+              Clear Results
             </button>
           </div>
 
           {searchError && (
-            <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+            <div className="p-3 rounded bg-[#241113] border border-[#441a1f] text-rose-300 text-xs">
               {searchError}
             </div>
           )}
 
           {searching ? (
-            <div className="flex flex-col items-center justify-center p-12 text-slate-500 space-y-3">
-              <RefreshCw className="w-6 h-6 animate-spin text-indigo-500" />
-              <p className="text-xs">Generating embedding and computing pgvector HNSW similarity...</p>
+            <div className="p-8 text-center text-xs text-[#67738c] font-mono">
+              Generating embedding query and executing cosine distance search...
             </div>
           ) : searchResults.length === 0 ? (
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center space-y-2">
-              <p className="text-sm text-slate-300 font-medium">
-                No semantic matches found above threshold {threshold}.
-              </p>
-              <p className="text-xs text-slate-500">
-                Try switching the threshold to <strong>Broad (0.25)</strong> or refining your query.
-              </p>
+            <div className="p-6 bg-[#10121a] border border-[#1f2434] rounded text-center text-xs text-[#77839b]">
+              No excerpts matched the similarity threshold ({threshold}). Try selecting a broader threshold (0.25).
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {searchResults.map((res) => (
                 <SemanticSearchCard
                   key={res.id}
@@ -377,29 +368,28 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
         </div>
       )}
 
-      {/* Main Meetings Archive & Groups Grid */}
-      <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-800">
+      {/* Main Meetings Archive & Clusters */}
+      <div className="space-y-3">
+        {/* Filter and View Toggle Toolbar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#1c202d]">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <FolderOpen className="w-4 h-4 text-slate-400" />
-              <h2 className="text-base font-bold text-slate-100">
-                {viewMode === 'groups' ? 'Meeting Groups & Clusters' : 'All Meetings Archive'}
-              </h2>
-              <span className="text-xs text-slate-500 font-mono">
+            <h2 className="text-sm font-semibold text-[#f1f4f9] flex items-center gap-2">
+              <FolderArchive className="w-4 h-4 text-[#606d86]" />
+              <span>{viewMode === 'groups' ? 'Thematic Clusters' : 'All Meetings'}</span>
+              <span className="text-xs text-[#647087] font-mono">
                 ({filteredMeetings.length})
               </span>
-            </div>
+            </h2>
 
-            {/* View Mode Toggle: All List vs Groups */}
-            <div className="flex items-center bg-slate-900 p-0.5 rounded-xl border border-slate-800">
+            {/* List / Groups Switch */}
+            <div className="flex items-center bg-[#131621] p-0.5 rounded border border-[#202534] text-xs">
               <button
                 type="button"
                 onClick={() => setViewMode('list')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded transition-colors cursor-pointer ${
                   viewMode === 'list'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-[#222839] text-white border border-[#313a52]'
+                    : 'text-[#7e8aa4] hover:text-[#d7dfed]'
                 }`}
               >
                 <List className="w-3.5 h-3.5" /> List
@@ -408,68 +398,67 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
               <button
                 type="button"
                 onClick={() => setViewMode('groups')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded transition-colors cursor-pointer ${
                   viewMode === 'groups'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-[#222839] text-white border border-[#313a52]'
+                    : 'text-[#7e8aa4] hover:text-[#d7dfed]'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5" /> Groups {clusters.length > 0 && `(${clusters.length})`}
+                <Layers className="w-3.5 h-3.5" /> Clusters {clusters.length > 0 && `(${clusters.length})`}
               </button>
             </div>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap text-xs">
-            {/* Refresh Groupings Button (Available in Groups view or when clusters exist) */}
             {viewMode === 'groups' && (
               <button
                 type="button"
                 onClick={handleRefreshClustering}
                 disabled={clusteringLoading}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                title="Re-run K-Means and Gemini labeling across all meetings"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded text-xs bg-[#191e2b] hover:bg-[#202737] text-[#c7d1e1] border border-[#2a3449] transition-colors cursor-pointer disabled:opacity-50"
+                title="Run K-Means clustering across meetings"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${clusteringLoading ? 'animate-spin' : ''}`} />
-                <span>{clusteringLoading ? 'Clustering...' : 'Refresh Groupings'}</span>
+                <span>{clusteringLoading ? 'Clustering...' : 'Re-cluster'}</span>
               </button>
             )}
 
-            {/* Status Filter */}
-            <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
+            {/* Status Tabs */}
+            <div className="flex items-center bg-[#131621] p-0.5 rounded border border-[#202534]">
               {(['ALL', 'completed', 'processing'] as const).map((st) => (
                 <button
                   key={st}
                   onClick={() => setStatusFilter(st)}
-                  className={`px-3 py-1 rounded-lg text-xs font-medium capitalize transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded text-xs capitalize transition-colors cursor-pointer ${
                     statusFilter === st
-                      ? 'bg-indigo-600 text-white shadow-sm'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-[#222839] text-white border border-[#313a52]'
+                      : 'text-[#7e8aa4] hover:text-[#d7dfed]'
                   }`}
                 >
-                  {st === 'ALL' ? 'All Status' : st}
+                  {st === 'ALL' ? 'All' : st}
                 </button>
               ))}
             </div>
 
-            {/* Sort Filter (List mode) */}
+            {/* Sort Switch */}
             {viewMode === 'list' && (
-              <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
+              <div className="flex items-center bg-[#131621] p-0.5 rounded border border-[#202534]">
                 <button
                   onClick={() => setSortBy('newest')}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`px-2 py-1 rounded text-xs transition-colors cursor-pointer ${
                     sortBy === 'newest'
-                      ? 'bg-slate-800 text-slate-200'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-[#222839] text-white'
+                      : 'text-[#7e8aa4] hover:text-[#d7dfed]'
                   }`}
                 >
                   Newest
                 </button>
                 <button
                   onClick={() => setSortBy('duration')}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`px-2 py-1 rounded text-xs transition-colors cursor-pointer ${
                     sortBy === 'duration'
-                      ? 'bg-slate-800 text-slate-200'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-[#222839] text-white'
+                      : 'text-[#7e8aa4] hover:text-[#d7dfed]'
                   }`}
                 >
                   Duration
@@ -479,92 +468,66 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
           </div>
         </div>
 
-        {/* Clustering feedback notifications */}
+        {/* Feedback messages */}
         {clusteringSuccess && (
-          <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="p-2.5 rounded bg-[#0f1f18] border border-[#1b3b2c] text-[#86efac] text-xs flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>{clusteringSuccess}</span>
           </div>
         )}
 
         {clusteringError && (
-          <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+          <div className="p-2.5 rounded bg-[#241113] border border-[#441a1f] text-rose-300 text-xs flex items-center gap-2">
             <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
             <span>{clusteringError}</span>
           </div>
         )}
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-pulse">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-16 h-4 bg-slate-800 rounded-full" />
-                  <div className="w-20 h-4 bg-slate-800 rounded-full" />
-                </div>
-                <div className="space-y-2">
-                  <div className="w-3/4 h-5 bg-slate-800 rounded-lg" />
-                  <div className="w-full h-3 bg-slate-800/80 rounded" />
-                  <div className="w-2/3 h-3 bg-slate-800/80 rounded" />
-                </div>
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                  <div className="w-16 h-4 bg-slate-800 rounded" />
-                  <div className="w-12 h-4 bg-slate-800 rounded" />
-                </div>
-              </div>
-            ))}
+          <div className="p-12 text-center text-xs text-[#687590] font-mono">
+            Loading meeting archive...
           </div>
         ) : error ? (
-          <div className="p-6 bg-rose-500/10 border border-rose-500/30 rounded-2xl text-rose-300 text-xs flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="w-4 h-4" />
-              <span>{error}</span>
-            </div>
+          <div className="p-4 bg-[#241113] border border-[#441a1f] rounded text-rose-300 text-xs flex items-center justify-between">
+            <span>{error}</span>
             <button
               onClick={loadMeetings}
-              className="px-3 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-semibold"
+              className="px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded text-xs cursor-pointer"
             >
               Retry
             </button>
           </div>
         ) : filteredMeetings.length === 0 ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center space-y-3">
-            <FolderOpen className="w-8 h-8 text-slate-600 mx-auto" />
-            <p className="text-sm text-slate-400 font-medium">No meetings matching the filter.</p>
+          <div className="p-10 bg-[#10121a] border border-[#1f2434] rounded text-center space-y-2">
+            <p className="text-xs text-[#7e8aa4]">No meetings match this filter.</p>
             <button
               onClick={onNavigateUpload}
-              className="text-xs text-indigo-400 hover:underline"
+              className="text-xs text-blue-400 hover:underline cursor-pointer"
             >
-              Upload a new meeting recording
+              Upload a new recording
             </button>
           </div>
         ) : viewMode === 'groups' ? (
-          /* COLLAPSIBLE CLUSTERS VIEW */
-          <div className="space-y-6">
+          /* THEMATIC CLUSTERS VIEW */
+          <div className="space-y-4">
             {clusters.length === 0 ? (
-              <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
-                <Layers className="w-10 h-10 text-indigo-400 mx-auto opacity-80" />
-                <div className="space-y-1">
-                  <h3 className="text-sm font-bold text-slate-100">No meeting clusters generated yet</h3>
-                  <p className="text-xs text-slate-400 max-w-md mx-auto">
-                    Click "Refresh Groupings" to analyze summary embeddings, discover thematic clusters, and auto-label them with Gemini.
-                  </p>
-                </div>
+              <div className="p-8 bg-[#10121a] border border-[#1f2434] rounded text-center space-y-2">
+                <p className="text-xs text-[#7e8aa4]">
+                  No clusters created yet. Click "Re-cluster" to analyze meeting summaries and partition by topic.
+                </p>
                 <button
                   type="button"
                   onClick={handleRefreshClustering}
                   disabled={clusteringLoading}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-md cursor-pointer disabled:opacity-50"
+                  className="px-3 py-1.5 bg-[#1c2234] hover:bg-[#252c42] text-white border border-[#2d3752] rounded text-xs cursor-pointer disabled:opacity-50"
                 >
-                  <Sparkles className="w-4 h-4" />
-                  <span>{clusteringLoading ? 'Discovering Groups...' : 'Generate First Meeting Groups'}</span>
+                  Run Topic Clustering
                 </button>
               </div>
             ) : (
-              <div className="space-y-5">
+              <div className="space-y-3">
                 {clusters.map((group) => {
                   const isCollapsed = Boolean(collapsedClusters[group.cluster_id]);
-                  // Filter group's meetings by status if applicable
                   const groupMeetings = (group.meetings || []).filter((m) => {
                     if (statusFilter === 'completed' && m.status !== 'completed') return false;
                     if (statusFilter === 'processing' && m.status === 'completed') return false;
@@ -574,224 +537,188 @@ export const MeetingsListPage: React.FC<MeetingsListPageProps> = ({
                   return (
                     <div
                       key={group.cluster_id}
-                      className="bg-slate-900/80 border border-slate-800/90 rounded-2xl overflow-hidden shadow-lg transition-all"
+                      className="bg-[#11131b] border border-[#1f2536] rounded-lg overflow-hidden"
                     >
-                      {/* Cluster Header */}
                       <div
                         onClick={() => toggleClusterCollapse(group.cluster_id)}
-                        className="p-4 sm:px-6 flex items-center justify-between cursor-pointer hover:bg-slate-800/40 transition-colors select-none"
+                        className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-[#151824] transition-colors select-none"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                            <Tag className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <h3 className="text-sm sm:text-base font-bold text-slate-100">
-                                {group.cluster_label}
-                              </h3>
-                              <span className="text-[11px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">
-                                {groupMeetings.length} {groupMeetings.length === 1 ? 'meeting' : 'meetings'}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-slate-400">
-                              Cluster #{group.cluster_id} • AI-categorized topic
-                            </p>
+                        <div className="flex items-center gap-2.5">
+                          <Tag className="w-3.5 h-3.5 text-[#5e6b83]" />
+                          <div className="flex items-baseline gap-2">
+                            <h3 className="text-xs sm:text-sm font-medium text-[#edf1f8]">
+                              {group.cluster_label}
+                            </h3>
+                            <span className="text-[11px] font-mono text-[#687590]">
+                              ({groupMeetings.length} {groupMeetings.length === 1 ? 'meeting' : 'meetings'})
+                            </span>
                           </div>
                         </div>
 
-                        <button
-                          type="button"
-                          className="text-slate-400 hover:text-slate-200 p-1.5 rounded-lg transition-colors cursor-pointer"
-                        >
+                        <div className="text-[#64718a]">
                           {isCollapsed ? (
                             <ChevronDown className="w-4 h-4" />
                           ) : (
                             <ChevronUp className="w-4 h-4" />
                           )}
-                        </button>
+                        </div>
                       </div>
 
-                      {/* Cluster Meetings Grid (Expandable) */}
                       {!isCollapsed && (
-                        <div className="p-4 sm:p-5 pt-0 border-t border-slate-800/60 animate-in fade-in duration-200">
-                          {groupMeetings.length === 0 ? (
-                            <p className="text-xs text-slate-500 italic py-2">
-                              No meetings in this cluster match the selected status filter.
-                            </p>
-                          ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-3">
-                              {groupMeetings.map((m) => (
-                                <div
-                                  key={m.id}
-                                  onClick={() => onSelectMeeting(m.id)}
-                                  className="group bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-indigo-500/50 rounded-xl p-4 transition-all cursor-pointer flex flex-col justify-between space-y-3"
+                        <div className="border-t border-[#1a1f2e] divide-y divide-[#171c2a]">
+                          {groupMeetings.map((m) => (
+                            <div
+                              key={m.id}
+                              onClick={() => onSelectMeeting(m.id)}
+                              className="px-4 py-3 hover:bg-[#141722] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                            >
+                              <div className="space-y-0.5 flex-1 min-w-0 pr-4">
+                                <h4 className="text-xs sm:text-sm font-medium text-[#e1e6f0] truncate hover:text-blue-400 transition-colors">
+                                  {m.title}
+                                </h4>
+                                {m.description && (
+                                  <p className="text-xs text-[#738099] truncate">
+                                    {m.description}
+                                  </p>
+                                )}
+                              </div>
+
+                              <div className="flex items-center gap-3 text-xs text-[#6e7b94] shrink-0 font-mono">
+                                <span>{new Date(m.created_at).toLocaleDateString()}</span>
+                                <span className="tabular-nums">{formatDuration(m.duration_seconds)}</span>
+                                <span
+                                  className={`px-2 py-0.5 rounded text-[11px] font-mono ${
+                                    m.status === 'completed'
+                                      ? 'text-emerald-400 bg-[#0f2119] border border-[#1b3d2e]'
+                                      : 'text-amber-400 bg-[#241a10] border border-[#442e1a]'
+                                  }`}
                                 >
-                                  <div className="space-y-2">
-                                    <div className="flex items-center justify-between gap-1">
-                                      <span
-                                        className={`inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full capitalize ${
-                                          m.status === 'completed'
-                                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                                            : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                                        }`}
-                                      >
-                                        <CheckCircle className="w-2.5 h-2.5" />
-                                        {m.status}
-                                      </span>
-
-                                      <span className="text-[10px] text-slate-500 font-mono">
-                                        {new Date(m.created_at).toLocaleDateString()}
-                                      </span>
-                                    </div>
-
-                                    <h4 className="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-indigo-300 transition-colors line-clamp-2">
-                                      {m.title}
-                                    </h4>
-                                  </div>
-
-                                  <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between text-slate-400 text-[11px]">
-                                    <span className="inline-flex items-center gap-1 font-mono">
-                                      <Clock className="w-3 h-3 text-slate-500" />
-                                      {formatDuration(m.duration_seconds)}
-                                    </span>
-                                    <span className="text-indigo-400 font-semibold inline-flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
-                                      View <ArrowRight className="w-3 h-3" />
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
+                                  {m.status}
+                                </span>
+                              </div>
                             </div>
-                          )}
+                          ))}
                         </div>
                       )}
                     </div>
                   );
                 })}
-              </div>
-            )}
 
-            {/* Unclustered / Uncategorized Section */}
-            {unclustered.length > 0 && (
-              <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                      <AlertCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-                        Uncategorized Meetings
-                        <span className="text-[11px] font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
-                          {unclustered.length} pending
-                        </span>
-                      </h3>
-                      <p className="text-[11px] text-slate-400">
-                        Meetings added since the last clustering run, or still missing summary embeddings.
-                      </p>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleRefreshClustering}
-                    disabled={clusteringLoading}
-                    className="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium transition-colors cursor-pointer disabled:opacity-50"
-                  >
-                    Group Now
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {unclustered.map((m) => (
+                {unclustered.length > 0 && (
+                  <div className="bg-[#11131b] border border-[#1f2536] rounded-lg overflow-hidden">
                     <div
-                      key={m.id}
-                      onClick={() => onSelectMeeting(m.id)}
-                      className="group bg-slate-950/70 hover:bg-slate-950 border border-slate-800 hover:border-amber-500/40 rounded-xl p-4 transition-all cursor-pointer flex flex-col justify-between space-y-3"
+                      onClick={() => toggleClusterCollapse(-1)}
+                      className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-[#151824] transition-colors select-none"
                     >
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400">
-                            Uncategorized
-                          </span>
-                          <span className="text-[10px] text-slate-500 font-mono">
-                            {new Date(m.created_at).toLocaleDateString()}
+                      <div className="flex items-center gap-2.5">
+                        <Tag className="w-3.5 h-3.5 text-[#5e6b83]" />
+                        <div className="flex items-baseline gap-2">
+                          <h3 className="text-xs sm:text-sm font-medium text-[#c4cfde]">
+                            Unclustered
+                          </h3>
+                          <span className="text-[11px] font-mono text-[#687590]">
+                            ({unclustered.length} {unclustered.length === 1 ? 'meeting' : 'meetings'})
                           </span>
                         </div>
-                        <h4 className="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-amber-300 transition-colors line-clamp-2">
-                          {m.title}
-                        </h4>
                       </div>
-
-                      <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between text-slate-400 text-[11px]">
-                        <span className="inline-flex items-center gap-1 font-mono">
-                          <Clock className="w-3 h-3 text-slate-500" />
-                          {formatDuration(m.duration_seconds)}
-                        </span>
-                        <span className="text-amber-400 font-semibold inline-flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
-                          View <ArrowRight className="w-3 h-3" />
-                        </span>
+                      <div className="text-[#64718a]">
+                        {collapsedClusters[-1] ? (
+                          <ChevronDown className="w-4 h-4" />
+                        ) : (
+                          <ChevronUp className="w-4 h-4" />
+                        )}
                       </div>
                     </div>
-                  ))}
-                </div>
+                    {!collapsedClusters[-1] && (
+                      <div className="border-t border-[#1a1f2e] divide-y divide-[#171c2a]">
+                        {unclustered.map((m) => (
+                          <div
+                            key={m.id}
+                            onClick={() => onSelectMeeting(m.id)}
+                            className="px-4 py-3 hover:bg-[#141722] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                          >
+                            <div className="space-y-0.5 flex-1 min-w-0 pr-4">
+                              <h4 className="text-xs sm:text-sm font-medium text-[#e1e6f0] truncate hover:text-blue-400 transition-colors">
+                                {m.title}
+                              </h4>
+                              {m.description && (
+                                <p className="text-xs text-[#738099] truncate">
+                                  {m.description}
+                                </p>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-3 text-xs text-[#6e7b94] shrink-0 font-mono">
+                              <span>{new Date(m.created_at).toLocaleDateString()}</span>
+                              <span className="tabular-nums">{formatDuration(m.duration_seconds)}</span>
+                              <span
+                                className={`px-2 py-0.5 rounded text-[11px] font-mono ${
+                                  m.status === 'completed'
+                                    ? 'text-emerald-400 bg-[#0f2119] border border-[#1b3d2e]'
+                                    : 'text-amber-400 bg-[#241a10] border border-[#442e1a]'
+                                }`}
+                              >
+                                {m.status}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
         ) : (
-          /* STANDARD FLAT LIST VIEW */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          /* STANDARD DENSE ROW ARCHIVE VIEW */
+          <div className="border border-[#1e2332] rounded-lg divide-y divide-[#191d2a] bg-[#10121a] overflow-hidden">
             {filteredMeetings.map((m) => (
               <div
                 key={m.id}
                 onClick={() => onSelectMeeting(m.id)}
-                className="group bg-slate-900/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 shadow-lg hover:shadow-indigo-500/5 transition-all flex flex-col justify-between cursor-pointer space-y-4"
+                className="group px-4 py-3 sm:py-3.5 hover:bg-[#141722] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-2.5"
               >
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full capitalize ${
-                        m.status === 'completed'
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                          : m.status === 'failed'
-                          ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                          : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                      }`}
-                    >
-                      <CheckCircle className="w-3 h-3" />
-                      {m.status}
-                    </span>
-
-                    <span className="text-[11px] text-slate-500 font-mono">
-                      {new Date(m.created_at).toLocaleDateString()}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-slate-100 group-hover:text-indigo-300 transition-colors line-clamp-2">
+                <div className="space-y-1 flex-1 min-w-0 pr-4">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xs sm:text-sm font-medium text-[#e4e8f2] group-hover:text-blue-400 transition-colors truncate">
                       {m.title}
                     </h3>
-                    {m.description && (
-                      <p className="text-xs text-slate-400 line-clamp-2">
-                        {m.description}
-                      </p>
+                    {m.audio_url && (
+                      <FileAudio className="w-3.5 h-3.5 text-[#5e6b83] shrink-0" />
                     )}
                   </div>
+
+                  {m.description && (
+                    <p className="text-xs text-[#727f98] truncate max-w-xl">
+                      {m.description}
+                    </p>
+                  )}
                 </div>
 
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 font-mono text-[11px]">
-                      <Clock className="w-3 h-3 text-slate-500" />
-                      {formatDuration(m.duration_seconds)}
-                    </span>
-                    {m.audio_url && (
-                      <FileAudio className="w-3 h-3 text-indigo-400/80" />
-                    )}
-                  </div>
+                <div className="flex items-center gap-4 text-xs shrink-0 self-start sm:self-center font-mono">
+                  <span className="text-[#64718a] tabular-nums">
+                    {new Date(m.created_at).toLocaleDateString()}
+                  </span>
 
-                  <span className="inline-flex items-center gap-1 text-indigo-400 text-xs font-semibold group-hover:translate-x-0.5 transition-transform">
-                    View <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="text-[#8491ab] tabular-nums flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-[#535d72]" />
+                    {formatDuration(m.duration_seconds)}
+                  </span>
+
+                  <span
+                    className={`px-2 py-0.5 rounded text-[11px] font-mono ${
+                      m.status === 'completed'
+                        ? 'text-emerald-400 bg-[#0f2119] border border-[#1b3d2e]'
+                        : m.status === 'failed'
+                        ? 'text-rose-400 bg-[#241113] border border-[#441a1f]'
+                        : 'text-amber-400 bg-[#241a10] border border-[#442e1a]'
+                    }`}
+                  >
+                    {m.status}
+                  </span>
+
+                  <span className="text-[#64718a] group-hover:text-[#c4cfde] transition-colors flex items-center gap-0.5">
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
